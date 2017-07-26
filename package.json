@@ -1,0 +1,11 @@
+{
+    "name": "helloworldapp",
+    "description": "HelloWolrd NodeJS App",
+    "scripts": 
+    {
+        "start": "node app.js"
+    },
+    "dependencies": {
+        "express": "^4.15.3"
+    }
+}
