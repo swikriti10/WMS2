@@ -1,5 +1,8 @@
 # Delpoying a NodeJS app on SAP Cloud Platform Cloud Foundry
-This is a HelloWorld Sample of NodeJS for demostrating how to deploy a NodeJS app on SAP Cloud Platform Cloud Foundry.
+This is a HelloWorld Sample of NodeJS for demostrating how to deploy a NodeJS app on SAP Cloud Platform Cloud Foundry. 
+
+Here you have the video recording:
+https://youtu.be/fOraTnTZktI
 
 To get started with SAP Cloud Platform Cloud Foundry, please follow the how-to guide below:
 https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/b8ee7894fe0b4df5b78f61dd1ac178ee.html
