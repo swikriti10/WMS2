@@ -34,7 +34,7 @@ for example:
         "start": "node app.js"
     }
 
-2).Define a start script to launch the node js app in pacakge.json, which cf launches your Create a manifest.yml about the applicaiton name, memory allocation, and number of instances
+2).Create a manifest.yml about the applicaiton name, memory allocation, and number of instances
 
 Finally, just use "cf push" command to deply your node js app to SAP Cloud Platform.
 ```sh
