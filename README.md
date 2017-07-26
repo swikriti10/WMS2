@@ -4,20 +4,21 @@ This is a HelloWorld Sample of NodeJS for demostrating how to deploy a NodeJS ap
 To get started with SAP Cloud Platform Cloud Foundry, please follow the how-to guide below:
 https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/b8ee7894fe0b4df5b78f61dd1ac178ee.html
 
-Assume you have went through the steps above 
+Assume you have went through the Sign Up, Set up and Log On steps detailed above: 
 
-### 1.Sign Up: Sign up for a trial space on a Cloud Foundry instance.
+### 1.Sign Up: 
+Sign up for a trial space on a Cloud Foundry instance.
 
-### 2.Set Up:Download and configure the Cloud Foundry command line interface (cf CLI).
+### 2.Set Up:
+Download and configure the Cloud Foundry command line interface (cf CLI).
+
+### 3.Log On: 
+Log on to your trial space on the Cloud Foundry instance.
 ```sh
-$ cf api 
-```
-
-### 3.Log On: Log on to your trial space on the Cloud Foundry instance.
-```sh
+$ cf api
 $ cf login
 ```
-NOW we'll start from here.
+NOW we'll start from here to deploy you app to SCP.
 
 ### 4.Deploy your app to SAP Cloud Platform with CLI
 
