@@ -135,7 +135,7 @@ restService.post("/wms", function (req, res) {
     }
 
 
-    else if (selectedmenu!="notselectedmenu") {
+    else if (selectedmenu!="notselectedmenu" && val=="notstart") {
 
         //   sess.name ="Napo";
         request({
