@@ -36,11 +36,11 @@ restService.use(bodyParser.json());
 
 
 restService.post("/wms", function (req, res) {
-    var actionName =
+    var selectedmenu =
      req.body.result &&
-     req.body.result.action
-       ? req.body.result.action
-       : "wrong";
+     req.body.result.selectedmenu
+       ? req.body.result.selectedmenu
+       : "notselectedmenu";
 
     var val =
       req.body.result &&
@@ -132,7 +132,80 @@ restService.post("/wms", function (req, res) {
                 });
 
                 
+    }
+
+
+    else if (selectedmenu!="notselectedmenu") {
+
+        //   sess.name ="Napo";
+        request({
+            url: url + "GetMenuSet?$filter=TileIdBot eq 'INBOUND'&sap-client=900&sap-language=EN&$format=json",
+
+
+            //url: url + "ListOpenTOSet?$filter=UserId eq 'SAPUSER' and TorderFrom eq '' and TorderTo eq '' and DelvFrom eq '' and DelvTo eq'' and SoFrom eq '' and SoTo eq '' and Material eq '' &sap-client=900&sap-language=EN&$format=json",
+            headers: {
+                //"Authorization": "Basic <<base64 encoded SAPUSER:crave123>>",
+                "Authorization": "Basic c2FwdXNlcjpjcmF2ZTEyMw==",
+                "Content-Type": "application/json",
+                "x-csrf-token": "Fetch"
             }
+
+        }, function (error, response, body) {
+            if (!error && response.statusCode == 200) {
+                csrfToken = response.headers['x-csrf-token'];
+                // console.log(csrfToken);
+                // var gwResponse = body.asString();
+                // var JSONObj = JSON.parse(body);
+                var c = JSON.parse(body)
+                //var a = res.json(body);
+                var len = c.d.results.length;
+                //var a = JSON.stringify(a);
+
+
+                var obj = [];
+                var i = 0;
+                if (c.d.results.length > 0) {
+                    botResponse = "Choose following options for " + selectedmenu + "- ";
+
+                    for (; i < c.d.results.length; i++) {
+                        botResponse += " \n";
+                        botResponse += c.d.results[i].MenuName;
+
+                    }
+
+                }
+                else {
+                    botResponse = "No Menu Items";
+                }
+
+                console.log(botResponse);
+
+            }
+
+
+            return res.json({
+                speech: botResponse,
+                displayText: botResponse,
+
+                source: "webhook-echo-sample",
+
+
+            });
+
+
+
+
+
+
+
+
+        });
+
+
+    }
+
+
+
         });
     
 
