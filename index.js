@@ -59,7 +59,12 @@ restService.post("/wms", function (req, res) {
 
 
     const app = new App({ request: req, response: res });
-
+var url = "http://208.85.249.174:8000/sap/opu/odata/sap/ZWMS_BOT_SRV/";
+    //sess = req.session;
+    var i = 0;
+    var obj = [];
+    var botResponse = "";
+    var c;
 
     //sess = req.session;
     
@@ -138,7 +143,7 @@ restService.post("/wms", function (req, res) {
     }
 
 
-    else if (selectedmenu=="INBOUND" && val=="notstart") {
+    else if (selectedmenu=="INBOUND") {
 
         //   sess.name ="Napo";
         request({
@@ -184,8 +189,8 @@ restService.post("/wms", function (req, res) {
                 console.log(botResponse);
               
               return res.json({
-                speech: botResponse,
-                displayText: botResponse,
+                speech: "hi",
+                displayText: "hi",
 
                 source: "webhook-echo-sample",
 
