@@ -128,7 +128,7 @@ restService.post("/wms", function (req, res) {
     }
 
 
-    else if (selectedmenu =="INBOUND" && val=="notstart") {
+    else if (selectedmenu=="INBOUND" && val=="notstart") {
 
         //   sess.name ="Napo";
        
@@ -147,8 +147,8 @@ return res.json({
   
   else{
     return res.json({
-                speech: "bye",
-                displayText: "bye",
+                speech:selectedmenu,
+                displayText:selectedmenu,
 
                 source: "webhook-echo-sample",
 
