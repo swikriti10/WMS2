@@ -180,11 +180,8 @@ restService.post("/wms", function (req, res) {
                 }
 
                 console.log(botResponse);
-
-            }
-
-
-            return res.json({
+              
+              return res.json({
                 speech: botResponse,
                 displayText: botResponse,
 
@@ -193,6 +190,11 @@ restService.post("/wms", function (req, res) {
 
             });
 
+
+            }
+
+
+            
 
 
 
