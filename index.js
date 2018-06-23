@@ -173,8 +173,8 @@ restService.post("/wms", function (req, res) {
                 //console.log(botResponse);
 
                 return res.json({
-                    speech: "botResponse1",
-                    displayText: "botResponse1",
+                    speech:botResponse1,
+                    displayText:botResponse1,
 
                     source: "webhook-echo-sample",
 
