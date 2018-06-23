@@ -143,11 +143,18 @@ return res.json({
 
             });
 
-
-       
-
-
     }
+  
+  else{
+    return res.json({
+                speech: "bye",
+                displayText: "bye",
+
+                source: "webhook-echo-sample",
+
+
+            });
+  }
 
 
 
