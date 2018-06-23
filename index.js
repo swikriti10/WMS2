@@ -70,7 +70,7 @@ restService.post("/wms", function (req, res) {
     //sess = req.session;
 
 
-    if (val == "start" && selectedmenu=="notselectedmenu") {
+    if (val == "start"||val == "Start" && selectedmenu=="notselectedmenu") {
 
         //   sess.name ="Napo";
         request({
