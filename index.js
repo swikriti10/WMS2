@@ -130,19 +130,61 @@ restService.post("/wms", function (req, res) {
 
 
     else if (selectedmenu=="INBOUND" && val=="notstart") {
-
-        //   sess.name ="Napo";
-       
-
-
-return res.json({
-                speech: "hi",
-                displayText: "hi",
-
-                source: "webhook-echo-sample",
+ request({
+            url: url + "GetMenuSet?$filter=TileIdBot eq 'INBOUND' &sap-client=900&sap-language=EN&$format=json",
 
 
-            });
+            //url: url + "ListOpenTOSet?$filter=UserId eq 'SAPUSER' and TorderFrom eq '' and TorderTo eq '' and DelvFrom eq '' and DelvTo eq'' and SoFrom eq '' and SoTo eq '' and Material eq '' &sap-client=900&sap-language=EN&$format=json",
+            headers: {
+                //"Authorization": "Basic <<base64 encoded SAPUSER:crave123>>",
+                "Authorization": "Basic c2FwdXNlcjpjcmF2ZTEyMw==",
+                "Content-Type": "application/json",
+                "x-csrf-token": "Fetch"
+            }
+
+        }, function (error, response, body) {
+            if (!error && response.statusCode == 200) {
+                csrfToken = response.headers['x-csrf-token'];
+                // console.log(csrfToken);
+                // var gwResponse = body.asString();
+                // var JSONObj = JSON.parse(body);
+                var c1 = JSON.parse(body)
+                //var a = res.json(body);
+                var len1 = c1.d.results.length;
+                //var a = JSON.stringify(a);
+                var botResponse1 = "";
+
+                var obj = [];
+                var i = 0;
+                if (c1.d.results.length > 0) {
+                    botResponse1 = "Choose following options for " + selectedmenu + "- ";
+
+                    for (; i < c1.d.results.length; i++) {
+                        botResponse1 += " \n";
+                        botResponse1 += c1.d.results[i].MenuName;
+
+                    }
+
+                }
+                else {
+                    botResponse1 = "No Menu Items";
+                }
+
+                //console.log(botResponse);
+
+                return res.json({
+                    speech: "botResponse1",
+                    displayText: "botResponse1",
+
+                    source: "webhook-echo-sample",
+
+
+                });
+
+
+            }
+
+        });
 
     }
   
