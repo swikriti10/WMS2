@@ -68,8 +68,8 @@ restService.post("/wms", function (req, res) {
 
         //   sess.name ="Napo";
          request({
-             url: url + "GetTilesSet?$filter=BotCode eq 'start'&sap-client=900&sap-language=EN&$format=json",
-            //url: url + "GetMenuSet?$filter=TileId Bot eq 'INBOUND &sap-client=900&sap-language=EN&$format=json",
+             //url: url + "GetTilesSet?$filter=BotCode eq 'start'&sap-client=900&sap-language=EN&$format=json",
+            url: url + "GetMenuSet?$filter=TileId Bot eq 'INBOUND &sap-client=900&sap-language=EN&$format=json",
             
 
              //url: url + "ListOpenTOSet?$filter=UserId eq 'SAPUSER' and TorderFrom eq '' and TorderTo eq '' and DelvFrom eq '' and DelvTo eq'' and SoFrom eq '' and SoTo eq '' and Material eq '' &sap-client=900&sap-language=EN&$format=json",
@@ -99,7 +99,9 @@ restService.post("/wms", function (req, res) {
 
                      for (; i < c.d.results.length; i++) {
                           botResponse += " \n";
-                         botResponse+= c.d.results[i].TileId;
+                       //  botResponse+= c.d.results[i].TileId;
+                        botResponse+= c.d.results[i].MenuName;
+
 
                      }
                         
