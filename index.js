@@ -38,8 +38,9 @@ restService.use(bodyParser.json());
 restService.post("/wms", function (req, res) {
     var selectedmenu =
      req.body.result &&
-     req.body.result.selectedmenu
-       ? req.body.result.selectedmenu
+      req.body.result.parameters &&
+      req.body.result.parameters.selectedmenu
+        ? req.body.result.parameters.selectedmenu
        : "notselectedmenu";
 
     var val =
