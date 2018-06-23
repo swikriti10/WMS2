@@ -49,14 +49,6 @@ restService.post("/wms", function (req, res) {
         ? req.body.result.parameters.echoText
         : "notstart";
 
-    var Sitem =
-      req.body.result &&
-      req.body.result.parameters &&
-      req.body.result.parameters.S_Loc
-        ? req.body.result.parameters.S_Loc
-        : "sitem";
-
-
 
     const app = new App({ request: req, response: res });
     var url = "http://208.85.249.174:8000/sap/opu/odata/sap/ZWMS_BOT_SRV/";
@@ -69,7 +61,7 @@ restService.post("/wms", function (req, res) {
     //sess = req.session;
 
 
-    if (val == "start" || val == "Start" || val == "START") {
+    if (val == "start" && selectedmenu=="notselectedmenu") {
 
         //   sess.name ="Napo";
         request({
@@ -136,7 +128,7 @@ restService.post("/wms", function (req, res) {
     }
 
 
-    else if (selectedmenu =="INBOUND") {
+    else if (selectedmenu =="INBOUND" && val=="notstart") {
 
         //   sess.name ="Napo";
        
