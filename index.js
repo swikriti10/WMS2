@@ -180,7 +180,7 @@ restService.post("/wms", function (req, res) {
                             /////////////////Block for submenu//////////////////////////////////
                             request({
                                 //url: url + "GetMenuInfoSet?$filter=TileId%20eq%20%27WM_INB%27&sap-client=900&sap-language=EN&$format=json",
-                                url: url + "GetMenuInfoSet?$filter=TileId%20eq%20%27WM_INB%27&sap-client=900&sap-language=EN&$format=json",
+                                url: url + "GetMenuInfoSet?$filter=TileId%20eq%20%27"+tileid+"%27&sap-client=900&sap-language=EN&$format=json",
 
 
                                 //url: url + "ListOpenTOSet?$filter=UserId eq 'SAPUSER' and TorderFrom eq '' and TorderTo eq '' and DelvFrom eq '' and DelvTo eq'' and SoFrom eq '' and SoTo eq '' and Material eq '' &sap-client=900&sap-language=EN&$format=json",
