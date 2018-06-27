@@ -141,11 +141,11 @@ restService.post("/wms", function (req, res) {
 
     else if (selectedmenu != "notselectedmenu" && val == "notstart" && selectedsubmenu == "notselectedsubmenu") {
 
+        
+        /////////////////Block for submenu//////////////////////////////////
         request({
-
-            url: url + "GetTileInfoSet?$filter=AppId%20eq%20%27WMS%27&sap-client=900&sap-language=EN&$format=json",
-            // url: url + "GetTilesSet?$filter=BotCode eq 'start'&sap-client=900&sap-language=EN&$format=json",
-            // url: url + "GetMenuSet?$filter=TileIdBot eq 'INBOUND' &sap-client=900&sap-language=EN&$format=json",
+            //url: url + "GetMenuInfoSet?$filter=TileId%20eq%20%27WM_INB%27&sap-client=900&sap-language=EN&$format=json",
+            url: url + "GetMenuInfoSet?$filter=TileId%20eq%20%27WM_INB%27&sap-client=900&sap-language=EN&$format=json",
 
 
             //url: url + "ListOpenTOSet?$filter=UserId eq 'SAPUSER' and TorderFrom eq '' and TorderTo eq '' and DelvFrom eq '' and DelvTo eq'' and SoFrom eq '' and SoTo eq '' and Material eq '' &sap-client=900&sap-language=EN&$format=json",
@@ -162,103 +162,43 @@ restService.post("/wms", function (req, res) {
                 // console.log(csrfToken);
                 // var gwResponse = body.asString();
                 // var JSONObj = JSON.parse(body);
-                var cR = JSON.parse(body)
+                var c1 = JSON.parse(body)
                 //var a = res.json(body);
-                var lenR = cR.d.results.length;
+                var len1 = c1.d.results.length;
                 //var a = JSON.stringify(a);
+                var botResponse1 = "";
 
+                var obj = [];
+                var i = 0;
+                if (c1.d.results.length > 0) {
+                    botResponse1 = "Choose following options for " + selectedmenu + "- ";
 
-                var objR = [];
-                var iR = 0;
-                if (cR.d.results.length > 0) {
-                   
-                    for (; iR < c.d.results.length; iR++) {
+                    for (; i < c1.d.results.length; i++) {
+                        botResponse1 += " \n";
+                        botResponse1 += c1.d.results[i].MenuName;
 
-                        if (cR.d.results[iR].TileName == selectedmenu) {
-                            var tileid = cR.d.results[i].TileId;
-
-                            /////////////////Block for submenu//////////////////////////////////
-                            request({
-                                url: url + "GetMenuInfoSet?$filter=TileId%20eq%20%27"+tileid+"%27&sap-client=900&sap-language=EN&$format=json",
-
-
-                                //url: url + "ListOpenTOSet?$filter=UserId eq 'SAPUSER' and TorderFrom eq '' and TorderTo eq '' and DelvFrom eq '' and DelvTo eq'' and SoFrom eq '' and SoTo eq '' and Material eq '' &sap-client=900&sap-language=EN&$format=json",
-                                headers: {
-                                    //"Authorization": "Basic <<base64 encoded SAPUSER:crave123>>",
-                                    "Authorization": "Basic c2FwdXNlcjpjcmF2ZTEyMw==",
-                                    "Content-Type": "application/json",
-                                    "x-csrf-token": "Fetch"
-                                }
-
-                            }, function (error, response, body) {
-                                if (!error && response.statusCode == 200) {
-                                    csrfToken = response.headers['x-csrf-token'];
-                                    // console.log(csrfToken);
-                                    // var gwResponse = body.asString();
-                                    // var JSONObj = JSON.parse(body);
-                                    var c1 = JSON.parse(body)
-                                    //var a = res.json(body);
-                                    var len1 = c1.d.results.length;
-                                    //var a = JSON.stringify(a);
-                                    var botResponse1 = "";
-
-                                    var obj = [];
-                                    var i = 0;
-                                    if (c1.d.results.length > 0) {
-                                        botResponse1 = "Choose following options for " + selectedmenu + "- ";
-
-                                        for (; i < c1.d.results.length; i++) {
-                                            botResponse1 += " \n";
-                                            botResponse1 += c1.d.results[i].MenuName;
-
-                                        }
-
-                                    }
-                                    else {
-                                        botResponse1 = "No Menu Items";
-                                    }
-
-                                    //console.log(botResponse);
-
-                                    return res.json({
-                                        speech: botResponse1,
-                                        displayText: botResponse1,
-
-                                        source: "webhook-echo-sample",
-
-
-                                    });
-
-
-                                }
-
-                            });
-
-
-
-
-
-
-
-
-                        }
-                        else {
-                            console.log("Tile name not matched");
-                        }
-                       
                     }
 
                 }
-               
+                else {
+                    botResponse1 = "No Menu Items";
+                }
+
+                //console.log(botResponse);
+
+                return res.json({
+                    speech: botResponse1,
+                    displayText: botResponse1,
+
+                    source: "webhook-echo-sample",
+
+
+                });
+
 
             }
 
-
-           
-
-
         });
-
 
 
 
