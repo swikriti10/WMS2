@@ -17,7 +17,7 @@ const App = require('actions-on-google').DialogflowApp;
 var slack_message;
 
 
-var url = "http://208.85.249.174:8000/sap/opu/odata/sap/ZWMS_BOT_SRV/";
+var url = "http://208.85.249.174:8000/sap/opu/odata/CRVWM/WMS_SRV/";
 var url1 = "http://208.85.249.174:8000/sap/opu/odata/sap/ZWMS_BOT_SRV/";
 
 //var d = '1140';
@@ -43,14 +43,14 @@ restService.post("/wms", function (req, res) {
         ? req.body.result.parameters.selectedmenu
        : "notselectedmenu";
 
-  var selectedsubmenu =
-     req.body.result &&
-      req.body.result.parameters &&
-      req.body.result.parameters.selectedsubmenu
-        ? req.body.result.parameters.selectedsubmenu
-       : "notselectedsubmenu";
+    var selectedsubmenu =
+       req.body.result &&
+        req.body.result.parameters &&
+        req.body.result.parameters.selectedsubmenu
+          ? req.body.result.parameters.selectedsubmenu
+         : "notselectedsubmenu";
 
-  
+
     var val =
       req.body.result &&
       req.body.result.parameters &&
@@ -60,7 +60,7 @@ restService.post("/wms", function (req, res) {
 
 
     const app = new App({ request: req, response: res });
-    var url = "http://208.85.249.174:8000/sap/opu/odata/sap/ZWMS_BOT_SRV/";
+    var url = "http://208.85.249.174:8000/sap/opu/odata/CRVWM/WMS_SRV/";
     //sess = req.session;
     var i = 0;
     var obj = [];
@@ -70,11 +70,13 @@ restService.post("/wms", function (req, res) {
     //sess = req.session;
 
 
-    if (val == "start"||val == "Start" && selectedmenu=="notselectedmenu") {
+    if (val == "start" || val == "Start") {
 
         //   sess.name ="Napo";
         request({
-            url: url + "GetTilesSet?$filter=BotCode eq 'start'&sap-client=900&sap-language=EN&$format=json",
+            
+            url: url + "GetTileInfoSet?$filter=AppId%20eq%20%27WMS%27&sap-client=900&sap-language=EN&$format=json",
+           // url: url + "GetTilesSet?$filter=BotCode eq 'start'&sap-client=900&sap-language=EN&$format=json",
             // url: url + "GetMenuSet?$filter=TileIdBot eq 'INBOUND' &sap-client=900&sap-language=EN&$format=json",
 
 
@@ -105,7 +107,7 @@ restService.post("/wms", function (req, res) {
 
                     for (; i < c.d.results.length; i++) {
                         botResponse += " \n";
-                        botResponse += c.d.results[i].TileId;
+                        botResponse += c.d.results[i].TileName;
                         // botResponse+= c.d.results[i].MenuName;
 
 
@@ -137,8 +139,8 @@ restService.post("/wms", function (req, res) {
     }
 
 
-    else if (selectedmenu=="INBOUND" && val=="notstart") {
- request({
+    else if (selectedmenu == "INBOUND" && val == "notstart") {
+        request({
             url: url + "GetMenuSet?$filter=TileIdBot eq 'INBOUND' &sap-client=900&sap-language=EN&$format=json",
 
 
@@ -181,8 +183,8 @@ restService.post("/wms", function (req, res) {
                 //console.log(botResponse);
 
                 return res.json({
-                    speech:botResponse1,
-                    displayText:botResponse1,
+                    speech: botResponse1,
+                    displayText: botResponse1,
 
                     source: "webhook-echo-sample",
 
@@ -195,8 +197,8 @@ restService.post("/wms", function (req, res) {
         });
 
     }
-   else if (selectedsubmenu!="notselectedsubmenu" && val=="notstart" && selectedmenu=="notselectedmenu") {
- request({
+    else if (selectedsubmenu != "notselectedsubmenu" && val == "notstart" && selectedmenu == "notselectedmenu") {
+        request({
             url: url + "GetSubMenuSet?$filter=MenuName eq 'GOODS RECEIPT' &sap-client=900&sap-language=EN&$format=json",
 
 
@@ -239,8 +241,8 @@ restService.post("/wms", function (req, res) {
                 //console.log(botResponse);
 
                 return res.json({
-                    speech:botResponse1,
-                    displayText:botResponse1,
+                    speech: botResponse1,
+                    displayText: botResponse1,
 
                     source: "webhook-echo-sample",
 
@@ -253,16 +255,16 @@ restService.post("/wms", function (req, res) {
         });
 
     }
-  else{
-    return res.json({
-                speech:selectedmenu,
-                displayText:selectedmenu,
+    else {
+        return res.json({
+            speech: selectedmenu,
+            displayText: selectedmenu,
 
-                source: "webhook-echo-sample",
+            source: "webhook-echo-sample",
 
 
-            });
-  }
+        });
+    }
 
 
 
