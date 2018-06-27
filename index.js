@@ -213,7 +213,8 @@ restService.post("/wms", function (req, res) {
     }
     else if (selectedsubmenu != "notselectedsubmenu" && val == "notstart" && selectedmenu == "notselectedmenu") {
         request({
-            url: url + "GetSubMenuSet?$filter=MenuName eq 'GOODS RECEIPT' &sap-client=900&sap-language=EN&$format=json",
+         
+            url: url + "GetSearchFieldSet?$filter=TileId%20eq%20%27WM_INB%27%20and%20SubMenuId%20eq%20%27G_REC%27%20and%20EntitySet%20eq%20%27GRSearchSet%27&sap-client=900&sap-language=EN&$format=json",
 
 
             //url: url + "ListOpenTOSet?$filter=UserId eq 'SAPUSER' and TorderFrom eq '' and TorderTo eq '' and DelvFrom eq '' and DelvTo eq'' and SoFrom eq '' and SoTo eq '' and Material eq '' &sap-client=900&sap-language=EN&$format=json",
