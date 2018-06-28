@@ -282,7 +282,7 @@ restService.post("/wms", function (req, res) {
         ///////////////////////////////////Block for submenu/////////////////////////////////////////////////////////////
 
     }
-    else if (selectedsubmenu != "notselectedsubmenu" && val == "notstart" && selectedmenu == "notselectedmenu") {
+    else if (selectedsubmenu != "notselectedsubmenu" && val == "notstart") {
 ////// Block to fetch Tile ID then submenu details/////////////////////////////////////////////////////////////////////////
 
         request({
