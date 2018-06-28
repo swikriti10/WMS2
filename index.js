@@ -386,7 +386,7 @@ restService.post("/wms", function (req, res) {
                                                         var obj = [];
                                                         var i = 0;
                                                         if (c2.d.results.length > 0) {
-                                                            botResponse1 = "Choose following options for GR - ";
+                                                            botResponse1 = "Choose following options for "+selectedsubmenu+" - ";
 
                                                             for (; i < c2.d.results.length; i++) {
                                                                 botResponse1 += " \n";
@@ -441,8 +441,8 @@ restService.post("/wms", function (req, res) {
 
     else {
         return res.json({
-            speech: selectedmenu,
-            displayText: selectedmenu,
+            speech: "Error",
+            displayText: "Error",
 
             source: "webhook-echo-sample",
 
