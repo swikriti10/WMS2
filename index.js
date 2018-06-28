@@ -110,10 +110,11 @@ restService.post("/wms", function (req, res) {
                 var obj = [];
                 var i = 0;
                 if (c.d.results.length > 0) {
-                    botResponse = "Choose following options for menu- ";
+                    botResponse = "Choose following options for menu: ";
 
                     for (; i < c.d.results.length; i++) {
                         botResponse += " \n";
+                      botResponse += "-";
                         botResponse += c.d.results[i].TileName;
                         // botResponse+= c.d.results[i].MenuName;
 
