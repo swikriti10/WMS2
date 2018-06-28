@@ -213,10 +213,11 @@ restService.post("/wms", function (req, res) {
                                     var obj = [];
                                     var i = 0;
                                     if (c1.d.results.length > 0) {
-                                        botResponse1 = "Choose following options for " + selectedmenu + "- ";
+                                        botResponse1 = "Choose following options for " + selectedmenu + ": ";
 
                                         for (; i < c1.d.results.length; i++) {
                                             botResponse1 += " \n";
+                                            botResponse1 += "-";
                                             botResponse1 += c1.d.results[i].MenuName;
 
                                         }
@@ -387,10 +388,11 @@ restService.post("/wms", function (req, res) {
                                                         var obj = [];
                                                         var i = 0;
                                                         if (c2.d.results.length > 0) {
-                                                            botResponse1 = "Choose following options for "+selectedsubmenu+" - ";
+                                                            botResponse1 = "Choose following options for "+selectedsubmenu+" : ";
 
                                                             for (; i < c2.d.results.length; i++) {
                                                                 botResponse1 += " \n";
+                                                                botResponse1 += "-";
                                                                 botResponse1 += c2.d.results[i].SearchType;
 
                                                             }
