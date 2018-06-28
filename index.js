@@ -402,8 +402,8 @@ restService.post("/wms", function (req, res) {
                                                         //console.log(botResponse);
 
                                                         return res.json({
-                                                            speech: tileid,
-                                                            displayText: tileid,
+                                                            speech:"XYZ",
+                                                            displayText:"XYZ",
 
                                                             source: "webhook-echo-sample",
 
