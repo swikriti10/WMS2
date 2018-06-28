@@ -114,7 +114,7 @@ restService.post("/wms", function (req, res) {
 
                     for (; i < c.d.results.length; i++) {
                         botResponse += " \n";
-                      botResponse += "-";
+                     
                         botResponse += c.d.results[i].TileName;
                         // botResponse+= c.d.results[i].MenuName;
 
@@ -217,7 +217,7 @@ restService.post("/wms", function (req, res) {
 
                                         for (; i < c1.d.results.length; i++) {
                                             botResponse1 += " \n";
-                                            botResponse1 += "-";
+                                            
                                             botResponse1 += c1.d.results[i].MenuName;
 
                                         }
@@ -392,7 +392,7 @@ restService.post("/wms", function (req, res) {
 
                                                             for (; i < c2.d.results.length; i++) {
                                                                 botResponse1 += " \n";
-                                                                botResponse1 += "-";
+                                                                
                                                                 botResponse1 += c2.d.results[i].SearchType;
 
                                                             }
