@@ -318,7 +318,7 @@ restService.post("/wms", function (req, res) {
 
                     for (; i < c.d.results.length; i++) {
 
-                        if (c.d.results[i].TileName == tilename) {
+                        if (c.d.results[i].TileName == Ctilename) {
                             var tileid = c.d.results[i].TileId
 
                             /////////////////Block for submenu//////////////////////////////////
@@ -402,8 +402,8 @@ restService.post("/wms", function (req, res) {
                                                         //console.log(botResponse);
 
                                                         return res.json({
-                                                            speech:"XYZ",
-                                                            displayText:"XYZ",
+                                                            speech:botResponse1,
+                                                            displayText:botResponse1,
 
                                                             source: "webhook-echo-sample",
 
