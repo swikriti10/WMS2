@@ -141,10 +141,10 @@ restService.post("/wms", function (req, res) {
 
 
             return res.json({
-               // speech: botResponse,
-               // displayText: botResponse,
-                speech: optionIntentname,
-                displayText: optionIntentname,
+                speech: botResponse,
+                displayText: botResponse,
+               // speech: optionIntentname,
+               // displayText: optionIntentname,
                 source: "webhook-echo-sample",
 
 
@@ -451,7 +451,7 @@ restService.post("/wms", function (req, res) {
 
 
     }
-    else if (optionIntentname != "nointentname")
+    else if (optionIntentname == "chooseScanoption")
     {
         return res.json({
             speech: optionIntentname,
