@@ -468,14 +468,57 @@ restService.post("/wms", function (req, res) {
         });
     }
     else if (actionName == "actionscanPo" && Ponumber != "noPonumber") {
-        return res.json({
-            speech: Ponumber,
-            displayText: Ponumber,
+            
+            request({
 
-            source: "webhook-echo-sample",
+                url:"https://wiprowms30june-b94b9a0ad.dispatcher.us1.hana.ondemand.com/WMS900/sap/opu/odata/CRVWM/WMS_SRV/Get_PoItem_DetailsSet?$filter=PoNumber%20eq%20%27"+Ponumber+"%27%20and%20MoveType%20eq%20%27101%27&sap-client=900&sap-language=EN&$format=json"
+                // url: url + "GetTilesSet?$filter=BotCode eq 'start'&sap-client=900&sap-language=EN&$format=json",
+                // url: url + "GetMenuSet?$filter=TileIdBot eq 'INBOUND' &sap-client=900&sap-language=EN&$format=json",
 
 
-        });
+                //url: url + "ListOpenTOSet?$filter=UserId eq 'SAPUSER' and TorderFrom eq '' and TorderTo eq '' and DelvFrom eq '' and DelvTo eq'' and SoFrom eq '' and SoTo eq '' and Material eq '' &sap-client=900&sap-language=EN&$format=json",
+               
+
+            }, function (error, response, body) {
+                if (!error && response.statusCode == 200) {
+                   // csrfToken = response.headers['x-csrf-token'];
+                    // console.log(csrfToken);
+                    // var gwResponse = body.asString();
+                    // var JSONObj = JSON.parse(body);
+                    var c = JSON.parse(body)
+                    //var a = res.json(body);
+                    var len = c.d.results.length;
+                    //var a = JSON.stringify(a);
+                    var botResponse = "";
+
+                    var obj = [];
+                    var i = 0;
+                    if (c.d.results.length > 0) {
+                        botResponse += c.d.results[0].Material;
+
+
+                    }
+                    else {
+                        botResponse = "No Menu Items";
+                    }
+
+                    console.log(botResponse);
+
+                }
+
+
+                return res.json({
+                    speech: botResponse,
+                    displayText: botResponse,
+                    // speech: optionIntentname,
+                    // displayText: optionIntentname,
+                    source: "webhook-echo-sample",
+
+
+                });
+
+
+            });
     }
 
 
