@@ -451,7 +451,7 @@ restService.post("/wms", function (req, res) {
 
 
     }
-    else if (optionIntentname == "chooseScanoption")
+    else if (optionIntentname=="chooseScanoption")
     {
         return res.json({
             speech: optionIntentname,
