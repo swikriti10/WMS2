@@ -65,6 +65,15 @@ restService.post("/wms", function (req, res) {
         ? req.body.result.parameters.tilename
         : "Cnotselectedmenu";
 
+    var optionIntentname =
+      req.body.result &&
+      req.body.result.metadata &&
+      req.body.result.metadata.intentName
+        ? req.body.result.metadata.intentName
+        : "nointentname";
+
+    
+
 
     const app = new App({ request: req, response: res });
     var url = "http://208.85.249.174:8000/sap/opu/odata/CRVWM/WMS_SRV/";
@@ -114,7 +123,7 @@ restService.post("/wms", function (req, res) {
 
                     for (; i < c.d.results.length; i++) {
                         botResponse += " \n";
-                     
+
                         botResponse += c.d.results[i].TileName;
                         // botResponse+= c.d.results[i].MenuName;
 
@@ -217,7 +226,7 @@ restService.post("/wms", function (req, res) {
 
                                         for (; i < c1.d.results.length; i++) {
                                             botResponse1 += " \n";
-                                            
+
                                             botResponse1 += c1.d.results[i].MenuName;
 
                                         }
@@ -285,7 +294,7 @@ restService.post("/wms", function (req, res) {
 
     }
     else if (selectedsubmenu != "notselectedsubmenu" && val == "notstart") {
-////// Block to fetch Tile ID then submenu details/////////////////////////////////////////////////////////////////////////
+        ////// Block to fetch Tile ID then submenu details/////////////////////////////////////////////////////////////////////////
 
         request({
 
@@ -388,11 +397,11 @@ restService.post("/wms", function (req, res) {
                                                         var obj = [];
                                                         var i = 0;
                                                         if (c2.d.results.length > 0) {
-                                                            botResponse1 = "Choose following options for "+selectedsubmenu+" : ";
+                                                            botResponse1 = "Choose following options for " + selectedsubmenu + " : ";
 
                                                             for (; i < c2.d.results.length; i++) {
                                                                 botResponse1 += " \n";
-                                                                
+
                                                                 botResponse1 += c2.d.results[i].SearchType;
 
                                                             }
@@ -405,8 +414,8 @@ restService.post("/wms", function (req, res) {
                                                         //console.log(botResponse);
 
                                                         return res.json({
-                                                            speech:botResponse1,
-                                                            displayText:botResponse1,
+                                                            speech: botResponse1,
+                                                            displayText: botResponse1,
 
                                                             source: "webhook-echo-sample",
 
@@ -437,11 +446,21 @@ restService.post("/wms", function (req, res) {
                 }
 
             }
-                           });
+        });
 
 
-                        }
+    }
+    else if (optionIntentname != "nointentname")
+    {
+        return res.json({
+            speech: optionIntentname,
+            displayText: optionIntentname,
 
+            source: "webhook-echo-sample",
+
+
+        });
+    }
     else {
         return res.json({
             speech: "Error",
