@@ -72,6 +72,11 @@ restService.post("/wms", function (req, res) {
         ? req.body.result.metadata.intentName
         : "nointentname";
 
+    var actionName =
+    req.body.result &&
+    req.body.result.action
+      ? req.body.result.action
+      : "wrong";
     
 
 
@@ -451,11 +456,11 @@ restService.post("/wms", function (req, res) {
 
 
     }
-    else if (optionIntentname=="chooseScanoption")
+    else if (actionName == "submenuselected")
     {
         return res.json({
-            speech: optionIntentname,
-            displayText: optionIntentname,
+            speech: "hi",
+            displayText: "hi",
 
             source: "webhook-echo-sample",
 
