@@ -468,61 +468,14 @@ restService.post("/wms", function (req, res) {
         });
     }
     else if (actionName == "actionscanPo" && Ponumber != "noPonumber") {
-        request({
+        return res.json({
+            speech: Ponumber,
+            displayText: Ponumber,
 
-            url: url1+"Get_PoItem_DetailsSet?$filter=PoNumber%20eq%20%27"+Ponumber+"%27%20and%20MoveType%20eq%20%27101%27&sap-client=900&sap-language=EN&$format=json",
-            // url: url + "GetTilesSet?$filter=BotCode eq 'start'&sap-client=900&sap-language=EN&$format=json",
-            // url: url + "GetMenuSet?$filter=TileIdBot eq 'INBOUND' &sap-client=900&sap-language=EN&$format=json",
-
-
-            //url: url + "ListOpenTOSet?$filter=UserId eq 'SAPUSER' and TorderFrom eq '' and TorderTo eq '' and DelvFrom eq '' and DelvTo eq'' and SoFrom eq '' and SoTo eq '' and Material eq '' &sap-client=900&sap-language=EN&$format=json",
-            headers: {
-                //"Authorization": "Basic <<base64 encoded SAPUSER:crave123>>",
-                "Authorization": "Basic c2FwdXNlcjpjcmF2ZTEyMw==",
-                "Content-Type": "application/json",
-                "x-csrf-token": "Fetch"
-            }
-
-        }, function (error, response, body) {
-            if (!error && response.statusCode == 200) {
-                csrfToken = response.headers['x-csrf-token'];
-                // console.log(csrfToken);
-                // var gwResponse = body.asString();
-                // var JSONObj = JSON.parse(body);
-                var c = JSON.parse(body)
-                //var a = res.json(body);
-                var len = c.d.results.length;
-                //var a = JSON.stringify(a);
-
-                var botResponse= "";
-                var obj = [];
-                var i = 0;
-                if (c.d.results.length > 0) {
-                    botResponse = "P0 "+Ponumber+" has "+c.d.results[0].Material+" to be received. Scan the Material";
-
-               }
-                else {
-                    botResponse = "No Menu Items";
-                }
-
-                console.log(botResponse);
-
-            }
-
-
-            return res.json({
-                speech: "HI",
-                displayText: "HI",
-                // speech: optionIntentname,
-                // displayText: optionIntentname,
-                source: "webhook-echo-sample",
-
-
-            });
+            source: "webhook-echo-sample",
 
 
         });
-        
     }
 
 
