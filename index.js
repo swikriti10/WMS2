@@ -498,7 +498,7 @@ restService.post("/wms", function (req, res) {
                 var obj = [];
                 var i = 0;
                 if (c.d.results.length > 0) {
-                    botResponse = "P0 "+Ponumber+" has "+c.d.results.Material+" to be received. Scan the Material";
+                    botResponse = "P0 "+Ponumber+" has "+c.d.results[0].Material+" to be received. Scan the Material";
 
                }
                 else {
