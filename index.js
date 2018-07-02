@@ -467,7 +467,7 @@ restService.post("/wms", function (req, res) {
 
         });
     }
-    else if (actionName == "actionscanPo" && Ponumber != "noPonuber") {
+    else if (actionName == "actionscanPo" && Ponumber != "noPonumber") {
         request({
 
             url: url1+"Get_PoItem_DetailsSet?$filter=PoNumber%20eq%20%27"+Ponumber+"%27%20and%20MoveType%20eq%20%27101%27&sap-client=900&sap-language=EN&$format=json",
