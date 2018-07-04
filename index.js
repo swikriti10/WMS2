@@ -490,11 +490,11 @@ restService.post("/wms", function (req, res) {
                     var len = c.d.results.length;
                     //var a = JSON.stringify(a);
                     var botResponse = "";
-
+                      var counter=c.d.results[0].Material;
                     var obj = [];
                     var i = 0;
                     if (c.d.results.length > 0) {
-                       botResponse="PO"+Ponumber+" has "+c.d.results[0].Material+" to be received.Scan Material number";
+                       botResponse="PO "+Ponumber+" has "+c.d.results[0].Material+" material to be received.Scan Material number";
                        // botResponse += c.d.results[0].Material;
 
 
@@ -514,6 +514,15 @@ restService.post("/wms", function (req, res) {
                     // speech: optionIntentname,
                     // displayText: optionIntentname,
                     source: "webhook-echo-sample",
+                   contextOut: [{
+                            name: "c_counter",
+                            lifespan: "5",
+                            parameters: {
+                                key: counter
+
+                            }
+                        }
+                        ]
 
 
                 });
