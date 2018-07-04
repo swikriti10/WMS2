@@ -579,7 +579,19 @@ restService.post("/wms", function (req, res) {
 
         });
     }
-       
+       else {
+            return res.json({
+                speech: "GR successful",
+                displayText: "GR successful",
+                // speech: optionIntentname,
+                // displayText: optionIntentname,
+                source: "webhook-echo-sample",
+               
+
+
+            });
+
+        }
     }
 
 
