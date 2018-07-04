@@ -494,12 +494,13 @@ restService.post("/wms", function (req, res) {
                     var obj = [];
                     var i = 0;
                     if (c.d.results.length > 0) {
-                        botResponse += c.d.results[0].Material;
+                       botResponse="PO"+Ponumber+" has "+c.d.results[0].Material+" to be received.Scan Material number";
+                       // botResponse += c.d.results[0].Material;
 
 
                     }
                     else {
-                        botResponse = "No Menu Items";
+                        botResponse = "No Material for this PO";
                     }
 
                     console.log(botResponse);
