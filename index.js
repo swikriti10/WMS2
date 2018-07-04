@@ -471,7 +471,7 @@ restService.post("/wms", function (req, res) {
             
             request({
 
-                url:"https://wiprowms30june-b94b9a0ad.dispatcher.us1.hana.ondemand.com/WMS900/sap/opu/odata/CRVWM/WMS_SRV/Get_PoItem_DetailsSet?$filter=PoNumber%20eq%20%27"+Ponumber+"%27%20and%20MoveType%20eq%20%27101%27&sap-client=900&sap-language=EN&$format=json"
+                url:url+"Get_PoItem_DetailsSet?$filter=PoNumber%20eq%20%27"+Ponumber+"%27%20and%20MoveType%20eq%20%27101%27&sap-client=900&sap-language=EN&$format=json"
                 // url: url + "GetTilesSet?$filter=BotCode eq 'start'&sap-client=900&sap-language=EN&$format=json",
                 // url: url + "GetMenuSet?$filter=TileIdBot eq 'INBOUND' &sap-client=900&sap-language=EN&$format=json",
 
