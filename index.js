@@ -65,20 +65,40 @@ restService.post("/wms", function (req, res) {
         ? req.body.result.parameters.tilename
         : "Cnotselectedmenu";
 
-    
+
     var actionName =
     req.body.result &&
     req.body.result.action
       ? req.body.result.action
       : "wrong";
-    
-    
+
+
     var Ponumber =
       req.body.result &&
       req.body.result.parameters &&
       req.body.result.parameters.Ponumber
         ? req.body.result.parameters.Ponumber
         : "noPonumber";
+
+    var quantity =
+      req.body.result &&
+      req.body.result.parameters &&
+      req.body.result.parameters.quantity
+        ? req.body.result.parameters.quantity
+        : "zeroQuant";
+
+    var cmaterial = req.body.result &&
+      req.body.result.parameters &&
+      req.body.result.parameters.cmaterial
+        ? req.body.result.parameters.cmaterial
+        : "nocmaterial";
+
+
+
+
+
+
+
 
     const app = new App({ request: req, response: res });
     var url = "http://208.85.249.174:8000/sap/opu/odata/CRVWM/WMS_SRV/";
@@ -148,8 +168,8 @@ restService.post("/wms", function (req, res) {
             return res.json({
                 speech: botResponse,
                 displayText: botResponse,
-               // speech: optionIntentname,
-               // displayText: optionIntentname,
+                // speech: optionIntentname,
+                // displayText: optionIntentname,
                 source: "webhook-echo-sample",
 
 
@@ -456,8 +476,7 @@ restService.post("/wms", function (req, res) {
 
 
     }
-    else if (actionName == "submenuselected")
-    {
+    else if (actionName == "submenuselected") {
         return res.json({
             speech: "Scan PO Number",
             displayText: "Scan PO Number",
@@ -468,69 +487,100 @@ restService.post("/wms", function (req, res) {
         });
     }
     else if (actionName == "actionscanPo" && Ponumber != "noPonumber") {
-            
-            request({
 
-                url:url+"Get_PoItem_DetailsSet?$filter=PoNumber%20eq%20%27"+Ponumber+"%27%20and%20MoveType%20eq%20%27101%27&sap-client=900&sap-language=EN&$format=json"
-                // url: url + "GetTilesSet?$filter=BotCode eq 'start'&sap-client=900&sap-language=EN&$format=json",
-                // url: url + "GetMenuSet?$filter=TileIdBot eq 'INBOUND' &sap-client=900&sap-language=EN&$format=json",
+        request({
 
-
-                //url: url + "ListOpenTOSet?$filter=UserId eq 'SAPUSER' and TorderFrom eq '' and TorderTo eq '' and DelvFrom eq '' and DelvTo eq'' and SoFrom eq '' and SoTo eq '' and Material eq '' &sap-client=900&sap-language=EN&$format=json",
-               
-
-            }, function (error, response, body) {
-                if (!error && response.statusCode == 200) {
-                   // csrfToken = response.headers['x-csrf-token'];
-                    // console.log(csrfToken);
-                    // var gwResponse = body.asString();
-                    // var JSONObj = JSON.parse(body);
-                    var c = JSON.parse(body)
-                    //var a = res.json(body);
-                    var len = c.d.results.length;
-                    //var a = JSON.stringify(a);
-                    var botResponse = "";
-                      var counter=c.d.results[0].Material;
-                    var obj = [];
-                    var i = 0;
-                    if (c.d.results.length > 0) {
-                       botResponse="PO "+Ponumber+" has "+c.d.results[0].Material+" material to be received.Scan Material number";
-                       // botResponse += c.d.results[0].Material;
+            url: url + "Get_PoItem_DetailsSet?$filter=PoNumber%20eq%20%27" + Ponumber + "%27%20and%20MoveType%20eq%20%27101%27&sap-client=900&sap-language=EN&$format=json"
+            // url: url + "GetTilesSet?$filter=BotCode eq 'start'&sap-client=900&sap-language=EN&$format=json",
+            // url: url + "GetMenuSet?$filter=TileIdBot eq 'INBOUND' &sap-client=900&sap-language=EN&$format=json",
 
 
-                    }
-                    else {
-                        botResponse = "No Material for this PO";
-                    }
+            //url: url + "ListOpenTOSet?$filter=UserId eq 'SAPUSER' and TorderFrom eq '' and TorderTo eq '' and DelvFrom eq '' and DelvTo eq'' and SoFrom eq '' and SoTo eq '' and Material eq '' &sap-client=900&sap-language=EN&$format=json",
 
-                    console.log(botResponse);
+
+        }, function (error, response, body) {
+            if (!error && response.statusCode == 200) {
+                // csrfToken = response.headers['x-csrf-token'];
+                // console.log(csrfToken);
+                // var gwResponse = body.asString();
+                // var JSONObj = JSON.parse(body);
+                var c = JSON.parse(body)
+                //var a = res.json(body);
+                var len = c.d.results.length;
+                //var a = JSON.stringify(a);
+                var botResponse = "";
+                var counter = c.d.results[0].Material;
+                var obj = [];
+                var i = 0;
+                if (c.d.results.length > 0) {
+                    botResponse = "PO " + Ponumber + " has " + c.d.results[0].Material + " material to be received.Scan Material number";
+                    // botResponse += c.d.results[0].Material;
+
 
                 }
+                else {
+                    botResponse = "No Material for this PO";
+                }
+
+                console.log(botResponse);
+
+            }
 
 
-                return res.json({
-                    speech: botResponse,
-                    displayText: botResponse,
-                    // speech: optionIntentname,
-                    // displayText: optionIntentname,
-                    source: "webhook-echo-sample",
-                   contextOut: [{
-                            name: "c_counter",
-                            lifespan: "5",
-                            parameters: {
-                                key: counter
+            return res.json({
+                speech: botResponse,
+                displayText: botResponse,
+                // speech: optionIntentname,
+                // displayText: optionIntentname,
+                source: "webhook-echo-sample",
+                contextOut: [{
+                    name: "c_counter",
+                    lifespan: "5",
+                    parameters: {
+                        key: counter
 
-                            }
-                        }
-                        ]
-
-
-                });
+                    }
+                }
+                ]
 
 
             });
+
+
+        });
     }
 
+    else if (quantity != "zeroQuant") {
+        var response = "";
+        var z = app.getContextArgument('c_counter', 'key');
+        var tempContext = app.getContext('c_counter');
+        var originalTemp = tempContext.parameters.key;
+        if (originalTemp>1)
+        {
+            response = "Material " + cmaterial + " confirmed. Sacn another material";
+            var c = originalTemp;
+            c = c--;
+        return res.json({
+            speech: response,
+            displayText: response,
+            // speech: optionIntentname,
+            // displayText: optionIntentname,
+            source: "webhook-echo-sample",
+            contextOut: [{
+                name: "c_counter",
+                lifespan: "5",
+                parameters: {
+                    key: c
+
+                }
+            }
+            ]
+
+
+        });
+    }
+       
+    }
 
 
     else {
