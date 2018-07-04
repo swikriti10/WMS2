@@ -559,7 +559,7 @@ restService.post("/wms", function (req, res) {
         {
             response = "Material " + cmaterial + " confirmed. Sacn another material";
             var c = originalTemp;
-            c = c--;
+            var c1 = --c;
         return res.json({
             speech: response,
             displayText: response,
@@ -570,7 +570,7 @@ restService.post("/wms", function (req, res) {
                 name: "c_counter",
                 lifespan: "5",
                 parameters: {
-                    key: "1"
+                    key: c1
 
                 }
             }
