@@ -612,7 +612,7 @@ restService.post("/wms", function (req, res) {
         var z = app.getContextArgument('c_counter', 'key');
         var tempContext = app.getContext('c_counter');
         var originalTemp = tempContext.parameters.key;
-        if (originalTemp > 1) {
+        if (originalTemp >= 1) {
             response = "Material " + cmaterial + " confirmed. Sacn another material";
             var c = originalTemp;
             var c1 = --c;
@@ -623,7 +623,7 @@ restService.post("/wms", function (req, res) {
                 // displayText: optionIntentname,
                 source: "webhook-echo-sample",
                 contextOut: [{
-                    name:"c_counter"+c+"",
+                    name:"c_counter"+originalTemp+"",
                     lifespan: "5",
                     parameters: {
                         key: c1,
