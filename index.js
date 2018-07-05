@@ -623,7 +623,7 @@ restService.post("/wms", function (req, res) {
                 // displayText: optionIntentname,
                 source: "webhook-echo-sample",
                 contextOut: [{
-                    name: "c_counter",
+                    name:"c_counter"+c+"",
                     lifespan: "5",
                     parameters: {
                         key: c1,
