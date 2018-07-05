@@ -555,7 +555,7 @@ restService.post("/wms", function (req, res) {
                                     var obj = [];
                                     var i = 0;
                                     if (c1.d.results.length > 0) {
-                                        botResponse1 = "PO " + Ponumber + " has " + counter + " material -";
+                                        botResponse1 = "PO " + Ponumber + " has " + itemcount + " material -";
                                         // botResponse += c.d.results[0].Material;
 
                                         for (; i < len1; i++) {
