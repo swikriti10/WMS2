@@ -616,7 +616,8 @@ restService.post("/wms", function (req, res) {
             response = "Material " + cmaterial + " confirmed. Sacn another material";
             var c = originalTemp;
             var c1 = --c;
-           
+           if(c1!="0")
+           {
             return res.json({
                 speech: response,
                 displayText: response,
@@ -645,6 +646,44 @@ restService.post("/wms", function (req, res) {
 
 
             });
+        }
+           else {
+            return res.json({
+                speech: "GR successful",
+                displayText: "GR successful",
+                // speech: optionIntentname,
+                // displayText: optionIntentname,
+                source: "webhook-echo-sample",
+contextOut: [{
+                    name: "c_counter" + originalTemp + "",
+                    lifespan: "10",
+                    parameters: {
+                        quant:quantity,
+                        materialname:cmaterial
+
+                    }
+                },
+                {
+                    name: "c_counter",
+                lifespan: "5",
+                parameters: {
+                    key: c1,
+                    
+
+                }
+            }
+                ]
+
+
+            });
+
+
+            });
+
+        }
+          
+          
+          
         }
         else {
             return res.json({
