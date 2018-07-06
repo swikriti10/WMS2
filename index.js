@@ -625,9 +625,8 @@ restService.post("/wms", function (req, res) {
                 source: "webhook-echo-sample",
                 contextOut: [{
                     name: "c_counter" + originalTemp + "",
-                    lifespan: "5",
+                    lifespan: "1",
                     parameters: {
-                        key: c1,
                         quant:quantity,
                         materialname:cmaterial
 
