@@ -582,7 +582,7 @@ restService.post("/wms", function (req, res) {
                                             name: "c_counter",
                                             lifespan: "5",
                                             parameters: {
-                                                key: itemcount
+                                                key: "3"
 
                                             }
                                         }
