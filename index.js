@@ -555,7 +555,7 @@ restService.post("/wms", function (req, res) {
                                     var obj = [];
                                     var i = 0;
                                     if (c1.d.results.length > 0) {
-                                        botResponse1 = "PO " + Ponumber + " has " + itemcount + " material -";
+                                        botResponse1 = "PO " + Ponumber + " has " + itemcount + " material -\n";
                                         // botResponse += c.d.results[0].Material;
 
                                         for (; i < len1; i++) {
@@ -612,10 +612,11 @@ restService.post("/wms", function (req, res) {
         var z = app.getContextArgument('c_counter', 'key');
         var tempContext = app.getContext('c_counter');
         var originalTemp = tempContext.parameters.key;
-        if (originalTemp >= 1) {
+        if (originalTemp >= 0) {
             response = "Material " + cmaterial + " confirmed. Sacn another material";
             var c = originalTemp;
             var c1 = --c;
+           
             return res.json({
                 speech: response,
                 displayText: response,
@@ -623,7 +624,7 @@ restService.post("/wms", function (req, res) {
                 // displayText: optionIntentname,
                 source: "webhook-echo-sample",
                 contextOut: [{
-                    name:"c_counter"+originalTemp+"",
+                    name: "c_counter" + originalTemp + "",
                     lifespan: "5",
                     parameters: {
                         key: c1,
@@ -631,7 +632,16 @@ restService.post("/wms", function (req, res) {
                         materialname:cmaterial
 
                     }
+                },
+                {
+                    name: "c_counter",
+                lifespan: "5",
+                parameters: {
+                    key: c1,
+                    
+
                 }
+            }
                 ]
 
 
