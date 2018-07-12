@@ -93,7 +93,11 @@ restService.post("/wms", function (req, res) {
         ? req.body.result.parameters.cmaterial
         : "nocmaterial";
 
-
+    var intentname = req.body.result &&
+  req.body.result.metadata &&
+  req.body.result.metadata.intentName
+    ? req.body.result.metadata.intentName
+    : "nointent";
 
 
 
@@ -171,7 +175,15 @@ restService.post("/wms", function (req, res) {
                 // speech: optionIntentname,
                 // displayText: optionIntentname,
                 source: "webhook-echo-sample",
+                contextOut: [{
+                    name: "CBack",
+                    lifespan: "1",
+                    parameters: {
+                       Intentname: intentname,
+                        key: "val"
 
+                    }
+                }]
 
             });
 
@@ -490,7 +502,7 @@ restService.post("/wms", function (req, res) {
         var itemcount = "";
         request({
 
-            url: url + "GRSearchSet?$filter=PoNumber%20eq%20%27"+ Ponumber +"%27%20and%20Material%20eq%20%27%27%20and%20MovTyp%20eq%20%27101%27%20and%20MatDoc%20eq%20%27%27%20and%20Vendor%20eq%20%27%27%20and%20CreatedFrom%20ge%20datetime%270000-00-00T00:00:00%27%20and%20CreatedTo%20le%20datetime%270000-00-00T00:00:00%27&sap-client=900&sap-language=EN&$format=json",
+            url: url + "GRSearchSet?$filter=PoNumber%20eq%20%27" + Ponumber + "%27%20and%20Material%20eq%20%27%27%20and%20MovTyp%20eq%20%27101%27%20and%20MatDoc%20eq%20%27%27%20and%20Vendor%20eq%20%27%27%20and%20CreatedFrom%20ge%20datetime%270000-00-00T00:00:00%27%20and%20CreatedTo%20le%20datetime%270000-00-00T00:00:00%27&sap-client=900&sap-language=EN&$format=json",
 
 
             // url: url + "GetTilesSet?$filter=BotCode eq 'start'&sap-client=900&sap-language=EN&$format=json",
@@ -521,91 +533,91 @@ restService.post("/wms", function (req, res) {
                 var i = 0;
                 //if (c.d.results.length > 0) {
 
-                 //   for (; i < c.d.results.length; i++) {
+                //   for (; i < c.d.results.length; i++) {
 
-                        //if (c.d.results[i].TileName == Ctilename) {
-                           
-
-                            /////////////////Block for submenu//////////////////////////////////
-                            request({
-                                //url: url + "GetMenuInfoSet?$filter=TileId%20eq%20%27WM_INB%27&sap-client=900&sap-language=EN&$format=json",
-                                url: url + "Get_PoItem_DetailsSet?$filter=PoNumber%20eq%20%27" + Ponumber + "%27%20and%20MoveType%20eq%20%27101%27&sap-client=900&sap-language=EN&$format=json",
+                //if (c.d.results[i].TileName == Ctilename) {
 
 
-                                //url: url + "ListOpenTOSet?$filter=UserId eq 'SAPUSER' and TorderFrom eq '' and TorderTo eq '' and DelvFrom eq '' and DelvTo eq'' and SoFrom eq '' and SoTo eq '' and Material eq '' &sap-client=900&sap-language=EN&$format=json",
-                                headers: {
-                                    //"Authorization": "Basic <<base64 encoded SAPUSER:crave123>>",
-                                    "Authorization": "Basic c2FwdXNlcjpjcmF2ZTEyMw==",
-                                    "Content-Type": "application/json",
-                                    "x-csrf-token": "Fetch"
+                /////////////////Block for submenu//////////////////////////////////
+                request({
+                    //url: url + "GetMenuInfoSet?$filter=TileId%20eq%20%27WM_INB%27&sap-client=900&sap-language=EN&$format=json",
+                    url: url + "Get_PoItem_DetailsSet?$filter=PoNumber%20eq%20%27" + Ponumber + "%27%20and%20MoveType%20eq%20%27101%27&sap-client=900&sap-language=EN&$format=json",
+
+
+                    //url: url + "ListOpenTOSet?$filter=UserId eq 'SAPUSER' and TorderFrom eq '' and TorderTo eq '' and DelvFrom eq '' and DelvTo eq'' and SoFrom eq '' and SoTo eq '' and Material eq '' &sap-client=900&sap-language=EN&$format=json",
+                    headers: {
+                        //"Authorization": "Basic <<base64 encoded SAPUSER:crave123>>",
+                        "Authorization": "Basic c2FwdXNlcjpjcmF2ZTEyMw==",
+                        "Content-Type": "application/json",
+                        "x-csrf-token": "Fetch"
+                    }
+
+                }, function (error, response, body) {
+                    if (!error && response.statusCode == 200) {
+                        csrfToken = response.headers['x-csrf-token'];
+                        // console.log(csrfToken);
+                        // var gwResponse = body.asString();
+                        // var JSONObj = JSON.parse(body);
+                        var c1 = JSON.parse(body)
+                        //var a = res.json(body);
+                        var len1 = c1.d.results.length;
+                        //var a = JSON.stringify(a);
+                        var botResponse1 = "";
+
+                        var obj = [];
+                        var i = 0;
+                        if (c1.d.results.length > 0) {
+                            botResponse1 = "PO " + Ponumber + " has " + itemcount + " material -\n";
+                            // botResponse += c.d.results[0].Material;
+
+                            for (; i < len1; i++) {
+                                botResponse1 += c1.d.results[i].Material + "(" + c1.d.results[i].OpenQuantity + ")";
+
+                                botResponse1 += ",";
+
+                            }
+                            botResponse1 += ".Scan the material";
+
+
+                        }
+                        else {
+                            botResponse1 = "No Material for this PO";
+                        }
+
+                        return res.json({
+                            speech: botResponse1,
+                            displayText: botResponse1,
+                            // speech: optionIntentname,
+                            // displayText: optionIntentname,
+                            source: "webhook-echo-sample",
+                            contextOut: [{
+                                name: "c_counter",
+                                lifespan: "5",
+                                parameters: {
+                                    key: "3"
+
                                 }
-
-                            }, function (error, response, body) {
-                                if (!error && response.statusCode == 200) {
-                                    csrfToken = response.headers['x-csrf-token'];
-                                    // console.log(csrfToken);
-                                    // var gwResponse = body.asString();
-                                    // var JSONObj = JSON.parse(body);
-                                    var c1 = JSON.parse(body)
-                                    //var a = res.json(body);
-                                    var len1 = c1.d.results.length;
-                                    //var a = JSON.stringify(a);
-                                    var botResponse1 = "";
-
-                                    var obj = [];
-                                    var i = 0;
-                                    if (c1.d.results.length > 0) {
-                                        botResponse1 = "PO " + Ponumber + " has " + itemcount + " material -\n";
-                                        // botResponse += c.d.results[0].Material;
-
-                                        for (; i < len1; i++) {
-                                            botResponse1 += c1.d.results[i].Material + "(" + c1.d.results[i].OpenQuantity + ")";
-
-                                            botResponse1 += ",";
-
-                                        }
-                                        botResponse1 += ".Scan the material";
-                                       
-
-                                    }
-                                    else {
-                                        botResponse1 = "No Material for this PO";
-                                    }
-
-                                    return res.json({
-                                        speech: botResponse1,
-                                        displayText: botResponse1,
-                                        // speech: optionIntentname,
-                                        // displayText: optionIntentname,
-                                        source: "webhook-echo-sample",
-                                        contextOut: [{
-                                            name: "c_counter",
-                                            lifespan: "5",
-                                            parameters: {
-                                                key: "3"
-
-                                            }
-                                        }
-                                        ]
+                            }
+                            ]
 
 
-                                    });
+                        });
 
-                                    //console.log(botResponse);
-                                }
+                        //console.log(botResponse);
+                    }
 
 
-                            });
-                       // }
-                   // }
-               // }
+                });
+                // }
+                // }
+                // }
 
             }
         });
 
-       
-        
-        }
+
+
+    }
 
     else if (quantity != "zeroQuant") {
         var response = "";
@@ -616,74 +628,73 @@ restService.post("/wms", function (req, res) {
             response = "Material " + cmaterial + " confirmed. Sacn another material";
             var c = originalTemp;
             var c1 = --c;
-           if(c1!="0")
-           {
-            return res.json({
-                speech: response,
-                displayText: response,
-                // speech: optionIntentname,
-                // displayText: optionIntentname,
-                source: "webhook-echo-sample",
-                contextOut: [{
-                    name: "c_counter" + originalTemp + "",
-                    lifespan: "10",
-                    parameters: {
-                        quant:quantity,
-                        materialname:cmaterial
+            if (c1 != "0") {
+                return res.json({
+                    speech: response,
+                    displayText: response,
+                    // speech: optionIntentname,
+                    // displayText: optionIntentname,
+                    source: "webhook-echo-sample",
+                    contextOut: [{
+                        name: "c_counter" + originalTemp + "",
+                        lifespan: "10",
+                        parameters: {
+                            quant: quantity,
+                            materialname: cmaterial
 
+                        }
+                    },
+                    {
+                        name: "c_counter",
+                        lifespan: "5",
+                        parameters: {
+                            key: c1,
+
+
+                        }
                     }
-                },
-                {
-                    name: "c_counter",
-                lifespan: "5",
-                parameters: {
-                    key: c1,
-                    
+                    ]
 
-                }
+
+                });
             }
-                ]
+            else {
+                return res.json({
+                    speech: "GR successful",
+                    displayText: "GR successful",
+                    // speech: optionIntentname,
+                    // displayText: optionIntentname,
+                    source: "webhook-echo-sample",
+                    contextOut: [{
+                        name: "c_counter" + originalTemp + "",
+                        lifespan: "10",
+                        parameters: {
+                            quant: quantity,
+                            materialname: cmaterial
+
+                        }
+                    },
+                                    {
+                                        name: "c_counter",
+                                        lifespan: "5",
+                                        parameters: {
+                                            key: c1,
 
 
-            });
-        }
-           else {
-            return res.json({
-                speech: "GR successful",
-                displayText: "GR successful",
-                // speech: optionIntentname,
-                // displayText: optionIntentname,
-                source: "webhook-echo-sample",
-contextOut: [{
-                    name: "c_counter" + originalTemp + "",
-                    lifespan: "10",
-                    parameters: {
-                        quant:quantity,
-                        materialname:cmaterial
+                                        }
+                                    }
+                    ]
 
-                    }
-                },
-                {
-                    name: "c_counter",
-                lifespan: "5",
-                parameters: {
-                    key: c1,
-                    
 
-                }
+                });
+
+
+                //  });
+
             }
-                ]
 
 
-            });
 
-
-          //  });
-
-        }
-          
-          
-          
         }
         else {
             return res.json({
@@ -699,6 +710,44 @@ contextOut: [{
 
         }
     }
+
+
+        ///Block for Back function//////////////////////
+    
+    else if (Intentname == "Back") {
+       // var z = app.getContextArgument('c_counter', 'key');
+        var backContext = app.getContext('CBack');
+        var kvalue = tempContext.parameters.key;
+
+        return res.json({
+            speech: backContext,
+            displayText: backContext,
+            // speech: optionIntentname,
+            // displayText: optionIntentname,
+            source: "webhook-echo-sample",
+
+
+
+        });
+
+
+
+    }
+
+
+        //////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     else {
