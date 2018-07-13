@@ -716,7 +716,7 @@ restService.post("/wms", function (req, res) {
     
     else if (intentname=="Back"||intentname=="back") {
        // var z = app.getContextArgument('c_counter', 'key');
-        var backContext = app.getContext('CBack');
+        var backContext = app.getContext('cback');
        var kvalue = backContext.parameters.key;
 
         return res.json({
