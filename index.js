@@ -806,27 +806,7 @@ restService.post("/wms", function (req, res) {
 
         ///Block for Back function//////////////////////
 
-    else if (intentname == "Back" || intentname == "back") {
-        // var z = app.getContextArgument('c_counter', 'key');
-        var backContext = app.getContext('cback');
-        var kvalue = backContext.parameters.key;
-
-        return res.json({
-            speech: kvalue,
-            displayText: kvalue,
-            // speech: optionIntentname,
-            // displayText: optionIntentname,
-            source: "webhook-echo-sample",
-
-
-
-        });
-
-
-
-    }
-
-
+    
         //////////////////////////////////////
 
 
