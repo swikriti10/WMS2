@@ -180,7 +180,7 @@ restService.post("/wms", function (req, res) {
                     name: "CBack",
                     lifespan: "2",
                     parameters: {
-                        Intentname: intentname,
+                        Intentname: xy,
                         key: "val"
 
                     }
@@ -807,6 +807,8 @@ restService.post("/wms", function (req, res) {
         ///Block for Back function//////////////////////
 
     
+
+
         //////////////////////////////////////
 
 
