@@ -93,7 +93,7 @@ restService.post("/wms", function (req, res) {
         ? req.body.result.parameters.cmaterial
         : "nocmaterial";
 
-  
+
 
     var xy = req.body.result &&
   req.body.result.metadata &&
@@ -197,9 +197,7 @@ restService.post("/wms", function (req, res) {
 
     else if (selectedmenu != "notselectedmenu" && val == "notstart" && selectedsubmenu == "notselectedsubmenu") {
 
-        if (selectedmenu != "Back" || selectedmenu != "back")
-
-            {
+        if (selectedmenu != "Back" || selectedmenu != "back") {
             request({
 
                 url: url + "GetTileInfoSet?$filter=AppId%20eq%20%27WMS%27&sap-client=900&sap-language=EN&$format=json",
@@ -292,7 +290,7 @@ restService.post("/wms", function (req, res) {
                                                 parameters: {
                                                     Intentname: xy,
                                                     key: "selectedmenu",
-                                                    value:selectedmenu
+                                                    value: selectedmenu
 
                                                 }
                                             }]
@@ -337,10 +335,9 @@ restService.post("/wms", function (req, res) {
 
 
 
-    }
+        }
 
-        else
-        {
+        else {
 
             request({
 
@@ -403,7 +400,7 @@ restService.post("/wms", function (req, res) {
                         name: "CBack",
                         lifespan: "2",
                         parameters: {
-                            Intentname: xy,
+                            Intentname: intentname,
                             key: "val"
 
                         }
@@ -580,9 +577,9 @@ restService.post("/wms", function (req, res) {
         }
 
         else {
-            
 
-            
+
+
             request({
 
                 url: url + "GetTileInfoSet?$filter=AppId%20eq%20%27WMS%27&sap-client=900&sap-language=EN&$format=json",
@@ -640,7 +637,8 @@ restService.post("/wms", function (req, res) {
                     // speech: optionIntentname,
                     // displayText: optionIntentname,
                     source: "webhook-echo-sample",
-                   contextOut: [{
+
+                    contextOut: [{
                         name: "CBack",
                         lifespan: "2",
                         parameters: {
@@ -648,7 +646,14 @@ restService.post("/wms", function (req, res) {
                             key: "val"
 
                         }
-                    }]
+                    }],
+
+
+                    followupEvent: {
+                        name: "get_selected_menu"
+
+                    }
+
 
                 });
 
@@ -656,7 +661,7 @@ restService.post("/wms", function (req, res) {
             });
 
 
-        
+
 
 
         }
@@ -889,7 +894,7 @@ restService.post("/wms", function (req, res) {
 
         ///Block for Back function//////////////////////
 
-    
+
 
 
         //////////////////////////////////////
