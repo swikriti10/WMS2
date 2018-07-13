@@ -716,12 +716,12 @@ restService.post("/wms", function (req, res) {
     
     else if (intentname!="nointent") {
        // var z = app.getContextArgument('c_counter', 'key');
-       // var backContext = app.getContext('CBack');
-      //  var kvalue = tempContext.parameters.key;
+        var backContext = app.getContext('CBack');
+       var kvalue = tempContext.parameters.key;
 
         return res.json({
-            speech: "Back",
-            displayText: "Back",
+            speech:kvalue,
+            displayText:kvalue,
             // speech: optionIntentname,
             // displayText: optionIntentname,
             source: "webhook-echo-sample",
