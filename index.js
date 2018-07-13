@@ -425,158 +425,241 @@ restService.post("/wms", function (req, res) {
     }
     else if (selectedsubmenu != "notselectedsubmenu" && val == "notstart") {
         ////// Block to fetch Tile ID then submenu details/////////////////////////////////////////////////////////////////////////
+        if (selectedsubmenu != "back") {
+            request({
 
-        request({
-
-            url: url + "GetTileInfoSet?$filter=AppId%20eq%20%27WMS%27&sap-client=900&sap-language=EN&$format=json",
-            // url: url + "GetTilesSet?$filter=BotCode eq 'start'&sap-client=900&sap-language=EN&$format=json",
-            // url: url + "GetMenuSet?$filter=TileIdBot eq 'INBOUND' &sap-client=900&sap-language=EN&$format=json",
-
-
-            //url: url + "ListOpenTOSet?$filter=UserId eq 'SAPUSER' and TorderFrom eq '' and TorderTo eq '' and DelvFrom eq '' and DelvTo eq'' and SoFrom eq '' and SoTo eq '' and Material eq '' &sap-client=900&sap-language=EN&$format=json",
-            headers: {
-                //"Authorization": "Basic <<base64 encoded SAPUSER:crave123>>",
-                "Authorization": "Basic c2FwdXNlcjpjcmF2ZTEyMw==",
-                "Content-Type": "application/json",
-                "x-csrf-token": "Fetch"
-            }
-
-        }, function (error, response, body) {
-            if (!error && response.statusCode == 200) {
-                csrfToken = response.headers['x-csrf-token'];
-                // console.log(csrfToken);
-                // var gwResponse = body.asString();
-                // var JSONObj = JSON.parse(body);
-                var c = JSON.parse(body)
-                //var a = res.json(body);
-                var len = c.d.results.length;
-                //var a = JSON.stringify(a);
+                url: url + "GetTileInfoSet?$filter=AppId%20eq%20%27WMS%27&sap-client=900&sap-language=EN&$format=json",
+                // url: url + "GetTilesSet?$filter=BotCode eq 'start'&sap-client=900&sap-language=EN&$format=json",
+                // url: url + "GetMenuSet?$filter=TileIdBot eq 'INBOUND' &sap-client=900&sap-language=EN&$format=json",
 
 
-                var obj = [];
-                var i = 0;
-                if (c.d.results.length > 0) {
+                //url: url + "ListOpenTOSet?$filter=UserId eq 'SAPUSER' and TorderFrom eq '' and TorderTo eq '' and DelvFrom eq '' and DelvTo eq'' and SoFrom eq '' and SoTo eq '' and Material eq '' &sap-client=900&sap-language=EN&$format=json",
+                headers: {
+                    //"Authorization": "Basic <<base64 encoded SAPUSER:crave123>>",
+                    "Authorization": "Basic c2FwdXNlcjpjcmF2ZTEyMw==",
+                    "Content-Type": "application/json",
+                    "x-csrf-token": "Fetch"
+                }
 
-                    for (; i < c.d.results.length; i++) {
-
-                        if (c.d.results[i].TileName == Ctilename) {
-                            var tileid = c.d.results[i].TileId
-
-                            /////////////////Block for submenu//////////////////////////////////
-                            request({
-                                //url: url + "GetMenuInfoSet?$filter=TileId%20eq%20%27WM_INB%27&sap-client=900&sap-language=EN&$format=json",
-                                url: url + "GetMenuInfoSet?$filter=TileId%20eq%20%27" + tileid + "%27&sap-client=900&sap-language=EN&$format=json",
-
-
-                                //url: url + "ListOpenTOSet?$filter=UserId eq 'SAPUSER' and TorderFrom eq '' and TorderTo eq '' and DelvFrom eq '' and DelvTo eq'' and SoFrom eq '' and SoTo eq '' and Material eq '' &sap-client=900&sap-language=EN&$format=json",
-                                headers: {
-                                    //"Authorization": "Basic <<base64 encoded SAPUSER:crave123>>",
-                                    "Authorization": "Basic c2FwdXNlcjpjcmF2ZTEyMw==",
-                                    "Content-Type": "application/json",
-                                    "x-csrf-token": "Fetch"
-                                }
-
-                            }, function (error, response, body) {
-                                if (!error && response.statusCode == 200) {
-                                    csrfToken = response.headers['x-csrf-token'];
-                                    // console.log(csrfToken);
-                                    // var gwResponse = body.asString();
-                                    // var JSONObj = JSON.parse(body);
-                                    var c1 = JSON.parse(body)
-                                    //var a = res.json(body);
-                                    var len1 = c1.d.results.length;
-                                    //var a = JSON.stringify(a);
-                                    var botResponse1 = "";
-
-                                    var obj = [];
-                                    var i = 0;
-                                    if (c1.d.results.length > 0) {
-
-                                        for (; i < c1.d.results.length; i++) {
-
-                                            if (c1.d.results[i].MenuName == selectedsubmenu) {
-
-                                                ////////////////////////////////////////////////////////start if////////////////////////////////////////////////////////////////////////////////
-
-                                                var submenuid = c1.d.results[i].SubMenuId
-                                                request({
-
-                                                    url: url + "GetSubMenuSet?$filter=TileId%20eq%20%27" + tileid + "%27%20and%20SubMenuId%20eq%20%27" + submenuid + "%27&sap-client=900&sap-language=EN&$format=json",
+            }, function (error, response, body) {
+                if (!error && response.statusCode == 200) {
+                    csrfToken = response.headers['x-csrf-token'];
+                    // console.log(csrfToken);
+                    // var gwResponse = body.asString();
+                    // var JSONObj = JSON.parse(body);
+                    var c = JSON.parse(body)
+                    //var a = res.json(body);
+                    var len = c.d.results.length;
+                    //var a = JSON.stringify(a);
 
 
-                                                    //url: url + "ListOpenTOSet?$filter=UserId eq 'SAPUSER' and TorderFrom eq '' and TorderTo eq '' and DelvFrom eq '' and DelvTo eq'' and SoFrom eq '' and SoTo eq '' and Material eq '' &sap-client=900&sap-language=EN&$format=json",
-                                                    headers: {
-                                                        //"Authorization": "Basic <<base64 encoded SAPUSER:crave123>>",
-                                                        "Authorization": "Basic c2FwdXNlcjpjcmF2ZTEyMw==",
-                                                        "Content-Type": "application/json",
-                                                        "x-csrf-token": "Fetch"
-                                                    }
+                    var obj = [];
+                    var i = 0;
+                    if (c.d.results.length > 0) {
 
-                                                }, function (error, response, body) {
-                                                    if (!error && response.statusCode == 200) {
-                                                        csrfToken = response.headers['x-csrf-token'];
-                                                        // console.log(csrfToken);
-                                                        // var gwResponse = body.asString();
-                                                        // var JSONObj = JSON.parse(body);
-                                                        var c2 = JSON.parse(body)
-                                                        //var a = res.json(body);
-                                                        var len2 = c2.d.results.length;
-                                                        //var a = JSON.stringify(a);
-                                                        var botResponse1 = "";
+                        for (; i < c.d.results.length; i++) {
 
-                                                        var obj = [];
-                                                        var i = 0;
-                                                        if (c2.d.results.length > 0) {
-                                                            botResponse1 = "Choose following options for " + selectedsubmenu + " : ";
+                            if (c.d.results[i].TileName == Ctilename) {
+                                var tileid = c.d.results[i].TileId
 
-                                                            for (; i < c2.d.results.length; i++) {
-                                                                botResponse1 += " \n";
+                                /////////////////Block for submenu//////////////////////////////////
+                                request({
+                                    //url: url + "GetMenuInfoSet?$filter=TileId%20eq%20%27WM_INB%27&sap-client=900&sap-language=EN&$format=json",
+                                    url: url + "GetMenuInfoSet?$filter=TileId%20eq%20%27" + tileid + "%27&sap-client=900&sap-language=EN&$format=json",
 
-                                                                botResponse1 += c2.d.results[i].SearchType;
+
+                                    //url: url + "ListOpenTOSet?$filter=UserId eq 'SAPUSER' and TorderFrom eq '' and TorderTo eq '' and DelvFrom eq '' and DelvTo eq'' and SoFrom eq '' and SoTo eq '' and Material eq '' &sap-client=900&sap-language=EN&$format=json",
+                                    headers: {
+                                        //"Authorization": "Basic <<base64 encoded SAPUSER:crave123>>",
+                                        "Authorization": "Basic c2FwdXNlcjpjcmF2ZTEyMw==",
+                                        "Content-Type": "application/json",
+                                        "x-csrf-token": "Fetch"
+                                    }
+
+                                }, function (error, response, body) {
+                                    if (!error && response.statusCode == 200) {
+                                        csrfToken = response.headers['x-csrf-token'];
+                                        // console.log(csrfToken);
+                                        // var gwResponse = body.asString();
+                                        // var JSONObj = JSON.parse(body);
+                                        var c1 = JSON.parse(body)
+                                        //var a = res.json(body);
+                                        var len1 = c1.d.results.length;
+                                        //var a = JSON.stringify(a);
+                                        var botResponse1 = "";
+
+                                        var obj = [];
+                                        var i = 0;
+                                        if (c1.d.results.length > 0) {
+
+                                            for (; i < c1.d.results.length; i++) {
+
+                                                if (c1.d.results[i].MenuName == selectedsubmenu) {
+
+                                                    ////////////////////////////////////////////////////////start if////////////////////////////////////////////////////////////////////////////////
+
+                                                    var submenuid = c1.d.results[i].SubMenuId
+                                                    request({
+
+                                                        url: url + "GetSubMenuSet?$filter=TileId%20eq%20%27" + tileid + "%27%20and%20SubMenuId%20eq%20%27" + submenuid + "%27&sap-client=900&sap-language=EN&$format=json",
+
+
+                                                        //url: url + "ListOpenTOSet?$filter=UserId eq 'SAPUSER' and TorderFrom eq '' and TorderTo eq '' and DelvFrom eq '' and DelvTo eq'' and SoFrom eq '' and SoTo eq '' and Material eq '' &sap-client=900&sap-language=EN&$format=json",
+                                                        headers: {
+                                                            //"Authorization": "Basic <<base64 encoded SAPUSER:crave123>>",
+                                                            "Authorization": "Basic c2FwdXNlcjpjcmF2ZTEyMw==",
+                                                            "Content-Type": "application/json",
+                                                            "x-csrf-token": "Fetch"
+                                                        }
+
+                                                    }, function (error, response, body) {
+                                                        if (!error && response.statusCode == 200) {
+                                                            csrfToken = response.headers['x-csrf-token'];
+                                                            // console.log(csrfToken);
+                                                            // var gwResponse = body.asString();
+                                                            // var JSONObj = JSON.parse(body);
+                                                            var c2 = JSON.parse(body)
+                                                            //var a = res.json(body);
+                                                            var len2 = c2.d.results.length;
+                                                            //var a = JSON.stringify(a);
+                                                            var botResponse1 = "";
+
+                                                            var obj = [];
+                                                            var i = 0;
+                                                            if (c2.d.results.length > 0) {
+                                                                botResponse1 = "Choose following options for " + selectedsubmenu + " : ";
+
+                                                                for (; i < c2.d.results.length; i++) {
+                                                                    botResponse1 += " \n";
+
+                                                                    botResponse1 += c2.d.results[i].SearchType;
+
+                                                                }
 
                                                             }
+                                                            else {
+                                                                botResponse1 = "No SubMenu Items";
+                                                            }
+
+                                                            //console.log(botResponse);
+
+                                                            return res.json({
+                                                                speech: botResponse1,
+                                                                displayText: botResponse1,
+
+                                                                source: "webhook-echo-sample",
+
+
+                                                            });
+
 
                                                         }
-                                                        else {
-                                                            botResponse1 = "No SubMenu Items";
-                                                        }
 
-                                                        //console.log(botResponse);
-
-                                                        return res.json({
-                                                            speech: botResponse1,
-                                                            displayText: botResponse1,
-
-                                                            source: "webhook-echo-sample",
+                                                    });
 
 
-                                                        });
+                                                    /////////////////////////////////////////////////////////////////////end if/////////////////////////////////////////////////////////////////////////////////////////////
 
-
-                                                    }
-
-                                                });
-
-
-                                                /////////////////////////////////////////////////////////////////////end if/////////////////////////////////////////////////////////////////////////////////////////////
+                                                }
 
                                             }
 
                                         }
 
+                                        //console.log(botResponse);
                                     }
 
-                                    //console.log(botResponse);
-                                }
 
-
-                            });
+                                });
+                            }
                         }
                     }
+
+                }
+            });
+        }
+
+        else {
+            
+
+            
+            request({
+
+                url: url + "GetTileInfoSet?$filter=AppId%20eq%20%27WMS%27&sap-client=900&sap-language=EN&$format=json",
+                // url: url + "GetTilesSet?$filter=BotCode eq 'start'&sap-client=900&sap-language=EN&$format=json",
+                // url: url + "GetMenuSet?$filter=TileIdBot eq 'INBOUND' &sap-client=900&sap-language=EN&$format=json",
+
+
+                //url: url + "ListOpenTOSet?$filter=UserId eq 'SAPUSER' and TorderFrom eq '' and TorderTo eq '' and DelvFrom eq '' and DelvTo eq'' and SoFrom eq '' and SoTo eq '' and Material eq '' &sap-client=900&sap-language=EN&$format=json",
+                headers: {
+                    //"Authorization": "Basic <<base64 encoded SAPUSER:crave123>>",
+                    "Authorization": "Basic c2FwdXNlcjpjcmF2ZTEyMw==",
+                    "Content-Type": "application/json",
+                    "x-csrf-token": "Fetch"
                 }
 
-            }
-        });
+            }, function (error, response, body) {
+                if (!error && response.statusCode == 200) {
+                    csrfToken = response.headers['x-csrf-token'];
+                    // console.log(csrfToken);
+                    // var gwResponse = body.asString();
+                    // var JSONObj = JSON.parse(body);
+                    var c = JSON.parse(body)
+                    //var a = res.json(body);
+                    var len = c.d.results.length;
+                    //var a = JSON.stringify(a);
+
+
+                    var obj = [];
+                    var i = 0;
+                    if (c.d.results.length > 0) {
+                        botResponse = "Choose following options for menu: ";
+
+                        for (; i < c.d.results.length; i++) {
+                            botResponse += " \n";
+
+                            botResponse += c.d.results[i].TileName;
+                            // botResponse+= c.d.results[i].MenuName;
+
+
+                        }
+
+                    }
+                    else {
+                        botResponse = "No Menu Items";
+                    }
+
+                    console.log(botResponse);
+
+                }
+
+
+                return res.json({
+                    speech: botResponse,
+                    displayText: botResponse,
+                    // speech: optionIntentname,
+                    // displayText: optionIntentname,
+                    source: "webhook-echo-sample",
+                    contextOut: [{
+                        name: "CBack",
+                        lifespan: "2",
+                        parameters: {
+                            Intentname: intentname,
+                            key: "val"
+
+                        }
+                    }]
+
+                });
+
+
+            });
+
+
+        
+
+
+        }
 
 
     }
