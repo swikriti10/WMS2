@@ -177,7 +177,7 @@ restService.post("/wms", function (req, res) {
                 source: "webhook-echo-sample",
                 contextOut: [{
                     name: "CBack",
-                    lifespan: "1",
+                    lifespan: "2",
                     parameters: {
                        Intentname: intentname,
                         key: "val"
