@@ -403,7 +403,7 @@ restService.post("/wms", function (req, res) {
                         name: "CBack",
                         lifespan: "2",
                         parameters: {
-                            Intentname: intentname,
+                            Intentname: xy,
                             key: "val"
 
                         }
@@ -640,7 +640,15 @@ restService.post("/wms", function (req, res) {
                     // speech: optionIntentname,
                     // displayText: optionIntentname,
                     source: "webhook-echo-sample"
-                   
+                   contextOut: [{
+                        name: "CBack",
+                        lifespan: "2",
+                        parameters: {
+                            Intentname: xy,
+                            key: "val"
+
+                        }
+                    }]
 
                 });
 
