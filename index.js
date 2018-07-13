@@ -99,6 +99,11 @@ restService.post("/wms", function (req, res) {
     ? req.body.result.parameters.back
     : "nointent";
 
+    var xy = req.body.result &&
+  req.body.result.metadata &&
+  req.body.result.metadata.IntentName
+    ? req.body.result.metadata.IntentName
+    : "noxy";
 
 
 
@@ -179,7 +184,7 @@ restService.post("/wms", function (req, res) {
                     name: "CBack",
                     lifespan: "2",
                     parameters: {
-                       Intentname: intentname,
+                        Intentname: intentname,
                         key: "val"
 
                     }
@@ -281,6 +286,16 @@ restService.post("/wms", function (req, res) {
                                         displayText: botResponse1,
 
                                         source: "webhook-echo-sample",
+                                        contextOut: [{
+                                            name: "CBack",
+                                            lifespan: "2",
+                                            parameters: {
+                                                Intentname: xy,
+                                                key: "selectedmenu",
+                                                value:selectedmenu
+
+                                            }
+                                        }]
 
 
                                     });
@@ -713,15 +728,15 @@ restService.post("/wms", function (req, res) {
 
 
         ///Block for Back function//////////////////////
-    
-    else if (intentname=="Back"||intentname=="back") {
-       // var z = app.getContextArgument('c_counter', 'key');
+
+    else if (intentname == "Back" || intentname == "back") {
+        // var z = app.getContextArgument('c_counter', 'key');
         var backContext = app.getContext('cback');
-       var kvalue = backContext.parameters.key;
+        var kvalue = backContext.parameters.key;
 
         return res.json({
-            speech:kvalue,
-            displayText:kvalue,
+            speech: kvalue,
+            displayText: kvalue,
             // speech: optionIntentname,
             // displayText: optionIntentname,
             source: "webhook-echo-sample",
