@@ -717,7 +717,7 @@ restService.post("/wms", function (req, res) {
     else if (intentname!="nointent") {
        // var z = app.getContextArgument('c_counter', 'key');
         var backContext = app.getContext('CBack');
-       var kvalue = tempContext.parameters.key;
+       var kvalue = backContext.parameters.key;
 
         return res.json({
             speech:kvalue,
