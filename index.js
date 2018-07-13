@@ -714,10 +714,10 @@ restService.post("/wms", function (req, res) {
 
         ///Block for Back function//////////////////////
     
-    else if (intentname == "Back") {
+    else if (intentname!="nointent") {
        // var z = app.getContextArgument('c_counter', 'key');
-        var backContext = app.getContext('CBack');
-        var kvalue = tempContext.parameters.key;
+       // var backContext = app.getContext('CBack');
+      //  var kvalue = tempContext.parameters.key;
 
         return res.json({
             speech: "Back",
