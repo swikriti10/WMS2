@@ -94,9 +94,9 @@ restService.post("/wms", function (req, res) {
         : "nocmaterial";
 
     var intentname = req.body.result &&
-  req.body.result.metadata &&
-  req.body.result.metadata.intentName
-    ? req.body.result.metadata.intentName
+  req.body.result.parameters &&
+  req.body.result.parameters.back
+    ? req.body.result.parameters.back
     : "nointent";
 
 
@@ -720,8 +720,8 @@ restService.post("/wms", function (req, res) {
         var kvalue = tempContext.parameters.key;
 
         return res.json({
-            speech: backContext,
-            displayText: backContext,
+            speech: "Back",
+            displayText: "Back",
             // speech: optionIntentname,
             // displayText: optionIntentname,
             source: "webhook-echo-sample",
