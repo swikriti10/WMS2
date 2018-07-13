@@ -649,10 +649,15 @@ restService.post("/wms", function (req, res) {
                     }],
 
 
-                    followupEvent: {
-                        name: "get_selected_menu"
+                          followupEvent: {
+                        name: "get_selected_menu",
+                        parameters: {
+                        selectedmenu: "back"
+                }
+                      
 
                     }
+
 
 
                 });
