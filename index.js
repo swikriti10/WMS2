@@ -639,16 +639,8 @@ restService.post("/wms", function (req, res) {
                     displayText: botResponse,
                     // speech: optionIntentname,
                     // displayText: optionIntentname,
-                    source: "webhook-echo-sample",
-                    contextOut: [{
-                        name: "CBack",
-                        lifespan: "2",
-                        parameters: {
-                            Intentname: intentname,
-                            key: "val"
-
-                        }
-                    }]
+                    source: "webhook-echo-sample"
+                   
 
                 });
 
