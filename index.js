@@ -584,13 +584,14 @@ restService.post("/wms", function (req, res) {
 
                 ],
               
-              followupEvent: {
-                        name: "get_start",
+              
+              
+              event:{
+         name: "get_start",
                  data: {
                         echoText: "start"
                 }
-
-              }
+   }
 
             });
 
