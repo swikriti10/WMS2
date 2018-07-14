@@ -528,7 +528,7 @@ restService.post("/wms", function (req, res) {
         //    // displayText: optionIntentname,
            source: "webhook-echo-sample",
           
-          event:{  
+          followupEvent:{  
   name:"get_start",
   data:{
      echoText:"start"  
