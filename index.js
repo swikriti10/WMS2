@@ -184,11 +184,8 @@ restService.post("/wms", function (req, res) {
                         key: "val"
 
                     }
-                }],
-                 followupEvent: {
-                    name: "get_selected_menu"
-
-                }
+                }]
+                
 
             });
 
@@ -199,7 +196,7 @@ restService.post("/wms", function (req, res) {
     }
 
 
-    else if (selectedmenu != "notselectedmenu" && val == "notstart" && selectedsubmenu == "notselectedsubmenu") {
+    else if (selectedmenu != "notselectedmenu" && val == "notstart" && selectedsubmenu == "notselectedsubmenu"&&actionName=="get_selected_menu") {
 
         
             request({
@@ -298,6 +295,8 @@ restService.post("/wms", function (req, res) {
 
                                                 }
                                             }]
+                                          
+                                          
 
 
                                         });
