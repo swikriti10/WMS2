@@ -580,15 +580,13 @@ restService.post("/wms", function (req, res) {
                     }
                 },
 
-                {
-                    name: "cstart",
-                    lifespan: "5"
-                    
-                }
+                
 
-
-
-                ]
+                ],
+              
+              followupEvent: {
+                        name: "get_selected_menu"
+                      
 
             });
 
