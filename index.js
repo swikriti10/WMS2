@@ -589,7 +589,7 @@ restService.post("/wms", function (req, res) {
               
               followupEvent:{
          name: "get_start",
-                 data: {
+                 parameters: {
                         echoText: "start"
                 }
    }
