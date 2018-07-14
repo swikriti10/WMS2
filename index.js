@@ -566,8 +566,8 @@ restService.post("/wms", function (req, res) {
 
             
             return res.json({
-                speech: "",
-                displayText: "",
+                speech: "botResponse ",
+                displayText: "botResponse ",
                 // speech: optionIntentname,
                 // displayText: optionIntentname,
                 source: "webhook-echo-sample",
