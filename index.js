@@ -578,7 +578,7 @@ restService.post("/wms", function (req, res) {
                         key: "val"
 
                     }
-                },
+                }
 
                 
 
@@ -586,7 +586,7 @@ restService.post("/wms", function (req, res) {
               
               followupEvent: {
                         name: "get_selected_menu"
-                      
+              }
 
             });
 
