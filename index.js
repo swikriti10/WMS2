@@ -184,7 +184,11 @@ restService.post("/wms", function (req, res) {
                         key: "val"
 
                     }
-                }]
+                }],
+                 followupEvent: {
+                    name: "get_selected_menu"
+
+                }
 
             });
 
