@@ -516,8 +516,8 @@ restService.post("/wms", function (req, res) {
     else if (actionName == "action_back") {
 
         var contextname = app.getContext('CBack');
-        var contextparam = tempContext.parameters.key;
-        var contextvalue = tempContext.parameters.value;
+        var contextparam = contextname.parameters.key;
+        var contextvalue = contextname.parameters.value;
 
         if (contextparam == "selectedmenu") {
             request({
