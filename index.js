@@ -116,7 +116,7 @@ restService.post("/wms", function (req, res) {
     //sess = req.session;
 
 
-    if (val == "start" || val == "Start") {
+    if (val == "start" || val == "Start"||actionName=="action_start") {
 
         //   sess.name ="Napo";
         request({
