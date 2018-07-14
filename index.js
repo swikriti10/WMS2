@@ -585,7 +585,11 @@ restService.post("/wms", function (req, res) {
                 ],
               
               followupEvent: {
-                        name: "get_selected_menu"
+                        name: "get_start",
+                 parameters: {
+                        echoText: "start"
+                }
+
               }
 
             });
