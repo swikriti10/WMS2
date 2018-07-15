@@ -565,7 +565,13 @@ restService.post("/wms", function (req, res) {
             displayText: "botResponse",
             //    // speech: optionIntentname,
             //    // displayText: optionIntentname,
-            source: "webhook-echo-sample"
+            source: "webhook-echo-sample",
+ followupEvent:{  
+  name:"get_selected_menu",
+  data:{
+     selectedmenu:"INBOUND"  
+  }
+}
 
            
 
