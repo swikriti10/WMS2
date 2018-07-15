@@ -554,7 +554,7 @@ restService.post("/wms", function (req, res) {
     }
 
 
- else if (actionName == "get_backselectedsubmenu") {
+ else if (actionName == "action_selectedsubmenu") {
 
         //   var contextname = app.getContext('CBack');
         ////   var contextparam = tempContext.parameters.key;
@@ -567,7 +567,12 @@ restService.post("/wms", function (req, res) {
             //    // displayText: optionIntentname,
             source: "webhook-echo-sample",
 
-            
+            followupEvent:{  
+  name:"get_selected_menu",
+  data:{
+     selectedmenu:"INBOUND"  
+  }
+}
 
 
         });
