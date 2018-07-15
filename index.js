@@ -555,10 +555,26 @@ restService.post("/wms", function (req, res) {
 
 
  else if (actionName == "action_selectedsubmenu") {
-
-          var contextname = app.getContext('cbacksub');
+? req.body.result.metadata.IntentName
+    : "noxy";
+          var contextname = app.getContext('cbacksub')?app.getContext('cbacksub'):"nocontext";
+              var contextname1 = app.getContext('CBacksub')?app.getContext('CBacksub'):"nocontext1";
+   
         ////   var contextparam = tempContext.parameters.key;
-           var contextvalue = contextname.parameters.value;
+   var contextvalue;
+   var contextvalue1;
+   if(contextname=="nocontext")
+   {
+     var contextvalue1 = contextname1.parameters.value;
+     var contextvalue=contextvalue1;
+   }
+   
+   else
+   {
+         var contextvalue = contextname.parameters.value;
+   }
+   
+   
 
         request({
 
