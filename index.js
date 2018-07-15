@@ -180,13 +180,13 @@ restService.post("/wms", function (req, res) {
                     name: "CBack",
                     lifespan: "2",
                     parameters: {
-                       
+
                         key: "val"
 
                     }
                 }]
 
-               
+
 
 
             });
@@ -291,7 +291,7 @@ restService.post("/wms", function (req, res) {
                                             name: "CBack",
                                             lifespan: "2",
                                             parameters: {
-                                                
+
                                                 key: "selectedmenu",
                                                 value: selectedmenu
 
@@ -471,16 +471,16 @@ restService.post("/wms", function (req, res) {
                                                             displayText: botResponse1,
 
                                                             source: "webhook-echo-sample",
-                                                               contextOut: [{
-                                            name: "CBacksub",
-                                            lifespan: "5",
-                                            parameters: {
-                                                
-                                                key: "selectedmenu",
-                                                value: Ctilename
+                                                            contextOut: [{
+                                                                name: "CBacksub",
+                                                                lifespan: "5",
+                                                                parameters: {
 
-                                            }
-                                        }]
+                                                                    key: "selectedmenu",
+                                                                    value: Ctilename
+
+                                                                }
+                                                            }]
 
                                                         });
 
@@ -527,53 +527,51 @@ restService.post("/wms", function (req, res) {
     else if (actionName == "action_back") {
 
         //var contextname = app.getContext('Cbacksub');
-      //  var contextparam = contextname.parameters.key;
-     //   var contextvalue = tempContext.parameters.value;
+        //  var contextparam = contextname.parameters.key;
+        //   var contextvalue = tempContext.parameters.value;
 
         return res.json({
-           speech: "botResponse",
+            speech: "botResponse",
             displayText: "botResponse",
-        //    // speech: optionIntentname,
-        //    // displayText: optionIntentname,
-           source: "webhook-echo-sample",
-          
-          followupEvent:{  
-  name:"get_start",
-  data:{
-     echoText:"start"  
-  }
-}
+            //    // speech: optionIntentname,
+            //    // displayText: optionIntentname,
+            source: "webhook-echo-sample",
+
+            followupEvent: {
+                name: "get_start",
+                data: {
+                    echoText: "start"
+                }
+            }
 
 
         });
-      
-      
-      
-      
-       
+
+
+
+
+
     }
 
 
- else if (actionName == "action_selectedsubmenu") {
+    else if (actionName == "action_selectedsubmenu") {
 
-          var contextname = app.getContext('cbacksub')?app.getContext('cbacksub'):"nocontext";
-              var contextname1 = app.getContext('CBacksub')?app.getContext('CBacksub'):"nocontext1";
-   
+        var contextname = app.getContext('cbacksub') ? app.getContext('cbacksub') : "nocontext";
+        var contextname1 = app.getContext('CBacksub') ? app.getContext('CBacksub') : "nocontext1";
+
         ////   var contextparam = tempContext.parameters.key;
-   var contextvalue;
-   var contextvalue1;
-   if(contextname=="nocontext")
-   {
-     var contextvalue1 = contextname1.parameters.value;
-     var contextvalue=contextvalue1;
-   }
-   
-   else
-   {
-         var contextvalue = contextname.parameters.value;
-   }
-   
-   
+        var contextvalue;
+        var contextvalue1;
+        if (contextname == "nocontext") {
+            var contextvalue1 = contextname1.parameters.value;
+            var contextvalue = contextvalue1;
+        }
+
+        else {
+            var contextvalue = contextname.parameters.value;
+        }
+
+
 
         request({
 
@@ -664,13 +662,13 @@ restService.post("/wms", function (req, res) {
                                         contextOut: [{
                                             name: "cmenu",
                                             lifespan: "1",
-                                          parameters: {
-                                                
-                                                selectedmenu:contextvalue
-                                                
+                                            parameters: {
+
+                                                selectedmenu: contextvalue
+
 
                                             }
-                                            
+
                                         }]
 
 
@@ -708,9 +706,177 @@ restService.post("/wms", function (req, res) {
 
         });
 
- }
+    }
 
 
+    else if (actionName == "action_backscanpo") {
+
+        var contextname = app.getContext('cpo');
+        var choosesubmenu = contextname.parameters.choosesubmenu;
+        var choosetilename = contextname.parameters.choosetilename;
+        request({
+
+            url: url + "GetTileInfoSet?$filter=AppId%20eq%20%27WMS%27&sap-client=900&sap-language=EN&$format=json",
+            // url: url + "GetTilesSet?$filter=BotCode eq 'start'&sap-client=900&sap-language=EN&$format=json",
+            // url: url + "GetMenuSet?$filter=TileIdBot eq 'INBOUND' &sap-client=900&sap-language=EN&$format=json",
+
+
+            //url: url + "ListOpenTOSet?$filter=UserId eq 'SAPUSER' and TorderFrom eq '' and TorderTo eq '' and DelvFrom eq '' and DelvTo eq'' and SoFrom eq '' and SoTo eq '' and Material eq '' &sap-client=900&sap-language=EN&$format=json",
+            headers: {
+                //"Authorization": "Basic <<base64 encoded SAPUSER:crave123>>",
+                "Authorization": "Basic c2FwdXNlcjpjcmF2ZTEyMw==",
+                "Content-Type": "application/json",
+                "x-csrf-token": "Fetch"
+            }
+
+        }, function (error, response, body) {
+            if (!error && response.statusCode == 200) {
+                csrfToken = response.headers['x-csrf-token'];
+                // console.log(csrfToken);
+                // var gwResponse = body.asString();
+                // var JSONObj = JSON.parse(body);
+                var c = JSON.parse(body)
+                //var a = res.json(body);
+                var len = c.d.results.length;
+                //var a = JSON.stringify(a);
+
+
+                var obj = [];
+                var i = 0;
+                if (c.d.results.length > 0) {
+
+                    for (; i < c.d.results.length; i++) {
+
+                        if (c.d.results[i].TileName == choosetilename) {
+                            var tileid = c.d.results[i].TileId
+
+                            /////////////////Block for submenu//////////////////////////////////
+                            request({
+                                //url: url + "GetMenuInfoSet?$filter=TileId%20eq%20%27WM_INB%27&sap-client=900&sap-language=EN&$format=json",
+                                url: url + "GetMenuInfoSet?$filter=TileId%20eq%20%27" + tileid + "%27&sap-client=900&sap-language=EN&$format=json",
+
+
+                                //url: url + "ListOpenTOSet?$filter=UserId eq 'SAPUSER' and TorderFrom eq '' and TorderTo eq '' and DelvFrom eq '' and DelvTo eq'' and SoFrom eq '' and SoTo eq '' and Material eq '' &sap-client=900&sap-language=EN&$format=json",
+                                headers: {
+                                    //"Authorization": "Basic <<base64 encoded SAPUSER:crave123>>",
+                                    "Authorization": "Basic c2FwdXNlcjpjcmF2ZTEyMw==",
+                                    "Content-Type": "application/json",
+                                    "x-csrf-token": "Fetch"
+                                }
+
+                            }, function (error, response, body) {
+                                if (!error && response.statusCode == 200) {
+                                    csrfToken = response.headers['x-csrf-token'];
+                                    // console.log(csrfToken);
+                                    // var gwResponse = body.asString();
+                                    // var JSONObj = JSON.parse(body);
+                                    var c1 = JSON.parse(body)
+                                    //var a = res.json(body);
+                                    var len1 = c1.d.results.length;
+                                    //var a = JSON.stringify(a);
+                                    var botResponse1 = "";
+
+                                    var obj = [];
+                                    var i = 0;
+                                    if (c1.d.results.length > 0) {
+
+                                        for (; i < c1.d.results.length; i++) {
+
+                                            if (c1.d.results[i].MenuName == choosesubmenu) {
+
+                                                ////////////////////////////////////////////////////////start if////////////////////////////////////////////////////////////////////////////////
+
+                                                var submenuid = c1.d.results[i].SubMenuId
+                                                request({
+
+                                                    url: url + "GetSubMenuSet?$filter=TileId%20eq%20%27" + tileid + "%27%20and%20SubMenuId%20eq%20%27" + submenuid + "%27&sap-client=900&sap-language=EN&$format=json",
+
+
+                                                    //url: url + "ListOpenTOSet?$filter=UserId eq 'SAPUSER' and TorderFrom eq '' and TorderTo eq '' and DelvFrom eq '' and DelvTo eq'' and SoFrom eq '' and SoTo eq '' and Material eq '' &sap-client=900&sap-language=EN&$format=json",
+                                                    headers: {
+                                                        //"Authorization": "Basic <<base64 encoded SAPUSER:crave123>>",
+                                                        "Authorization": "Basic c2FwdXNlcjpjcmF2ZTEyMw==",
+                                                        "Content-Type": "application/json",
+                                                        "x-csrf-token": "Fetch"
+                                                    }
+
+                                                }, function (error, response, body) {
+                                                    if (!error && response.statusCode == 200) {
+                                                        csrfToken = response.headers['x-csrf-token'];
+                                                        // console.log(csrfToken);
+                                                        // var gwResponse = body.asString();
+                                                        // var JSONObj = JSON.parse(body);
+                                                        var c2 = JSON.parse(body)
+                                                        //var a = res.json(body);
+                                                        var len2 = c2.d.results.length;
+                                                        //var a = JSON.stringify(a);
+                                                        var botResponse1 = "";
+
+                                                        var obj = [];
+                                                        var i = 0;
+                                                        if (c2.d.results.length > 0) {
+                                                            botResponse1 = "Choose following options for " + choosesubmenu + " : ";
+
+                                                            for (; i < c2.d.results.length; i++) {
+                                                                botResponse1 += " \n";
+
+                                                                botResponse1 += c2.d.results[i].SearchType;
+
+                                                            }
+
+                                                        }
+                                                        else {
+                                                            botResponse1 = "No SubMenu Items";
+                                                        }
+
+                                                        //console.log(botResponse);
+
+                                                        return res.json({
+                                                            speech: botResponse1,
+                                                            displayText: botResponse1,
+
+                                                            source: "webhook-echo-sample",
+                                                            contextOut: [{
+                                                                name: "CBackScanPo",
+                                                                lifespan: "5",
+                                                                parameters: {
+
+                                                                    submenu: choosesubmenu,
+                                                                    menu: choosetilename
+
+                                                                }
+                                                            }]
+
+                                                        });
+
+
+                                                    }
+
+                                                });
+
+
+                                                /////////////////////////////////////////////////////////////////////end if/////////////////////////////////////////////////////////////////////////////////////////////
+
+                                            }
+
+                                        }
+
+                                    }
+
+                                    //console.log(botResponse);
+                                }
+
+
+                            });
+                        }
+                    }
+                }
+
+            }
+        });
+       
+
+    }
 
 
 
