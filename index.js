@@ -555,8 +555,7 @@ restService.post("/wms", function (req, res) {
 
 
  else if (actionName == "action_selectedsubmenu") {
-? req.body.result.metadata.IntentName
-    : "noxy";
+
           var contextname = app.getContext('cbacksub')?app.getContext('cbacksub'):"nocontext";
               var contextname1 = app.getContext('CBacksub')?app.getContext('CBacksub'):"nocontext1";
    
