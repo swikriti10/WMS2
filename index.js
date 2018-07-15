@@ -651,7 +651,7 @@ restService.post("/wms", function (req, res) {
                                             lifespan: "1",
                                           parameters: {
                                                 
-                                                selectedmenu: "contextvalue"
+                                                selectedmenu:contextvalue
                                                 
 
                                             }
