@@ -568,8 +568,8 @@ restService.post("/wms", function (req, res) {
             source: "webhook-echo-sample",
 
             followupEvent:{  
-  name:"get_selected_menu",
-  data:{
+               name:"get_selected_menu",
+              data:{
      selectedmenu:"INBOUND"  
   }
 }
