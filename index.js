@@ -911,7 +911,7 @@ restService.post("/wms", function (req, res) {
                 var len = c.d.results.length;
                 //var a = JSON.stringify(a);
                 itemcount = c.d.results[0].ItemNo;
-
+                 itemcount = itemcount.slice(1);
                 var obj = [];
                 var i = 0;
                 //if (c.d.results.length > 0) {
@@ -977,7 +977,8 @@ restService.post("/wms", function (req, res) {
                                 name: "c_counter",
                                 lifespan: "5",
                                 parameters: {
-                                    key: "3"
+                                  key:itemcount
+                                 //   key: "3"
 
                                 }
                             }
