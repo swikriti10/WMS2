@@ -471,7 +471,16 @@ restService.post("/wms", function (req, res) {
                                                             displayText: botResponse1,
 
                                                             source: "webhook-echo-sample",
+                                                               contextOut: [{
+                                            name: "CBacksub",
+                                            lifespan: "2",
+                                            parameters: {
+                                                
+                                                key: "selectedmenu",
+                                                value: Ctilename
 
+                                            }
+                                        }]
 
                                                         });
 
@@ -545,7 +554,7 @@ restService.post("/wms", function (req, res) {
     }
 
 
- else if (actionName == "getselectedsubmenu.getselectedsubmenu-fallback") {
+ else if (actionName == "get_backselectedsubmenu") {
 
         //   var contextname = app.getContext('CBack');
         ////   var contextparam = tempContext.parameters.key;
