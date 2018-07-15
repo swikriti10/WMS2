@@ -545,7 +545,7 @@ restService.post("/wms", function (req, res) {
     }
 
 
- else if (actionName == "action_selectedsubmenu") {
+ else if (actionName == "getselectedsubmenu.getselectedsubmenu-fallback") {
 
         //   var contextname = app.getContext('CBack');
         ////   var contextparam = tempContext.parameters.key;
