@@ -625,7 +625,7 @@ restService.post("/wms", function (req, res) {
                                     var obj = [];
                                     var i = 0;
                                     if (c1.d.results.length > 0) {
-                                        botResponse1 = "Choose following options for " + selectedmenu + ": ";
+                                        botResponse1 = "Choose following options for " + contextvalue + ": ";
 
                                         for (; i < c1.d.results.length; i++) {
                                             botResponse1 += " \n";
@@ -648,7 +648,13 @@ restService.post("/wms", function (req, res) {
                                         source: "webhook-echo-sample",
                                         contextOut: [{
                                             name: "cmenu",
-                                            lifespan: "1"
+                                            lifespan: "1",
+                                          parameters: {
+                                                
+                                                selectedmenu: "contextvalue"
+                                                
+
+                                            }
                                             
                                         }]
 
