@@ -473,7 +473,7 @@ restService.post("/wms", function (req, res) {
                                                             source: "webhook-echo-sample",
                                                                contextOut: [{
                                             name: "CBacksub",
-                                            lifespan: "2",
+                                            lifespan: "5",
                                             parameters: {
                                                 
                                                 key: "selectedmenu",
