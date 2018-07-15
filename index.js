@@ -558,7 +558,7 @@ restService.post("/wms", function (req, res) {
 
           var contextname = app.getContext('cbacksub');
         ////   var contextparam = tempContext.parameters.key;
-           var contextvalue = tempContext.parameters.value;
+           var contextvalue = contextname.parameters.value;
 
         request({
 
