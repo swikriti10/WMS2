@@ -837,12 +837,12 @@ restService.post("/wms", function (req, res) {
 
                                                             source: "webhook-echo-sample",
                                                             contextOut: [{
-                                                                name: "CBackScanPo",
-                                                                lifespan: "5",
+                                                                name: "cx",
+                                                                lifespan: "1",
                                                                 parameters: {
 
-                                                                    submenu: choosesubmenu,
-                                                                    menu: choosetilename
+                                                                    selectedsubmenu: choosesubmenu,
+                                                                    tilename: choosetilename
 
                                                                 }
                                                             }]
