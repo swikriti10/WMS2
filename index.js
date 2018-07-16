@@ -1043,16 +1043,18 @@ restService.post("/wms", function (req, res) {
                         {
                             botResponse1="Enter Quantity."
                         }
-                        else
-                        {
-                            botResponse1 = "Material not matched.Scan again!"
-                        }
+                       
 
                     }
                    
 
-
                 }
+              
+               else
+                        {
+                            botResponse1 = "Material not matched.Scan again!"
+                        }
+
                 
                 return res.json({
                     speech: botResponse1,
