@@ -1062,6 +1062,16 @@ restService.post("/wms", function (req, res) {
                     // speech: optionIntentname,
                     // displayText: optionIntentname,
                     source: "webhook-echo-sample",
+                  contextOut: [{
+                                name: "cQuantity",
+                                lifespan: "1"
+                                
+                            }
+                            ]
+                  
+                  
+                  
+                  
                    
                 });
 
