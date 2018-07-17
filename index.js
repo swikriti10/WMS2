@@ -1182,12 +1182,17 @@ else if (actionName=="action_materialnotmatched"){
                     // speech: optionIntentname,
                     // displayText: optionIntentname,
                     source: "webhook-echo-sample",
-                    contextOut: [{
-                        name: "cQuantity",
-                        lifespan: "1"
+                     contextOut: [{
+                            name: "cQuantity",
+                            lifespan: "1",
+                            parameters: {
+                                cmaterial: matno
+                                //   key: "3"
 
-                    }
-                    ]
+                            }
+
+                        }
+                        ]
 
 
 
