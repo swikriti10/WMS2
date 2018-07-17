@@ -1089,7 +1089,14 @@ restService.post("/wms", function (req, res) {
                             lifespan: "5"
 
                         }
-                        ]
+                        ],
+                    
+                    followupEvent: {
+                name: "get_materialnotmatched"
+                
+            }
+                    
+                    
 
 
 
