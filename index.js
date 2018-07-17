@@ -1217,7 +1217,7 @@ else if (actionName=="action_materialnotmatched"){
                     }
                     ],
                             followupEvent: {
-                            name: "get_materialnotmatched"
+                            name: "get_scan"
                             
                         }
      
