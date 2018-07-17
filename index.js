@@ -1067,12 +1067,9 @@ restService.post("/wms", function (req, res) {
                                 lifespan: "1"
                                 
                             }
-                            ],
+                            ]
                   
-                  FollowupEvent: {
-                name: "get_quantity"
-                
-            }
+               
                   
                   
                    
