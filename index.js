@@ -1251,8 +1251,10 @@ else if (actionName=="action_materialnotmatched"){
         var z = app.getContextArgument('c_counter', 'key');
         var tempContext = app.getContext('c_counter');
         var originalTemp = tempContext.parameters.key;
+      var m = tempContext.parameters.matno;
         if (originalTemp >= 0) {
-            response = "Material " + cmaterial + " confirmed. Sacn another material";
+         //   response = "Material " + cmaterial + " confirmed. Sacn another material";
+          response = "Material " + m + " confirmed. Sacn another material";
             var c = originalTemp;
             var c1 = --c;
             if (c1 != "0") {
