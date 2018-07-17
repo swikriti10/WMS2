@@ -93,7 +93,11 @@ restService.post("/wms", function (req, res) {
         ? req.body.result.parameters.cmaterial
         : "nocmaterial";
 
-
+var matno = req.body.result &&
+      req.body.result.parameters &&
+      req.body.result.parameters.matno
+        ? req.body.result.parameters.matno
+        : "nomatno";
 
     var xy = req.body.result &&
   req.body.result.metadata &&
@@ -1087,7 +1091,12 @@ restService.post("/wms", function (req, res) {
                     
                     contextOut: [{
                         name: "cmaterialnotmatched",
-                        lifespan: "1"
+                        lifespan: "1",
+                       parameters: {
+                                    pnum: pnum
+                                    //   key: "3"
+
+                                }
 
                     }
                     ],
@@ -1116,7 +1125,7 @@ restService.post("/wms", function (req, res) {
 
 else if (actionName=="action_materialnotmatched"){
   var cname = app.getContext('cmaterial');
-        var mat = cname.parameters.material;
+       // var mat = cname.parameters.material;
         var pnum = cname.parameters.ponumber;
         request({
             //url: url + "GetMenuInfoSet?$filter=TileId%20eq%20%27WM_INB%27&sap-client=900&sap-language=EN&$format=json",
@@ -1149,7 +1158,7 @@ else if (actionName=="action_materialnotmatched"){
 
                     for (; i < len1; i++) {
 
-                        if (c1.d.results[i].Material == mat) {
+                        if (c1.d.results[i].Material == matno) {
                             botResponse1 = "Enter Quantity."
                             flag = "1";
                             break;
