@@ -874,7 +874,7 @@ restService.post("/wms", function (req, res) {
 
             }
         });
-       
+
 
     }
 
@@ -911,7 +911,7 @@ restService.post("/wms", function (req, res) {
                 var len = c.d.results.length;
                 //var a = JSON.stringify(a);
                 itemcount = c.d.results[0].ItemNo;
-                 itemcount = itemcount.slice(1);
+                itemcount = itemcount.slice(1);
                 var obj = [];
                 var i = 0;
                 //if (c.d.results.length > 0) {
@@ -977,8 +977,8 @@ restService.post("/wms", function (req, res) {
                                 name: "c_counter",
                                 lifespan: "5",
                                 parameters: {
-                                  key:itemcount
-                                 //   key: "3"
+                                    key: itemcount
+                                    //   key: "3"
 
                                 }
                             }
@@ -1002,9 +1002,8 @@ restService.post("/wms", function (req, res) {
 
 
     }
-  
-  else if (actionName == "action_scanmaterial")
-    {
+
+    else if (actionName == "action_scanmaterial") {
         var cname = app.getContext('cmaterial');
         var mat = cname.parameters.material;
         var pnum = cname.parameters.ponumber;
@@ -1032,49 +1031,73 @@ restService.post("/wms", function (req, res) {
                 var len1 = c1.d.results.length;
                 //var a = JSON.stringify(a);
                 var botResponse1 = "";
-
+                var flag = "";
                 var obj = [];
                 var i = 0;
                 if (c1.d.results.length > 0) {
-                   
+
                     for (; i < len1; i++) {
 
-                        if (c1.d.results[i].Material == mat)
-                        {
-                            botResponse1="Enter Quantity."
+                        if (c1.d.results[i].Material == mat) {
+                            botResponse1 = "Enter Quantity."
+                            flag = "1";
+                            break;
                         }
-                       
+
 
                     }
-                   
-                       
+
+
 
                 }
-              
-               else
-                        {
-                            botResponse1 = "Material not matched.Scan again!"
-                        }
 
-                
+                else {
+                    botResponse1 = "Material not matched.Scan again!"
+                }
+
+                if (flag=="1"){
                 return res.json({
                     speech: botResponse1,
                     displayText: botResponse1,
                     // speech: optionIntentname,
                     // displayText: optionIntentname,
                     source: "webhook-echo-sample",
-                  contextOut: [{
-                                name: "cQuantity",
-                                lifespan: "1"
-                                
-                            }
-                            ]
-                  
-               
-                  
-                  
-                   
+                    contextOut: [{
+                        name: "cQuantity",
+                        lifespan: "1"
+
+                    }
+                    ]
+
+
+
+
+
                 });
+                }
+
+                else
+                {
+                    return res.json({
+                        speech: botResponse1,
+                        displayText: botResponse1,
+                        // speech: optionIntentname,
+                        // displayText: optionIntentname,
+                        source: "webhook-echo-sample",
+                        contextOut: [{
+                            name: "cQuantity",
+                            lifespan: "1"
+
+                        }
+                        ]
+
+
+
+
+
+                    });
+                }
+
 
                 //console.log(botResponse);
             }
@@ -1086,18 +1109,18 @@ restService.post("/wms", function (req, res) {
 
 
     }
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
+
+
+
 
     else if (quantity != "zeroQuant") {
         var response = "";
