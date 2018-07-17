@@ -1047,10 +1047,7 @@ restService.post("/wms", function (req, res) {
 
                     }
                    
-                        else
-                        {
-                            botResponse1 = "Material not matched.Scan again!"
-                        }
+                       
 
                 }
               
