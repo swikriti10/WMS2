@@ -1078,9 +1078,9 @@ restService.post("/wms", function (req, res) {
 
                 else
                 {
-                    return res.json({
-                        speech: botResponse1,
-                        displayText: botResponse1,
+                  return res.json({
+                        speech:"Material not matched.Scan again!",
+                        displayText:"Material not matched.Scan again!",
                         // speech: optionIntentname,
                         // displayText: optionIntentname,
                         source: "webhook-echo-sample",
