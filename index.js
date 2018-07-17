@@ -1215,12 +1215,8 @@ else if (actionName=="action_materialnotmatched"){
                         lifespan: "1"
 
                     }
-                    ],
-                            followupEvent: {
-                            name: "get_scan"
-                            
-                        }
-     
+                    ]
+                          
                         
                     });
                 }
