@@ -1101,7 +1101,7 @@ var matno = req.body.result &&
                     }
                     ],
                             followupEvent: {
-                            name: "get_materialnotmatched"
+                            name: "get_scan"
                             
                         }
      
