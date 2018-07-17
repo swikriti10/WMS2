@@ -1084,6 +1084,11 @@ restService.post("/wms", function (req, res) {
                         // speech: optionIntentname,
                         // displayText: optionIntentname,
                         source: "webhook-echo-sample",
+                                            followupEvent: {
+                            name: "get_scan"
+                            
+                        }
+
                         
                     });
                 }
