@@ -1083,12 +1083,8 @@ restService.post("/wms", function (req, res) {
                         displayText:"Material not matched.Scan again!",
                         // speech: optionIntentname,
                         // displayText: optionIntentname,
-                        source: "webhook-echo-sample",
-                                            followupEvent: {
-                            name: "get_scan"
-                            
-                        }
-
+                        source: "webhook-echo-sample"
+                                
                         
                     });
                 }
