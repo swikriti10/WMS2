@@ -1087,7 +1087,11 @@ var matno = req.body.result &&
                         displayText:"Material not matched.Scan again!",
                         // speech: optionIntentname,
                         // displayText: optionIntentname,
-                        source: "webhook-echo-sample"
+                        source: "webhook-echo-sample",
+                                            followupEvent: {
+                            name: "get_scan"
+
+                        }
                    
                    
      
