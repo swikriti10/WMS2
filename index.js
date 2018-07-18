@@ -1138,7 +1138,7 @@ restService.post("/wms", function (req, res) {
         var z = app.getContextArgument('c_counter', 'key');
         var tempContext = app.getContext('c_counter');
         var originalTemp = tempContext.parameters.key;
-        var m = tempContext.parameters.matno ? tempContext.parameters.matno : "nomatno";
+        var m = tempContext.parameters.material ? tempContext.parameters.material : "nomatno";
         if (m != "nomatno") {
             cmaterial = m;
         }
