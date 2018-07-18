@@ -1090,8 +1090,8 @@ restService.post("/wms", function (req, res) {
                     return res.json({
                         //   speech: "Material not matched.Scan again..",
                         //  displayText: "Material not matched.Scan again..",
-                        speech: matno+""+flag,
-                        displayText: matno + "" + flag,
+                        speech:"Material not matched.Scan again!!",
+                        displayText:"Material not matched.Scan again!!",
                         source: "webhook-echo-sample",
                         contextOut: [{
                             name: "cmaterial",
@@ -1138,61 +1138,103 @@ restService.post("/wms", function (req, res) {
         var z = app.getContextArgument('c_counter', 'key');
         var tempContext = app.getContext('c_counter');
         var originalTemp = tempContext.parameters.key;
+        var pnum = tempContext.parameters.ponumber;
         var m = tempContext.parameters.material ? tempContext.parameters.material : "nomatno";
         if (m != "nomatno") {
             cmaterial = m;
         }
-        if (originalTemp >= 0) {
-            response = "Material " + cmaterial + " confirmed. Sacn another material";
-            //response = "Material " + m + " confirmed. Sacn another material";
-            var c = originalTemp;
-            var c1 = --c;
-            if (c1 != "0") {
-                return res.json({
-                    speech: response,
-                    displayText: response,
-                    // speech: optionIntentname,
-                    // displayText: optionIntentname,
-                    source: "webhook-echo-sample",
-                    contextOut: [{
-                        name: "c_counter" + originalTemp + "",
-                        lifespan: "10",
-                        parameters: {
-                            quant: quantity,
-                            materialname: cmaterial
-
-                        }
-                    },
-                    {
-                        name: "c_counter",
-                        lifespan: "5",
-                        parameters: {
-                            key: c1,
+        request({
+            //url: url + "GetMenuInfoSet?$filter=TileId%20eq%20%27WM_INB%27&sap-client=900&sap-language=EN&$format=json",
+            url: url + "Get_PoItem_DetailsSet?$filter=PoNumber%20eq%20%27" + pnum + "%27%20and%20MoveType%20eq%20%27101%27&sap-client=900&sap-language=EN&$format=json",
 
 
-                        }
-                    }
-                    ]
-
-
-                });
+            //url: url + "ListOpenTOSet?$filter=UserId eq 'SAPUSER' and TorderFrom eq '' and TorderTo eq '' and DelvFrom eq '' and DelvTo eq'' and SoFrom eq '' and SoTo eq '' and Material eq '' &sap-client=900&sap-language=EN&$format=json",
+            headers: {
+                //"Authorization": "Basic <<base64 encoded SAPUSER:crave123>>",
+                "Authorization": "Basic c2FwdXNlcjpjcmF2ZTEyMw==",
+                "Content-Type": "application/json",
+                "x-csrf-token": "Fetch"
             }
-            else {
-                return res.json({
-                    speech: "GR successful",
-                    displayText: "GR successful",
-                    // speech: optionIntentname,
-                    // displayText: optionIntentname,
-                    source: "webhook-echo-sample",
-                    contextOut: [{
-                        name: "c_counter" + originalTemp + "",
-                        lifespan: "10",
-                        parameters: {
-                            quant: quantity,
-                            materialname: cmaterial
 
+        }, function (error, response, body) {
+            if (!error && response.statusCode == 200) {
+                csrfToken = response.headers['x-csrf-token'];
+                // console.log(csrfToken);
+                // var gwResponse = body.asString();
+                // var JSONObj = JSON.parse(body);
+                var c1 = JSON.parse(body)
+                //var a = res.json(body);
+                var len1 = c1.d.results.length;
+                //var a = JSON.stringify(a);
+                var response = "";
+                var flag = "";
+                var obj = [];
+                var i = 0;
+                if (c1.d.results.length > 0) {
+
+                    for (; i < len1; i++) {
+
+                        if (c1.d.results[i].Material == cmaterial) {
+
+                            var quant = c1.d.results[i].OpenQuantity;
+                            if (quantity > quant || quant <= "0") {
+                                response = "Quantitiy should be less than or equalto " + quant;
+                                flag = "1";
+                                break;
+                            }
+
+                                                       
                         }
-                    },
+
+
+                    }
+
+                    if (flag == "1") {
+                        return res.json({
+                            //   speech: "Material not matched.Scan again..",
+                            //  displayText: "Material not matched.Scan again..",
+                            speech:response,
+                            displayText:response,
+                            source: "webhook-echo-sample",
+                            contextOut: [{
+                                name: "cQuantity",
+                                lifespan: "1",
+                               
+
+                            }
+                            ]
+
+
+
+
+
+                        });
+
+                    }
+
+
+                    else if (flag == "") {
+                        if (originalTemp >= 0) {
+                            response = "Material " + cmaterial + " confirmed. Sacn another material";
+                            //response = "Material " + m + " confirmed. Sacn another material";
+                            var c = originalTemp;
+                            var c1 = --c;
+                            if (c1 != "0") {
+                                return res.json({
+                                    speech: response,
+                                    displayText: response,
+                                    // speech: optionIntentname,
+                                    // displayText: optionIntentname,
+                                    source: "webhook-echo-sample",
+                                    contextOut: [{
+                                        name: "c_counter" + originalTemp + "",
+                                        lifespan: "10",
+                                        parameters: {
+                                            quant: quantity,
+                                            materialname: cmaterial
+
+                                        }
+                                    },
                                     {
                                         name: "c_counter",
                                         lifespan: "5",
@@ -1202,32 +1244,83 @@ restService.post("/wms", function (req, res) {
 
                                         }
                                     }
-                    ]
+                                    ]
 
 
-                });
+                                });
+                            }
+                            else {
+                                return res.json({
+                                    speech: "GR successful",
+                                    displayText: "GR successful",
+                                    // speech: optionIntentname,
+                                    // displayText: optionIntentname,
+                                    source: "webhook-echo-sample",
+                                    contextOut: [{
+                                        name: "c_counter" + originalTemp + "",
+                                        lifespan: "10",
+                                        parameters: {
+                                            quant: quantity,
+                                            materialname: cmaterial
+
+                                        }
+                                    },
+                                                    {
+                                                        name: "c_counter",
+                                                        lifespan: "5",
+                                                        parameters: {
+                                                            key: c1,
 
 
-                //  });
+                                                        }
+                                                    }
+                                    ]
 
+
+                                });
+
+
+                                //  });
+
+                            }
+
+
+
+                        }
+                        else {
+                            return res.json({
+                                speech: "GR successful",
+                                displayText: "GR successful",
+                                // speech: optionIntentname,
+                                // displayText: optionIntentname,
+                                source: "webhook-echo-sample",
+
+
+
+                            });
+
+                        }
+                    }
+
+                }
+
+
+               
+
+                
+              
+             
+
+                
+
+
+                //console.log(botResponse);
             }
 
 
-
-        }
-        else {
-            return res.json({
-                speech: "GR successful",
-                displayText: "GR successful",
-                // speech: optionIntentname,
-                // displayText: optionIntentname,
-                source: "webhook-echo-sample",
-
-
-
-            });
-
-        }
+        });
+        
+      
     }
 
 
