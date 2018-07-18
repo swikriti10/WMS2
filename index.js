@@ -95,8 +95,8 @@ restService.post("/wms", function (req, res) {
 
     var matno = req.body.result &&
           req.body.result.parameters &&
-          req.body.result.parameters.matno
-            ? req.body.result.parameters.matno
+          req.body.result.parameters.material
+            ? req.body.result.parameters.material
             : "nomatno";
 
     var xy = req.body.result &&
@@ -1042,7 +1042,7 @@ restService.post("/wms", function (req, res) {
 
                     for (; i < len1; i++) {
 
-                        if (c1.d.results[i].Material == mat) {
+                        if (c1.d.results[i].Material == matno) {
                             botResponse1 = "Enter Quantity."
                             flag = "1";
                             break;
@@ -1086,20 +1086,17 @@ restService.post("/wms", function (req, res) {
                             name: "cmaterialnotmatched",
                             lifespan: "1",
                             parameters: {
-                                mat: mat,
+                                mat: matno,
                                 ponum: pnum
                                 //   key: "3"
 
                             }
 
                         }
-                        ],
+                        ]
 
                        
-                        followupEvent: {
-                            name: "get_materialnotmatched"
-
-                        }
+                        
 
 
                     });
