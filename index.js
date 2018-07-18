@@ -1095,7 +1095,7 @@ restService.post("/wms", function (req, res) {
                         source: "webhook-echo-sample",
                         contextOut: [{
                             name: "cmaterial",
-                            lifespan: "1",
+                            lifespan: "5",
                             parameters: {
                                 material: matno,
                                 ponumber: pnum
