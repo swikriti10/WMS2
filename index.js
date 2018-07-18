@@ -1083,7 +1083,7 @@ restService.post("/wms", function (req, res) {
                         // displayText: optionIntentname,
                         source: "webhook-echo-sample",
                         contextOut: [{
-                            name: "cmaterialnotmatched",
+                            name: "cmaterial",
                             lifespan: "1",
                             parameters: {
                                 mat: matno,
