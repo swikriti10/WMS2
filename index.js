@@ -93,11 +93,11 @@ restService.post("/wms", function (req, res) {
         ? req.body.result.parameters.cmaterial
         : "nocmaterial";
 
-var matno = req.body.result &&
-      req.body.result.parameters &&
-      req.body.result.parameters.matno
-        ? req.body.result.parameters.matno
-        : "nomatno";
+    var matno = req.body.result &&
+          req.body.result.parameters &&
+          req.body.result.parameters.matno
+            ? req.body.result.parameters.matno
+            : "nomatno";
 
     var xy = req.body.result &&
   req.body.result.metadata &&
@@ -1059,43 +1059,54 @@ var matno = req.body.result &&
                     botResponse1 = "Material not matched.Scan again!"
                 }
 
-                if (flag=="1"){
-                return res.json({
-                    speech: botResponse1,
-                    displayText: botResponse1,
-                    // speech: optionIntentname,
-                    // displayText: optionIntentname,
-                    source: "webhook-echo-sample",
-                    contextOut: [{
-                        name: "cQuantity",
-                        lifespan: "1"
-
-                    }
-                    ]
-
-
-
-
-
-                });
-                }
-
-                else
-                {
-                  return res.json({
-                        speech:"Material not matched.Scan again!",
-                        displayText:"Material not matched.Scan again!",
+                if (flag == "1") {
+                    return res.json({
+                        speech: botResponse1,
+                        displayText: botResponse1,
                         // speech: optionIntentname,
                         // displayText: optionIntentname,
                         source: "webhook-echo-sample",
-                                            followupEvent: {
-                            name: "get_scan"
+                        contextOut: [{
+                            name: "cQuantity",
+                            lifespan: "1"
 
                         }
-                   
-                   
-     
-                        
+                        ]
+
+
+
+
+
+                    });
+                }
+
+                else {
+                    return res.json({
+                        speech: "Material not matched.Scan again..",
+                        displayText: "Material not matched.Scan again..",
+                        // speech: optionIntentname,
+                        // displayText: optionIntentname,
+                        source: "webhook-echo-sample",
+                        contextOut: [{
+                            name: "cmaterialnotmatched",
+                            lifespan: "1",
+                            parameters: {
+                                mat: mat,
+                                ponum: pnum
+                                //   key: "3"
+
+                            }
+
+                        }
+                        ],
+
+                       
+                        followupEvent: {
+                            name: "get_materialnotmatched"
+
+                        }
+
+
                     });
                 }
 
@@ -1113,10 +1124,12 @@ var matno = req.body.result &&
 
 
 
-else if (actionName=="action_materialnotmatched"){
-  var cname = app.getContext('cmaterial');
-       // var mat = cname.parameters.material;
-        var pnum = cname.parameters.ponumber;
+    else if (actionName == "action_materialnotmatched") {
+        var cname = app.getContext('cmaterialnotmatched');
+        // var mat = cname.parameters.material;
+        var pnum = cname.parameters.pnum; 
+        var mat = cname.parameters.mat;
+        //var mat =
         request({
             //url: url + "GetMenuInfoSet?$filter=TileId%20eq%20%27WM_INB%27&sap-client=900&sap-language=EN&$format=json",
             url: url + "Get_PoItem_DetailsSet?$filter=PoNumber%20eq%20%27" + pnum + "%27%20and%20MoveType%20eq%20%27101%27&sap-client=900&sap-language=EN&$format=json",
@@ -1148,7 +1161,7 @@ else if (actionName=="action_materialnotmatched"){
 
                     for (; i < len1; i++) {
 
-                        if (c1.d.results[i].Material == matno) {
+                        if (c1.d.results[i].Material == mat) {
                             botResponse1 = "Enter Quantity."
                             flag = "1";
                             break;
@@ -1165,14 +1178,14 @@ else if (actionName=="action_materialnotmatched"){
                     botResponse1 = "Material not matched.Scan again!"
                 }
 
-                if (flag=="1"){
-                return res.json({
-                    speech: botResponse1,
-                    displayText: botResponse1,
-                    // speech: optionIntentname,
-                    // displayText: optionIntentname,
-                    source: "webhook-echo-sample",
-                     contextOut: [{
+                if (flag == "1") {
+                    return res.json({
+                        speech: botResponse1,
+                        displayText: botResponse1,
+                        // speech: optionIntentname,
+                        // displayText: optionIntentname,
+                        source: "webhook-echo-sample",
+                        contextOut: [{
                             name: "cQuantity",
                             lifespan: "1",
                             parameters: {
@@ -1188,26 +1201,35 @@ else if (actionName=="action_materialnotmatched"){
 
 
 
-                });
+                    });
                 }
 
-                else
-                {
-                  return res.json({
-                        speech:"Material not matched.Scan again!",
-                        displayText:"Material not matched.Scan again!",
+                else {
+                    return res.json({
+                        speech: "Material not matched.Scan again!",
+                        displayText: "Material not matched.Scan again!",
                         // speech: optionIntentname,
                         // displayText: optionIntentname,
                         source: "webhook-echo-sample",
-                    
-                    contextOut: [{
-                        name: "cmaterialnotmatched",
-                        lifespan: "1"
 
-                    }
-                    ]
-                          
-                        
+                        contextOut: [{
+                            name: "cmaterialnotmatched",
+                            lifespan: "1",
+                            parameters: {
+                                mat: mat,
+                                ponum: pnum
+                                //   key: "3"
+
+                            }
+
+                        }
+                        ],
+                        followupEvent: {
+                            name: "get_materialnotmatched"
+
+                        }
+
+
                     });
                 }
 
@@ -1220,9 +1242,9 @@ else if (actionName=="action_materialnotmatched"){
 
 
 
-  
-  
-         }
+
+
+    }
 
 
 
@@ -1237,14 +1259,13 @@ else if (actionName=="action_materialnotmatched"){
         var z = app.getContextArgument('c_counter', 'key');
         var tempContext = app.getContext('c_counter');
         var originalTemp = tempContext.parameters.key;
-      var m = tempContext.parameters.matno?tempContext.parameters.matno:"nomatno";
-      if(m!="nomatno")
-      {
-        cmaterial=m;
-      }
+        var m = tempContext.parameters.matno ? tempContext.parameters.matno : "nomatno";
+        if (m != "nomatno") {
+            cmaterial = m;
+        }
         if (originalTemp >= 0) {
             response = "Material " + cmaterial + " confirmed. Sacn another material";
-          //response = "Material " + m + " confirmed. Sacn another material";
+            //response = "Material " + m + " confirmed. Sacn another material";
             var c = originalTemp;
             var c1 = --c;
             if (c1 != "0") {
