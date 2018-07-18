@@ -1088,10 +1088,10 @@ restService.post("/wms", function (req, res) {
 
                 else {
                     return res.json({
-                        speech: "Material not matched.Scan again..",
-                        displayText: "Material not matched.Scan again..",
-                        // speech: optionIntentname,
-                        // displayText: optionIntentname,
+                     //   speech: "Material not matched.Scan again..",
+                      //  displayText: "Material not matched.Scan again..",
+                         speech: matno,
+                         displayText: matno,
                         source: "webhook-echo-sample",
                         contextOut: [{
                             name: "cmaterial",
