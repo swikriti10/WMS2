@@ -979,7 +979,7 @@ restService.post("/wms", function (req, res) {
                             source: "webhook-echo-sample",
                             contextOut: [{
                                 name: "c_counter",
-                                lifespan: "5",
+                                lifespan: "10",
                                 parameters: {
                                     key: itemcount
                                     //   key: "3"
@@ -1095,7 +1095,7 @@ restService.post("/wms", function (req, res) {
                         source: "webhook-echo-sample",
                         contextOut: [{
                             name: "cmaterial",
-                            lifespan: "5",
+                            lifespan: "10",
                             parameters: {
                                 material: matno,
                                 ponumber: pnum
