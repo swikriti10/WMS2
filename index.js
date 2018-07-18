@@ -1097,8 +1097,8 @@ restService.post("/wms", function (req, res) {
                             name: "cmaterial",
                             lifespan: "1",
                             parameters: {
-                                mat: matno,
-                                ponum: pnum
+                                material: matno,
+                                ponumber: pnum
                                 //   key: "3"
 
                             }
