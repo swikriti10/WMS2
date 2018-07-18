@@ -1237,7 +1237,7 @@ restService.post("/wms", function (req, res) {
                                     },
                                     {
                                         name: "c_counter",
-                                        lifespan: "5",
+                                        lifespan: "10",
                                         parameters: {
                                             key: c1,
 
@@ -1258,7 +1258,7 @@ restService.post("/wms", function (req, res) {
                                     source: "webhook-echo-sample",
                                     contextOut: [{
                                         name: "c_counter" + originalTemp + "",
-                                        lifespan: "10",
+                                        lifespan: "20",
                                         parameters: {
                                             quant: quantity,
                                             materialname: cmaterial
@@ -1267,7 +1267,7 @@ restService.post("/wms", function (req, res) {
                                     },
                                                     {
                                                         name: "c_counter",
-                                                        lifespan: "5",
+                                                        lifespan: "10",
                                                         parameters: {
                                                             key: c1,
 
