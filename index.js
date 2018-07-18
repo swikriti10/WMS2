@@ -1066,7 +1066,7 @@ restService.post("/wms", function (req, res) {
                         // speech: optionIntentname,
                         // displayText: optionIntentname,
                         source: "webhook-echo-sample",
-                      contextOut: [{
+                        contextOut: [{
                             name: "cQuantity",
                             lifespan: "1",
                             parameters: {
@@ -1077,7 +1077,7 @@ restService.post("/wms", function (req, res) {
 
                         }
                         ]
-                       
+
 
 
 
@@ -1088,10 +1088,10 @@ restService.post("/wms", function (req, res) {
 
                 else {
                     return res.json({
-                     //   speech: "Material not matched.Scan again..",
-                      //  displayText: "Material not matched.Scan again..",
-                         speech: matno,
-                         displayText: matno,
+                        //   speech: "Material not matched.Scan again..",
+                        //  displayText: "Material not matched.Scan again..",
+                        speech: matno+""+flag,
+                        displayText: matno + "" + flag,
                         source: "webhook-echo-sample",
                         contextOut: [{
                             name: "cmaterial",
@@ -1106,8 +1106,8 @@ restService.post("/wms", function (req, res) {
                         }
                         ]
 
-                       
-                        
+
+
 
 
                     });
@@ -1127,7 +1127,7 @@ restService.post("/wms", function (req, res) {
 
 
 
-   
+
 
 
 
