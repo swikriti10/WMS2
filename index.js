@@ -1259,7 +1259,7 @@ restService.post("/wms", function (req, res) {
                                 var response = "";
 
 
-                                for (; j >1; j--)
+                                for (; j >=1; j--)
                                 {
                                     if (j != 1) {
                                         var Context_1 = app.getContext('c_counter' + j);
