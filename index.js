@@ -1253,7 +1253,7 @@ restService.post("/wms", function (req, res) {
                                 var j=len1;
                                 var contextobj =[];
                                 var contextentity = {};
-                                for (; j >1; --j)
+                                for (; j >0; j--)
                                 {
                                     if (j != 1) {
                                         var Context_1 = app.getContext('c_counter' + j);
