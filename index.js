@@ -1284,14 +1284,23 @@ restService.post("/wms", function (req, res) {
 
 
                                 var e = contextobj.length;
+                              var e1="";
+                              var q=0;
+                              for(;q<e;q++)
+                                  {
+                                    if(q=="1")
+                                    {
+                                      e1=contextobj[q].material
+                                    }
+                              }
 
 
 
                                 return res.json({
                                    // speech: "GR successful",
                                    // displayText: "GR successful",
-                                     speech: e,
-                                     displayText: e,
+                                     speech: e1,
+                                     displayText: e1,
                                     source: "webhook-echo-sample",
                                     contextOut: [{
                                         name: "c_counter" + originalTemp + "",
