@@ -1250,7 +1250,7 @@ restService.post("/wms", function (req, res) {
                                 });
                             }
                             else {
-                                var j=len;
+                                var j=len1;
                                 var contextobj =[];
                                 var contextentity = {};
                                 for (; j >1; --j)
