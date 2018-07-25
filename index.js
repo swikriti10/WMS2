@@ -1253,7 +1253,13 @@ restService.post("/wms", function (req, res) {
                                 var j=len1;
                                 var contextobj =[];
                                 var contextentity = {};
-                                for (; j >0; j--)
+                                var entity = {};
+                                var obj = [];
+                                var entity2 = {};
+                                var response = "";
+
+
+                                for (; j >1; j--)
                                 {
                                     if (j != 1) {
                                         var Context_1 = app.getContext('c_counter' + j);
@@ -1282,25 +1288,161 @@ restService.post("/wms", function (req, res) {
                                 }
 
 
-
+                                var n=0;
+                                var q = 0;
                                 var e = contextobj.length;
-                              var e1="";
-                              var q=0;
-                              for(;q<e;q++)
-                                  {
-                                    if(q=="1")
+                                for (; n< len1; n++) {
+
+                                    for (; q<e; q++)
                                     {
-                                      e1=contextobj[q].material
+                                        var tosavematerial = contextobj[q].material;
+                                        var tosavequant = contextobj[q].openquantity;
+
+                                        if (c1.d.results[n].Material == tosavematerial) {
+
+                                            if(tosavematerial=="2")
+                                            {
+                                                entity1 = {
+
+                                                    'Material': c1.d.results[n].Material,
+                                                    'Plant': c1.d.results[n].Plant,
+                                                    'StgeLoc': c1.d.results[n].StLoc,
+                                                    'Batch': c1.d.results[n].Batch,
+                                                    'Vendrbatch': c1.d.results[n].VendorBatch,
+                                                    //  'MovType': c.d.results[0].MovType,
+                                                    'MovType': '101',
+                                                    'StckType': c1.d.results[n].StockType,
+                                                    'SpecStock': c1.d.results[n].SpecialStock,
+                                                    'Vendor': 'VENDOR',
+                                                    'ValType': c1.d.results[n].ValuationType,
+                                                    'EntryQnt': contextobj[q].openquantity,
+                                                    'EntryUom': c1.d.results[n].Uom,
+                                                    'PoNumber': c1.d.results[n].PoNumber,
+                                                    'PoItem': c1.d.results[n].ItemNo,
+                                                    'MvtInd': 'B'
+                                                    // 'SerialnoAutoNumberassignment': c.d.results[0].SerialSpecified
+
+
+                                                }
+                                                obj.push(entity1);
+
+                                            }
+
+                                            else if(tosavematerial=="43")
+                                            {
+                                                entity1 = {
+
+                                                    'Material': c1.d.results[n].Material,
+                                                    'Plant': c1.d.results[n].Plant,
+                                                    'StgeLoc': c1.d.results[n].StLoc,
+                                                    'Batch': c1.d.results[n].Batch,
+                                                    'Vendrbatch': c1.d.results[n].VendorBatch,
+                                                    //  'MovType': c.d.results[0].MovType,
+                                                    'MovType': '101',
+                                                    'StckType': c1.d.results[n].StockType,
+                                                    'SpecStock': c1.d.results[n].SpecialStock,
+                                                    'Vendor': 'VENDOR',
+                                                    'ValType': c1.d.results[n].ValuationType,
+                                                    'EntryQnt':contextobj[q].openquantity,
+                                                    'EntryUom': c1.d.results[n].Uom,
+                                                    'PoNumber': c1.d.results[n].PoNumber,
+                                                    'PoItem': c1.d.results[n].ItemNo,
+                                                    'MvtInd': 'B'
+                                                    // 'SerialnoAutoNumberassignment': c.d.results[0].SerialSpecified
+
+
+                                                }
+                                                obj.push(entity1);
+
+                                            }
+
+                                            else if (tosavematerial == "42") {
+                                                entity1 = {
+
+                                                    'Material': c1.d.results[n].Material,
+                                                    'Plant': c1.d.results[n].Plant,
+                                                    'StgeLoc': c1.d.results[n].StLoc,
+                                                    'Batch': c1.d.results[n].Batch,
+                                                    'Vendrbatch': c1.d.results[n].VendorBatch,
+                                                    //  'MovType': c.d.results[0].MovType,
+                                                    'MovType': '101',
+                                                    'StckType': c1.d.results[n].StockType,
+                                                    'SpecStock': c1.d.results[n].SpecialStock,
+                                                    'Vendor': 'VENDOR',
+                                                    'ValType': c1.d.results[n].ValuationType,
+                                                    'EntryQnt': contextobj[q].openquantity,
+                                                    'EntryUom': c1.d.results[n].Uom,
+                                                    'PoNumber': c1.d.results[n].PoNumber,
+                                                    'PoItem': c1.d.results[n].ItemNo,
+                                                    'MvtInd': 'B',
+                                                    'SerialnoAutoNumberassignment':'false'
+
+
+                                                }
+                                                obj.push(entity1);
+
+                                            }
+
                                     }
-                              }
+                            }
+                        }
+
+                                entity = {
+                                    'PstngDate': '2018-07-25T00:00:00',
+                                    'DocDate': '2018-07-25T00:00:00',
+                                    'PrUname': 'xy',
+                                    'HeaderTxt': '',
+                                    'GmCode': '01',
+                                    "MatItemRel": obj
+                                }
+
+
+                                // Do post
+
+                                request({
+
+
+                                    // url: url + "MaterialDocHdrSet?sap-client=900&sap-language=EN",
+
+                                    url: url1 + "MaterialDocHdrSet?sap-client=900&sap-language=EN",
+                                    //url: url + "MaterialDocHdrSet",
+                                    method: 'POST',
+                                    headers: {
+                                        "Authorization": "Basic c2FwdXNlcjpjcmF2ZTEyMw==",
+                                        "Content-Type": "application/json",
+                                        "X-Requested-With": "XMLHttpRequest",
+                                        "x-csrf-token": "" // set CSRF Token for post or update
+                                    },
+
+                                    json: entity
+                                }, function (error, response1, body) {
+
+                                    // handle response
+                                    if (!error && response1.statusCode == 201) {
+
+                                        response = "GR successful";
+                                       // console.log(response1.statusCode);
+                                    }
+                                    else {
+                                        response = "GR Failed!!!!!";
+                                        console.log(response1.statusCode);
+                                    }
+
+
+
+
+                                });
+
+
+                                /////////////////////////////////end post///////////////////////
 
 
 
                                 return res.json({
                                    // speech: "GR successful",
                                    // displayText: "GR successful",
-                                     speech: e1,
-                                     displayText: e1,
+                                     speech: e,
+                                     displayText: e,
                                     source: "webhook-echo-sample",
                                     contextOut: [{
                                         name: "c_counter" + originalTemp + "",
