@@ -1090,8 +1090,8 @@ restService.post("/wms", function (req, res) {
                     return res.json({
                         //   speech: "Material not matched.Scan again..",
                         //  displayText: "Material not matched.Scan again..",
-                        speech:"Material not matched.Scan again!!",
-                        displayText:"Material not matched.Scan again!!",
+                        speech: "Material not matched.Scan again!!",
+                        displayText: "Material not matched.Scan again!!",
                         source: "webhook-echo-sample",
                         contextOut: [{
                             name: "cmaterial",
@@ -1183,7 +1183,7 @@ restService.post("/wms", function (req, res) {
                                 break;
                             }
 
-                                                       
+
                         }
 
 
@@ -1193,13 +1193,13 @@ restService.post("/wms", function (req, res) {
                         return res.json({
                             //   speech: "Material not matched.Scan again..",
                             //  displayText: "Material not matched.Scan again..",
-                            speech:response,
-                            displayText:response,
+                            speech: response,
+                            displayText: response,
                             source: "webhook-echo-sample",
                             contextOut: [{
                                 name: "cQuantity",
                                 lifespan: "1",
-                               
+
 
                             }
                             ]
@@ -1250,11 +1250,48 @@ restService.post("/wms", function (req, res) {
                                 });
                             }
                             else {
+                                var j=len;
+                                var contextobj =[];
+                                var contextentity = {};
+                                for (; j >1; --j)
+                                {
+                                    if (j != 1) {
+                                        var Context_1 = app.getContext('c_counter' + j);
+                                        var mat_1 = Context_1.parameters.materialname;
+                                        var val_1 = Context_1.parameters.quant;
+
+                                        contextentity = {
+
+                                            'material': mat_1,
+                                            'openquantity': val_1
+                                        }
+
+                                        contextobj.push(contextentity);
+                                    }
+
+                                    else {
+
+                                        contextentity = {
+
+                                            'material': cmaterial,
+                                            'openquantity': quantity
+                                        }
+
+                                        contextobj.push(contextentity);
+                                    }
+                                }
+
+
+
+                                var e = contextobj.length;
+
+
+
                                 return res.json({
-                                    speech: "GR successful",
-                                    displayText: "GR successful",
-                                    // speech: optionIntentname,
-                                    // displayText: optionIntentname,
+                                   // speech: "GR successful",
+                                   // displayText: "GR successful",
+                                     speech: e,
+                                     displayText: e,
                                     source: "webhook-echo-sample",
                                     contextOut: [{
                                         name: "c_counter" + originalTemp + "",
@@ -1305,13 +1342,13 @@ restService.post("/wms", function (req, res) {
                 }
 
 
-               
 
-                
-              
-             
 
-                
+
+
+
+
+
 
 
                 //console.log(botResponse);
@@ -1319,8 +1356,8 @@ restService.post("/wms", function (req, res) {
 
 
         });
-        
-      
+
+
     }
 
 
