@@ -1294,8 +1294,14 @@ restService.post("/wms", function (req, res) {
                               var zz="";
                               var qz="";
                                 var e = contextobj.length;
-                                var tosavematerial = contextobj[0].material;
-                                var tosavequant = contextobj[0].openquantity;
+                              
+                              for (;n<len1;n++) {
+
+                                    for (;q<e;q++) {
+                                      
+                                      
+                                       var tosavematerial = contextobj[q].material;
+                                var tosavequant = contextobj[q].openquantity;
                                            
                                 return res.json({
                                     // speech: "GR successful",
@@ -1325,6 +1331,12 @@ restService.post("/wms", function (req, res) {
 
 
                                 });
+                              
+                                    }
+                              }
+                              
+                              
+                               
                             
 
 
