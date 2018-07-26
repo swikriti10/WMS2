@@ -1136,7 +1136,8 @@ restService.post("/wms", function (req, res) {
 
 
     else if (quantity != "zeroQuant") {
-        var response = "";
+        var response = ""; 
+      var entity;
         var z = app.getContextArgument('c_counter', 'key');
         var tempContext = app.getContext('c_counter');
         var originalTemp = tempContext.parameters.key;
@@ -1256,7 +1257,7 @@ restService.post("/wms", function (req, res) {
                                 var j = len1;
                                 var contextobj = [];
                                 var contextentity = {};
-                                var entity = {};
+                                //var entity = {};
                                 var obj = [];
                                 var entity2 = {};
                                 var response = "";
@@ -1345,8 +1346,8 @@ restService.post("/wms", function (req, res) {
 //    'MatItemRel': obj
 //}
                 entity=  {
-                "PstngDate":"2018-07-27T00:00:00",
-                "DocDate":"2018-07-27T00:00:00",
+                "PstngDate":"2018-07-26T00:00:00",
+                "DocDate":"2018-07-26T00:00:00",
                 "PrUname":"xy",
                 "HeaderTxt":"",
                 "GmCode":"01",
@@ -1370,7 +1371,7 @@ restService.post("/wms", function (req, res) {
 
                 }
                 ]
-            }  ;            
+            }             
                               
                             
                             
