@@ -1420,7 +1420,7 @@ restService.post("/wms", function (req, res) {
                                         "x-csrf-token": "" // set CSRF Token for post or update
                                     },
 
-                                    json:entity
+                                    //json:entity
                                 }, function (error, response1, body) {
 
                                     // handle response
@@ -1430,8 +1430,8 @@ restService.post("/wms", function (req, res) {
                                       return res.json({
                                     // speech: "GR successful",
                                     // displayText: "GR successful",
-                                    speech: response,
-                                    displayText: response,
+                                    speech: response+e,
+                                    displayText: response+e,
                                     source: "webhook-echo-sample",
                                     contextOut: [{
                                         name: "c_counter" + originalTemp + "",
@@ -1462,8 +1462,8 @@ restService.post("/wms", function (req, res) {
                                       return res.json({
                                     // speech: "GR successful",
                                     // displayText: "GR successful",
-                                    speech: response,
-                                    displayText: response,
+                                    speech: response+e,
+                                    displayText: response+e,
                                     source: "webhook-echo-sample",
                                     contextOut: [{
                                         name: "c_counter" + originalTemp + "",
