@@ -1294,18 +1294,14 @@ restService.post("/wms", function (req, res) {
                               var zz="";
                               var qz="";
                                 var e = contextobj.length;
-                                var tosavematerial = contextobj[q].material;
-                                var tosavequant = contextobj[q].openquantity;
-                              for (; n < len1; n++) {
-                                 if (c1.d.results[n].Material =="2") {
-
-                             qz=c1.d.results[n].OpenQuantity;
-                                   
-                                   return res.json({
+                                var tosavematerial = contextobj[0].material;
+                                var tosavequant = contextobj[0].openquantity;
+                                           
+                                return res.json({
                                     // speech: "GR successful",
                                     // displayText: "GR successful",
-                                    speech:qz,
-                                    displayText: qz,
+                                    speech: tosavequant,
+                                    displayText: tosavequant,
                                     source: "webhook-echo-sample",
                                     contextOut: [{
                                         name: "c_counter" + originalTemp + "",
@@ -1329,19 +1325,6 @@ restService.post("/wms", function (req, res) {
 
 
                                 });
-                                   
-                                   
-                                   
-                                   
-                                   
-                                   
-                                   
-                                   
-                                 }
-                                                              
-                              }
-                                                            
-
                             
 
 
