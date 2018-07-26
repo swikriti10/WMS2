@@ -1300,7 +1300,7 @@ restService.post("/wms", function (req, res) {
 
                                         if (c1.d.results[n].Material == tosavematerial) {
 
-                                    if (tosavematerial == "2") {
+                                    if (tosavematerial =="2") {
                                         entity1 = {
                  "Material":c1.d.results[n].Material,
                 "Plant":c1.d.results[n].Plant,
@@ -1313,7 +1313,7 @@ restService.post("/wms", function (req, res) {
                 "SpecStock":c1.d.results[n].SpecialStock,
                 "Vendor":"VENDOR",
                 "ValType":c1.d.results[n].ValuationType,
-                "EntryQnt":contextobj[q].openquantity,
+                "EntryQnt":c1.d.results[n].OpenQuantity,
                 "EntryUom":c1.d.results[n].Uom,
                 "PoNumber":c1.d.results[n].PoNumber,
                 "PoItem":c1.d.results[n].ItemNo,
@@ -1411,7 +1411,7 @@ restService.post("/wms", function (req, res) {
                                         "x-csrf-token": "" // set CSRF Token for post or update
                                     },
 
-                                    json: entity
+                                    json:entity
                                 }, function (error, response1, body) {
 
                                     // handle response
