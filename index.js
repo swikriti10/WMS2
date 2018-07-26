@@ -1294,11 +1294,11 @@ restService.post("/wms", function (req, res) {
                               var zz="";
                               var qz="";
                                 var e = contextobj.length;
-                              
+                              var qz=c1;
                               for (;n<len1;n++) {
 
                                     for (;q<e;q++) {
-                                    zz=c1.d.results[n].Material;
+                                    zz=qz.d.results[n].Material?qz.d.results[n].Material:"hu";
                                       
                                        var tosavematerial = contextobj[q].material;
                                 var tosavequant = contextobj[q].openquantity;
