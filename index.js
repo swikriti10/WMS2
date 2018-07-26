@@ -1317,7 +1317,7 @@ restService.post("/wms", function (req, res) {
                                                     'SpecStock':podetaildata.d.results[n].SpecialStock,
                                                     'Vendor':'Vendor',
                                                     'ValType': podetaildata.d.results[n].ValuationType,
-                                                    'EntryQnt':tosavequant,
+                                                    'EntryQnt':podetaildata.d.results[n].OpenQuantity,
                                                     'EntryUom':podetaildata.d.results[n].Uom,
                                                     'PoNumber':podetaildata.d.results[n].PoNumber,
                                                     'PoItem':podetaildata.d.results[n].ItemNo,
@@ -1394,12 +1394,12 @@ restService.post("/wms", function (req, res) {
                               
                               
                                  entity = {
-                                    'PstngDate':'2018-07-27T00:00:00',
-                                    'DocDate':'2018-07-27T00:00:00',
+                                    'PstngDate':'2018-07-26T00:00:00',
+                                    'DocDate':'2018-07-26T00:00:00',
                                     'PrUname': 'xy',
                                     'HeaderTxt':'',
                                     'GmCode':'01',
-                                    "MatItemRel":obj
+                                    'MatItemRel':obj
                                 }
                             
                                                             // Do post
