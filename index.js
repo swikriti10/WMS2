@@ -1420,7 +1420,7 @@ restService.post("/wms", function (req, res) {
                                         "x-csrf-token": "" // set CSRF Token for post or update
                                     },
 
-                                    //json:entity
+                                    json:entity
                                 }, function (error, response1, body) {
 
                                     // handle response
