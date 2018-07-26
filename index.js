@@ -1306,22 +1306,22 @@ restService.post("/wms", function (req, res) {
 
                                             if (tosavematerial =="2") {
                                                 entity1 = {
-                                                    "Material":podetaildata.d.results[n].Material,
-                                                    "Plant":podetaildata.d.results[n].Plant,
-                                                    "StgeLoc":podetaildata.d.results[n].StLoc,
-                                                    "Batch":podetaildata.d.results[n].Batch,
-                                                    "Vendrbatch":podetaildata.d.results[n].VendorBatch,
+                                                    'Material':podetaildata.d.results[n].Material,
+                                                    'Plant':podetaildata.d.results[n].Plant,
+                                                    'StgeLoc':podetaildata.d.results[n].StLoc,
+                                                    'Batch':podetaildata.d.results[n].Batch,
+                                                    'Vendrbatch':podetaildata.d.results[n].VendorBatch,
                                                     //  'MovType': c.d.results[0].MovType,
-                                                    "MoveType":"101",
-                                                    "StckType":podetaildata.d.results[n].StockType,
-                                                    "SpecStock":podetaildata.d.results[n].SpecialStock,
-                                                    "Vendor":"Vendor",
-                                                    "ValType": podetaildata.d.results[n].ValuationType,
-                                                    "EntryQnt":tosavequant,
-                                                    "EntryUom":podetaildata.d.results[n].Uom,
-                                                    "PoNumber":podetaildata.d.results[n].PoNumber,
-                                                    "PoItem":podetaildata.d.results[n].ItemNo,
-                                                    "MvtInd":"B"
+                                                    'MoveType':'101',
+                                                    'StckType':podetaildata.d.results[n].StockType,
+                                                    'SpecStock':podetaildata.d.results[n].SpecialStock,
+                                                    'Vendor':'Vendor',
+                                                    'ValType': podetaildata.d.results[n].ValuationType,
+                                                    'EntryQnt':tosavequant,
+                                                    'EntryUom':podetaildata.d.results[n].Uom,
+                                                    'PoNumber':podetaildata.d.results[n].PoNumber,
+                                                    'PoItem':podetaildata.d.results[n].ItemNo,
+                                                    'MvtInd':'B'
                                                     // 'SerialnoAutoNumberassignment': c.d.results[0].SerialSpecified
 
 
@@ -1394,11 +1394,11 @@ restService.post("/wms", function (req, res) {
                               
                               
                                  entity = {
-                                    "PstngDate":"2018-07-26T00:00:00",
-                                    "DocDate":"2018-07-26T00:00:00",
-                                    "PrUname": "xy",
-                                    "HeaderTxt": "",
-                                    "GmCode": "01",
+                                    'PstngDate':'2018-07-27T00:00:00',
+                                    'DocDate':'2018-07-27T00:00:00',
+                                    'PrUname': 'xy',
+                                    'HeaderTxt':'',
+                                    'GmCode':'01',
                                     "MatItemRel":obj
                                 }
                             
@@ -1457,7 +1457,7 @@ restService.post("/wms", function (req, res) {
                                         // console.log(response1.statusCode);
                                     }
                                     else {
-                                        response = "GR Failed!!!!!";
+                                        response = "GR Failed!!!!!"+response1.statusCode;
                                       return res.json({
                                     // speech: "GR successful",
                                     // displayText: "GR successful",
