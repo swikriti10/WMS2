@@ -1302,21 +1302,21 @@ restService.post("/wms", function (req, res) {
 
                                     if (tosavematerial == "2") {
                                         entity1 = {
-                 "Material":c.d.results[0].Material,
-                "Plant":c.d.results[0].Plant,
-                "StgeLoc":c.d.results[0].StLoc,
-                "Batch":c.d.results[0].Batch,
-                "Vendrbatch":c.d.results[0].VendorBatch,
+                 "Material":c1.d.results[n].Material,
+                "Plant":c1.d.results[n].Plant,
+                "StgeLoc":c1.d.results[n].StLoc,
+                "Batch":c1.d.results[n].Batch,
+                "Vendrbatch":c1.d.results[n].VendorBatch,
                 //  'MovType': c.d.results[0].MovType,
                 "MoveType":'101',
-                "StckType":c.d.results[0].StockType,
-                "SpecStock":c.d.results[0].SpecialStock,
+                "StckType":c1.d.results[n].StockType,
+                "SpecStock":c1.d.results[n].SpecialStock,
                 "Vendor":"VENDOR",
-                "ValType":c.d.results[0].ValuationType,
+                "ValType":c1.d.results[n].ValuationType,
                 "EntryQnt":contextobj[q].openquantity,
-                "EntryUom":c.d.results[0].Uom,
-                "PoNumber":c.d.results[0].PoNumber,
-                "PoItem":c.d.results[0].ItemNo,
+                "EntryUom":c1.d.results[n].Uom,
+                "PoNumber":c1.d.results[n].PoNumber,
+                "PoItem":c1.d.results[n].ItemNo,
                 "MvtInd":'B'
                 // 'SerialnoAutoNumberassignment': c.d.results[0].SerialSpecified
 
