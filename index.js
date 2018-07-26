@@ -1300,12 +1300,8 @@ restService.post("/wms", function (req, res) {
                                  if (c1.d.results[n].Material =="2") {
 
                              qz=c1.d.results[n].OpenQuantity;
-                                 }
-                                                              
-                              }
-                                                            
-
-                            return res.json({
+                                   
+                                   return res.json({
                                     // speech: "GR successful",
                                     // displayText: "GR successful",
                                     speech:qz,
@@ -1333,6 +1329,20 @@ restService.post("/wms", function (req, res) {
 
 
                                 });
+                                   
+                                   
+                                   
+                                   
+                                   
+                                   
+                                   
+                                   
+                                 }
+                                                              
+                              }
+                                                            
+
+                            
 
 
 
