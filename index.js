@@ -1316,7 +1316,7 @@ restService.post("/wms", function (req, res) {
                                                     'MoveType':'101',
                                                     'StckType':podetaildata.d.results[n].StockType,
                                                     'SpecStock':podetaildata.d.results[n].SpecialStock,
-                                                    'Vendor':'Vendor',
+                                                    'Vendor':'VENDOR',
                                                     'ValType': podetaildata.d.results[n].ValuationType,
                                                     'EntryQnt':podetaildata.d.results[n].OpenQuantity,
                                                     'EntryUom':podetaildata.d.results[n].Uom,
@@ -1337,41 +1337,15 @@ restService.post("/wms", function (req, res) {
                               }
                               
                               
-                               //entity = {
-//    'PstngDate': '2018-07-26T00:00:00',
-//    'DocDate': '2018-07-26T00:00:00',
-//    'PrUname': 'xy',
-//    'HeaderTxt': '',
-//    'GmCode': '01',
-//    'MatItemRel': obj
-//}
-                entity=  {
-                "PstngDate":"2018-07-26T00:00:00",
-                "DocDate":"2018-07-26T00:00:00",
-                "PrUname":"xy",
-                "HeaderTxt":"",
-                "GmCode":"01",
-                "MatItemRel":[
-                {
-                    "Material":"2",
-                    "Plant":"0001",
-                    "StgeLoc":"0088",
-                    "Batch":"",
-                    "Vendrbatch":"",
-                    "MoveType" : "101",
-                    "StckType":"",
-                    "SpecStock":"",
-                    "Vendor":"VENDOR",
-                    "ValType":"",
-                    "EntryQnt":"7.000",
-                    "EntryUom":"EA",
-                    "PoNumber":"4500000950",
-                    "PoItem":"00010",
-                    "MvtInd":"B"
-
-                }
-                ]
-            }             
+                               entity = {
+   'PstngDate': '2018-07-26T00:00:00',
+   'DocDate': '2018-07-26T00:00:00',
+    'PrUname': 'xy',
+   'HeaderTxt': '',
+   'GmCode': '01',
+   'MatItemRel': obj
+}
+               
                               
                             
                             
