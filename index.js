@@ -1345,8 +1345,8 @@ restService.post("/wms", function (req, res) {
 //    'MatItemRel': obj
 //}
                 entity=  {
-                "PstngDate":"2018-07-26T00:00:00",
-                "DocDate":"2018-07-26T00:00:00",
+                "PstngDate":"2018-07-27T00:00:00",
+                "DocDate":"2018-07-27T00:00:00",
                 "PrUname":"xy",
                 "HeaderTxt":"",
                 "GmCode":"01",
@@ -1385,7 +1385,7 @@ restService.post("/wms", function (req, res) {
                                     //url: url + "MaterialDocHdrSet",
                                     method: 'POST',
                                     headers: {
-                                        //  "Authorization": "Basic c2FwdXNlcjpjcmF2ZTEyMw==",
+                                          "Authorization": "Basic c2FwdXNlcjpjcmF2ZTEyMw==",
                                         "Content-Type": "application/json",
                                         "X-Requested-With": "XMLHttpRequest",
                                         "x-csrf-token": "" // set CSRF Token for post or update
