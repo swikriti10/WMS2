@@ -1304,24 +1304,24 @@ restService.post("/wms", function (req, res) {
                                qz=podetaildata.d.results[n].Material;
                                if (podetaildata.d.results[n].Material == tosavematerial) {
 
-                                            if (tosavematerial == "2") {
+                                            if (tosavematerial =="2") {
                                                 entity1 = {
-                                                    "Material": podetaildata.d.results[n].Material,
-                                                    "Plant": podetaildata.d.results[n].Plant,
-                                                    "StgeLoc": podetaildata.d.results[n].StLoc,
-                                                    "Batch": podetaildata.d.results[n].Batch,
-                                                    "Vendrbatch": podetaildata.d.results[n].VendorBatch,
+                                                    "Material":podetaildata.d.results[n].Material,
+                                                    "Plant":podetaildata.d.results[n].Plant,
+                                                    "StgeLoc":podetaildata.d.results[n].StLoc,
+                                                    "Batch":podetaildata.d.results[n].Batch,
+                                                    "Vendrbatch":podetaildata.d.results[n].VendorBatch,
                                                     //  'MovType': c.d.results[0].MovType,
-                                                    "MoveType": '101',
-                                                    "StckType": podetaildata.d.results[n].StockType,
-                                                    "SpecStock": podetaildata.d.results[n].SpecialStock,
+                                                    "MoveType":"101",
+                                                    "StckType":podetaildata.d.results[n].StockType,
+                                                    "SpecStock":podetaildata.d.results[n].SpecialStock,
                                                     "Vendor": "VENDOR",
                                                     "ValType": podetaildata.d.results[n].ValuationType,
                                                     "EntryQnt":tosavequant,
-                                                    "EntryUom": podetaildata.d.results[n].Uom,
-                                                    "PoNumber": podetaildata.d.results[n].PoNumber,
-                                                    "PoItem": podetaildata.d.results[n].ItemNo,
-                                                    "MvtInd": 'B'
+                                                    "EntryUom":podetaildata.d.results[n].Uom,
+                                                    "PoNumber":podetaildata.d.results[n].PoNumber,
+                                                    "PoItem":podetaildata.d.results[n].ItemNo,
+                                                    "MvtInd":"B"
                                                     // 'SerialnoAutoNumberassignment': c.d.results[0].SerialSpecified
 
 
