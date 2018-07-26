@@ -1394,15 +1394,15 @@ restService.post("/wms", function (req, res) {
                               
                               
                                  entity = {
-                                    "PstngDate": "2018-07-26T00:00:00",
-                                    "DocDate": "2018-07-26T00:00:00",
+                                    "PstngDate": "2018-07-27T00:00:00",
+                                    "DocDate": "2018-07-27T00:00:00",
                                     "PrUname": "xy",
                                     "HeaderTxt": "",
                                     "GmCode": "01",
                                     "MatItemRel":obj
                                 }
                             
-                                                                      // Do post
+                                     var olen= obj.length;                             // Do post
 
                                 request({
 
@@ -1425,7 +1425,7 @@ restService.post("/wms", function (req, res) {
                                     // handle response
                                     if (!error && response1.statusCode == 201) {
 
-                                        response = "GR successful";
+                                        response = "GR successful"+olen;
                                       return res.json({
                                     // speech: "GR successful",
                                     // displayText: "GR successful",
@@ -1457,7 +1457,7 @@ restService.post("/wms", function (req, res) {
                                         // console.log(response1.statusCode);
                                     }
                                     else {
-                                        response = "GR Failed!!!!!";
+                                        response = "GR Failed!!!!!"+olen;
                                       return res.json({
                                     // speech: "GR successful",
                                     // displayText: "GR successful",
