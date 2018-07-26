@@ -1257,7 +1257,7 @@ restService.post("/wms", function (req, res) {
                                 var obj = [];
                                 var entity2 = {};
                                 var response = "";
-
+                                     var entity1;
 
                                 for (; j >=1; j--) {
                                     if (j != 1) {
@@ -1300,27 +1300,26 @@ restService.post("/wms", function (req, res) {
 
                                             if (tosavematerial == "2") {
                                                 entity1 = {
+                 "Material":c.d.results[0].Material,
+                "Plant":c.d.results[0].Plant,
+                "StgeLoc":c.d.results[0].StLoc,
+                "Batch":c.d.results[0].Batch,
+                "Vendrbatch":c.d.results[0].VendorBatch,
+                //  'MovType': c.d.results[0].MovType,
+                "MoveType":'101',
+                "StckType":c.d.results[0].StockType,
+                "SpecStock":c.d.results[0].SpecialStock,
+                "Vendor":"VENDOR",
+                "ValType":c.d.results[0].ValuationType,
+                "EntryQnt":contextobj[q].openquantity,
+                "EntryUom":c.d.results[0].Uom,
+                "PoNumber":c.d.results[0].PoNumber,
+                "PoItem":c.d.results[0].ItemNo,
+                "MvtInd":'B'
+                // 'SerialnoAutoNumberassignment': c.d.results[0].SerialSpecified
 
-                                                    'Material': c1.d.results[n].Material,
-                                                    'Plant': c1.d.results[n].Plant,
-                                                    'StgeLoc': c1.d.results[n].StLoc,
-                                                    'Batch': c1.d.results[n].Batch,
-                                                    'Vendrbatch': c1.d.results[n].VendorBatch,
-                                                    //  'MovType': c.d.results[0].MovType,
-                                                    'MoveType': '101',
-                                                    'StckType': c1.d.results[n].StockType,
-                                                    'SpecStock': c1.d.results[n].SpecialStock,
-                                                    'Vendor': 'VENDOR',
-                                                    'ValType': c1.d.results[n].ValuationType,
-                                                    'EntryQnt': contextobj[q].openquantity,
-                                                    'EntryUom': c1.d.results[n].Uom,
-                                                    'PoNumber': c1.d.results[n].PoNumber,
-                                                    'PoItem': c1.d.results[n].ItemNo,
-                                                    'MvtInd': 'B'
-                                                    // 'SerialnoAutoNumberassignment': c.d.results[0].SerialSpecified
 
-
-                                                }
+            }
                                                 obj.push(entity1);
 
                                             }
@@ -1384,13 +1383,13 @@ restService.post("/wms", function (req, res) {
                                 }
 
                                 entity = {
-                                    'PstngDate': '2018-07-25T00:00:00',
-                                    'DocDate': '2018-07-25T00:00:00',
-                                    'PrUname': 'xy',
-                                    'HeaderTxt': '',
-                                    'GmCode': '01',
-                                    "MatItemRel": obj
-                                }
+                           "PstngDate": "2018-07-26T00:00:00",
+                        "DocDate":"2018-07-26T00:00:00",
+                        "PrUname":"xy",
+                        "HeaderTxt":"",
+                        "GmCode": "01",
+                        "MatItemRel":obj
+            }
 
 
                                 // Do post
@@ -1404,7 +1403,7 @@ restService.post("/wms", function (req, res) {
                                     //url: url + "MaterialDocHdrSet",
                                     method: 'POST',
                                     headers: {
-                                        "Authorization": "Basic c2FwdXNlcjpjcmF2ZTEyMw==",
+                                      //  "Authorization": "Basic c2FwdXNlcjpjcmF2ZTEyMw==",
                                         "Content-Type": "application/json",
                                         "X-Requested-With": "XMLHttpRequest",
                                         "x-csrf-token": "" // set CSRF Token for post or update
