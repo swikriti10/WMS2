@@ -1405,7 +1405,7 @@ restService.post("/wms", function (req, res) {
                             var ol1=obj[0].EntryQnt;
                             var ol2=obj[0].Material;
                             var ol3=obj[1].EntryQnt;
-                            var ol4=obj[0].Material;
+                            var ol4=obj[1].Material;
                             
                                                             // Do post
 
@@ -1466,7 +1466,7 @@ restService.post("/wms", function (req, res) {
                                       return res.json({
                                     // speech: "GR successful",
                                     // displayText: "GR successful",
-                                    speech: response+ol1+ol2,
+                                    speech: response+ol1+ol2+ol3+ol4,
                                     displayText: response+ol1+ol2+ol3+ol4,
                                     source: "webhook-echo-sample",
                                     contextOut: [{
