@@ -1403,7 +1403,9 @@ restService.post("/wms", function (req, res) {
                               
                             var ol=obj.length;
                             var ol1=obj[0].EntryQnt;
-                            var ol2=obj[1].EntryQnt;
+                            var ol2=obj[0].Material;
+                            var ol3=obj[1].EntryQnt;
+                            var ol4=obj[0].Material;
                             
                                                             // Do post
 
@@ -1465,7 +1467,7 @@ restService.post("/wms", function (req, res) {
                                     // speech: "GR successful",
                                     // displayText: "GR successful",
                                     speech: response+ol1+ol2,
-                                    displayText: response+ol1+ol2,
+                                    displayText: response+ol1+ol2+ol3+ol4,
                                     source: "webhook-echo-sample",
                                     contextOut: [{
                                         name: "c_counter" + originalTemp + "",
