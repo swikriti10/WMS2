@@ -1293,32 +1293,7 @@ restService.post("/wms", function (req, res) {
                                 var q = 0;
                               var zz="";
                                 var e = contextobj.length;
-                                for (; n < len1; n++) {
-
-                                    for (; q < e; q++) {
-                                        var tosavematerial = contextobj[q].material;
-                                        var tosavequant = contextobj[q].openquantity;
-
-                                        if (c1.d.results[n].Material == tosavematerial) {
-                                          
-                                          if(tosavematerial=="2"){
-                                            
-                                             zz=c1.d.results[n].Material;
-                                          }
-
-                                        }
-                                    }
-                                }
-
-                                entity = {
-                           "PstngDate": "2018-07-26T00:00:00",
-                        "DocDate":"2018-07-26T00:00:00",
-                        "PrUname":"xy",
-                        "HeaderTxt":"",
-                        "GmCode": "01",
-                        "MatItemRel":obj
-            }
-
+                                                              
 
                             return res.json({
                                     // speech: "GR successful",
