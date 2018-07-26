@@ -1298,7 +1298,7 @@ restService.post("/wms", function (req, res) {
                               for (;n<len1;n++) {
 
                                     for (;q<e;q++) {
-                                      
+                                    zz=c1.d.results[n].Material;
                                       
                                        var tosavematerial = contextobj[q].material;
                                 var tosavequant = contextobj[q].openquantity;
@@ -1306,8 +1306,8 @@ restService.post("/wms", function (req, res) {
                                 return res.json({
                                     // speech: "GR successful",
                                     // displayText: "GR successful",
-                                    speech: tosavequant,
-                                    displayText: tosavequant,
+                                    speech: zz,
+                                    displayText: zz,
                                     source: "webhook-echo-sample",
                                     contextOut: [{
                                         name: "c_counter" + originalTemp + "",
