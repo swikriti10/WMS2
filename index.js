@@ -1289,17 +1289,26 @@ restService.post("/wms", function (req, res) {
                                 }
 
 
-                                var n = 0;
-                                var q = 0;
+                                var n=0;
+                                var q=0;
                               var zz="";
+                              var qz="";
                                 var e = contextobj.length;
+                                var tosavematerial = contextobj[q].material;
+                                var tosavequant = contextobj[q].openquantity;
+                              for (; n < len1; n++) {
+                                 if (c1.d.results[n].Material =="2") {
+
+                             qz=c1.d.results[n].OpenQuantity;
                                                               
+                              }
+                                                            
 
                             return res.json({
                                     // speech: "GR successful",
                                     // displayText: "GR successful",
-                                    speech: e,
-                                    displayText: e,
+                                    speech:qz,
+                                    displayText: qz,
                                     source: "webhook-echo-sample",
                                     contextOut: [{
                                         name: "c_counter" + originalTemp + "",
