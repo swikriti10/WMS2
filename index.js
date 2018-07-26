@@ -1297,7 +1297,7 @@ restService.post("/wms", function (req, res) {
                               var qz="";
                                 var e = contextobj.length;
                               for (;n<len1;n++) {
-
+                                       q=0;
                                     for (;q<e;q++) {
                                    
                                        var tosavematerial = contextobj[q].material;
