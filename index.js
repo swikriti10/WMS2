@@ -1370,7 +1370,7 @@ restService.post("/wms", function (req, res) {
 
                 }
                 ]
-            }              
+            }  ;            
                               
                             
                             
@@ -1385,7 +1385,7 @@ restService.post("/wms", function (req, res) {
                                     //url: url + "MaterialDocHdrSet",
                                     method: 'POST',
                                     headers: {
-                                          "Authorization": "Basic c2FwdXNlcjpjcmF2ZTEyMw==",
+                                        //  "Authorization": "Basic c2FwdXNlcjpjcmF2ZTEyMw==",
                                         "Content-Type": "application/json",
                                         "X-Requested-With": "XMLHttpRequest",
                                         "x-csrf-token": "" // set CSRF Token for post or update
