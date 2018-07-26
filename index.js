@@ -1330,6 +1330,60 @@ restService.post("/wms", function (req, res) {
                                                 obj.push(entity1);
 
                                             }
+                                            else if (tosavematerial == "43") {
+                                                entity1 = {
+
+                                                    'Material': c1.d.results[n].Material,
+                                                    'Plant': c1.d.results[n].Plant,
+                                                    'StgeLoc': c1.d.results[n].StLoc,
+                                                    'Batch': c1.d.results[n].Batch,
+                                                    'Vendrbatch': c1.d.results[n].VendorBatch,
+                                                    //  'MovType': c.d.results[0].MovType,
+                                                    'MoveType': '101',
+                                                    'StckType': c1.d.results[n].StockType,
+                                                    'SpecStock': c1.d.results[n].SpecialStock,
+                                                    'Vendor': 'VENDOR',
+                                                    'ValType': c1.d.results[n].ValuationType,
+                                                    'EntryQnt': contextobj[q].openquantity,
+                                                    'EntryUom': c1.d.results[n].Uom,
+                                                    'PoNumber': c1.d.results[n].PoNumber,
+                                                    'PoItem': c1.d.results[n].ItemNo,
+                                                    'MvtInd': 'B'
+                                                    // 'SerialnoAutoNumberassignment': c.d.results[0].SerialSpecified
+
+
+                                                }
+                                                obj.push(entity1);
+
+                                            }
+
+                                            else if (tosavematerial == "42") {
+                                                entity1 = {
+
+                                                    'Material': c1.d.results[n].Material,
+                                                    'Plant': c1.d.results[n].Plant,
+                                                    'StgeLoc': c1.d.results[n].StLoc,
+                                                    'Batch': c1.d.results[n].Batch,
+                                                    'Vendrbatch': c1.d.results[n].VendorBatch,
+                                                    //  'MovType': c.d.results[0].MovType,
+                                                    'MoveType': '101',
+                                                    'StckType': c1.d.results[n].StockType,
+                                                    'SpecStock': c1.d.results[n].SpecialStock,
+                                                    'Vendor': 'VENDOR',
+                                                    'ValType': c1.d.results[n].ValuationType,
+                                                    'EntryQnt': contextobj[q].openquantity,
+                                                    'EntryUom': c1.d.results[n].Uom,
+                                                    'PoNumber': c1.d.results[n].PoNumber,
+                                                    'PoItem': c1.d.results[n].ItemNo,
+                                                    'MvtInd': 'B',
+                                                    'SerialnoAutoNumberassignment': 'false'
+
+
+                                                }
+                                                obj.push(entity1);
+
+                                            }
+
                                  
                                  
                                            }
