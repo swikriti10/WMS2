@@ -1336,17 +1336,43 @@ restService.post("/wms", function (req, res) {
                               }
                               
                               
-                                 entity = {
-                                    'PstngDate':'2018-07-26T00:00:00',
-                                    'DocDate':'2018-07-26T00:00:00',
-                                    'PrUname': 'xy',
-                                    'HeaderTxt':'',
-                                    'GmCode':'01',
-                                    'MatItemRel':obj
-                                } 
+                               //entity = {
+//    'PstngDate': '2018-07-26T00:00:00',
+//    'DocDate': '2018-07-26T00:00:00',
+//    'PrUname': 'xy',
+//    'HeaderTxt': '',
+//    'GmCode': '01',
+//    'MatItemRel': obj
+//}
+                entity=  {
+                "PstngDate":"2018-07-26T00:00:00",
+                "DocDate":"2018-07-26T00:00:00",
+                "PrUname":"xy",
+                "HeaderTxt":"",
+                "GmCode":"01",
+                "MatItemRel":[
+                {
+                    "Material":"2",
+                    "Plant":"0001",
+                    "StgeLoc":"0088",
+                    "Batch":"",
+                    "Vendrbatch":"",
+                    "MoveType" : "101",
+                    "StckType":"",
+                    "SpecStock":"",
+                    "Vendor":"VENDOR",
+                    "ValType":"",
+                    "EntryQnt":"7.000",
+                    "EntryUom":"EA",
+                    "PoNumber":"4500000950",
+                    "PoItem":"00010",
+                    "MvtInd":"B"
+
+                }
+                ]
+            }              
                               
-                              
-                              var ol=obj[0].PoNumber;
+                            
                             
                                                             // Do post
 
@@ -1403,7 +1429,7 @@ restService.post("/wms", function (req, res) {
                                         // console.log(response1.statusCode);
                                     }
                                     else {
-                                        response = "GR Failed!!!!!"+ol;
+                                        response = "GR Failed!!!!!";
                                       return res.json({
                                     // speech: "GR successful",
                                     // displayText: "GR successful",
