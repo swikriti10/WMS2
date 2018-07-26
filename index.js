@@ -1418,28 +1418,11 @@ restService.post("/wms", function (req, res) {
                                     if (!error && response1.statusCode == 201) {
 
                                         response = "GR successful";
-                                        // console.log(response1.statusCode);
-                                    }
-                                    else {
-                                        response = "GR Failed!!!!!";
-                                        console.log(response1.statusCode);
-                                    }
-
-
-
-
-                                });
-
-
-                                /////////////////////////////////end post///////////////////////
-
-
-
-                                return res.json({
+                                        return res.json({
                                     // speech: "GR successful",
                                     // displayText: "GR successful",
-                                    speech: e,
-                                    displayText: e,
+                                    speech: response,
+                                    displayText: response,
                                     source: "webhook-echo-sample",
                                     contextOut: [{
                                         name: "c_counter" + originalTemp + "",
@@ -1463,6 +1446,56 @@ restService.post("/wms", function (req, res) {
 
 
                                 });
+                                     
+                                      
+                                        // console.log(response1.statusCode);
+                                    }
+                                    else {
+                                        response = "GR Failed!!!!!";
+                                      
+                                       return res.json({
+                                    // speech: "GR successful",
+                                    // displayText: "GR successful",
+                                    speech: response,
+                                    displayText: response,
+                                    source: "webhook-echo-sample",
+                                    contextOut: [{
+                                        name: "c_counter" + originalTemp + "",
+                                        lifespan: "20",
+                                        parameters: {
+                                            quant: quantity,
+                                            materialname: cmaterial
+
+                                        }
+                                    },
+                                                    {
+                                                        name: "c_counter",
+                                                        lifespan: "10",
+                                                        parameters: {
+                                                            key: c1,
+
+
+                                                        }
+                                                    }
+                                    ]
+
+
+                                });
+                               
+                                        console.log(response1.statusCode);
+                                    }
+
+
+
+
+                                });
+
+
+                                /////////////////////////////////end post///////////////////////
+
+
+
+                              
 
 
                                 //  });
