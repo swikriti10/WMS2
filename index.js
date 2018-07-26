@@ -1401,7 +1401,7 @@ restService.post("/wms", function (req, res) {
 }
                
                               
-                            
+                            var ol=obj.length;
                             
                                                             // Do post
 
@@ -1462,8 +1462,8 @@ restService.post("/wms", function (req, res) {
                                       return res.json({
                                     // speech: "GR successful",
                                     // displayText: "GR successful",
-                                    speech: response+e,
-                                    displayText: response+e,
+                                    speech: response+ol,
+                                    displayText: response+ol,
                                     source: "webhook-echo-sample",
                                     contextOut: [{
                                         name: "c_counter" + originalTemp + "",
