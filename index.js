@@ -1331,63 +1331,6 @@ restService.post("/wms", function (req, res) {
                                             }
                                  
                                  
-                                 
-                                            else if (tosavematerial == "43") {
-                                                entity1 = {
-
-                                                    'Material': podetaildata.d.results[n].Material,
-                                                    'Plant': podetaildata.d.results[n].Plant,
-                                                    'StgeLoc': podetaildata.d.results[n].StLoc,
-                                                    'Batch': podetaildata.d.results[n].Batch,
-                                                    'Vendrbatch': podetaildata.d.results[n].VendorBatch,
-                                                    //  'MovType': c.d.results[0].MovType,
-                                                    'MoveType': '101',
-                                                    'StckType': podetaildata.d.results[n].StockType,
-                                                    'SpecStock': podetaildata.d.results[n].SpecialStock,
-                                                    'Vendor': 'VENDOR',
-                                                    'ValType': podetaildata.d.results[n].ValuationType,
-                                                    'EntryQnt': contextobj[q].openquantity,
-                                                    'EntryUom': podetaildata.d.results[n].Uom,
-                                                    'PoNumber': podetaildata.d.results[n].PoNumber,
-                                                    'PoItem': podetaildata.d.results[n].ItemNo,
-                                                    'MvtInd': 'B'
-                                                    // 'SerialnoAutoNumberassignment': c.d.results[0].SerialSpecified
-
-
-                                                }
-                                                obj.push(entity1);
-
-                                            }
-
-                                            else if (tosavematerial == "42") {
-                                                entity1 = {
-
-                                                    'Material':podetaildata.d.results[n].Material,
-                                                    'Plant':podetaildata.d.results[n].Plant,
-                                                    'StgeLoc': podetaildata.d.results[n].StLoc,
-                                                    'Batch': podetaildata.d.results[n].Batch,
-                                                    'Vendrbatch': podetaildata.d.results[n].VendorBatch,
-                                                    //  'MovType': c.d.results[0].MovType,
-                                                    'MoveType': '101',
-                                                    'StckType': podetaildata.d.results[n].StockType,
-                                                    'SpecStock': podetaildata.d.results[n].SpecialStock,
-                                                    'Vendor': 'VENDOR',
-                                                    'ValType': podetaildata.d.results[n].ValuationType,
-                                                    'EntryQnt': contextobj[q].openquantity,
-                                                    'EntryUom': podetaildata.d.results[n].Uom,
-                                                    'PoNumber': podetaildata.d.results[n].PoNumber,
-                                                    'PoItem': podetaildata.d.results[n].ItemNo,
-                                                    'MvtInd': 'B',
-                                                    'SerialnoAutoNumberassignment': 'false'
-
-
-                                                }
-                                                obj.push(entity1);
-
-                                            }
-                                 
-                                 
-                                 
                                            }
                                     }
                               }
@@ -1400,7 +1343,10 @@ restService.post("/wms", function (req, res) {
                                     'HeaderTxt':'',
                                     'GmCode':'01',
                                     'MatItemRel':obj
-                                }
+                                } 
+                              
+                              
+                              var ol=obj[0].PoNumber;
                             
                                                             // Do post
 
@@ -1457,7 +1403,7 @@ restService.post("/wms", function (req, res) {
                                         // console.log(response1.statusCode);
                                     }
                                     else {
-                                        response = "GR Failed!!!!!"+response1.statusCode;
+                                        response = "GR Failed!!!!!"+ol;
                                       return res.json({
                                     // speech: "GR successful",
                                     // displayText: "GR successful",
