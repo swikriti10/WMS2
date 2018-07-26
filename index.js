@@ -1164,7 +1164,8 @@ restService.post("/wms", function (req, res) {
                 // console.log(csrfToken);
                 // var gwResponse = body.asString();
                 // var JSONObj = JSON.parse(body);
-                var c1 = JSON.parse(body)
+                var c1 = JSON.parse(body);
+              var podetaildata=JSON.parse(body);
                 //var a = res.json(body);
                 var len1 = c1.d.results.length;
                 //var a = JSON.stringify(a);
@@ -1294,13 +1295,14 @@ restService.post("/wms", function (req, res) {
                               var zz="";
                               var qz="";
                                 var e = contextobj.length;
-                              var qz=c1;
                               for (;n<len1;n++) {
 
                                     for (;q<e;q++) {
                                    
                                        var tosavematerial = contextobj[q].material;
                                 var tosavequant = contextobj[q].openquantity;
+                               qz=podetaildata.d.results[n].Material;
+                                      
                                            
                                 return res.json({
                                     // speech: "GR successful",
