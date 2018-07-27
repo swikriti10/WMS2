@@ -17,8 +17,8 @@ const App = require('actions-on-google').DialogflowApp;
 var slack_message;
 
 
-var url ="http://208.85.249.174:8000/sap/opu/odata/CRVWM/WMS_SRV/";
-var url1 ="http://208.85.249.174:8000/sap/opu/odata/sap/ZWMS_BOT_SRV/";
+var url = "http://208.85.249.174:8000/sap/opu/odata/CRVWM/WMS_SRV/";
+var url1 = "http://208.85.249.174:8000/sap/opu/odata/sap/ZWMS_BOT_SRV/";
 
 //var d = '1140';
 var i = 0;
@@ -111,7 +111,7 @@ restService.post("/wms", function (req, res) {
 
     const app = new App({ request: req, response: res });
     var url = "http://208.85.249.174:8000/sap/opu/odata/CRVWM/WMS_SRV/";
-  var url1 ="http://208.85.249.174:8000/sap/opu/odata/sap/ZWMS_BOT_SRV/";
+    var url1 = "http://208.85.249.174:8000/sap/opu/odata/sap/ZWMS_BOT_SRV/";
 
     //sess = req.session;
     var i = 0;
@@ -1136,8 +1136,8 @@ restService.post("/wms", function (req, res) {
 
 
     else if (quantity != "zeroQuant") {
-        var response = ""; 
-      var entity;
+        var response = "";
+        var entity;
         var z = app.getContextArgument('c_counter', 'key');
         var tempContext = app.getContext('c_counter');
         var originalTemp = tempContext.parameters.key;
@@ -1166,7 +1166,7 @@ restService.post("/wms", function (req, res) {
                 // var gwResponse = body.asString();
                 // var JSONObj = JSON.parse(body);
                 var c1 = JSON.parse(body);
-              var podetaildata=JSON.parse(body);
+                var podetaildata = JSON.parse(body);
                 //var a = res.json(body);
                 var len1 = c1.d.results.length;
                 //var a = JSON.stringify(a);
@@ -1261,9 +1261,9 @@ restService.post("/wms", function (req, res) {
                                 var obj = [];
                                 var entity2 = {};
                                 var response = "";
-                                     var entity1;
+                                var entity1;
 
-                                for (; j >=1; j--) {
+                                for (; j >= 1; j--) {
                                     if (j != 1) {
                                         var Context_1 = app.getContext('c_counter' + j);
                                         var mat_1 = Context_1.parameters.materialname;
@@ -1291,38 +1291,38 @@ restService.post("/wms", function (req, res) {
                                 }
 
 
-                                var n=0;
-                                var q=0;
-                              var zz="";
-                              var qz="";
+                                var n = 0;
+                                var q = 0;
+                                var zz = "";
+                                var qz = "";
                                 var e = contextobj.length;
-                              for (;n<len1;n++) {
-                                       q=0;
-                                    for (;q<e;q++) {
-                                   
-                                       var tosavematerial = contextobj[q].material;
-                                var tosavequant = contextobj[q].openquantity;
-                               qz=podetaildata.d.results[n].Material;
-                               if (podetaildata.d.results[n].Material == tosavematerial) {
+                                for (; n < len1; n++) {
 
-                                            if (tosavematerial =="2") {
+                                    for (; q < e; q++) {
+
+                                        var tosavematerial = contextobj[q].material;
+                                        var tosavequant = contextobj[q].openquantity;
+                                        qz = podetaildata.d.results[n].Material;
+                                        if (podetaildata.d.results[n].Material == tosavematerial) {
+
+                                            if (tosavematerial == "2") {
                                                 entity1 = {
-                                                    'Material':podetaildata.d.results[n].Material,
-                                                    'Plant':podetaildata.d.results[n].Plant,
-                                                    'StgeLoc':podetaildata.d.results[n].StLoc,
-                                                    'Batch':podetaildata.d.results[n].Batch,
-                                                    'Vendrbatch':podetaildata.d.results[n].VendorBatch,
+                                                    'Material': podetaildata.d.results[n].Material,
+                                                    'Plant': podetaildata.d.results[n].Plant,
+                                                    'StgeLoc': podetaildata.d.results[n].StLoc,
+                                                    'Batch': podetaildata.d.results[n].Batch,
+                                                    'Vendrbatch': podetaildata.d.results[n].VendorBatch,
                                                     //  'MovType': c.d.results[0].MovType,
-                                                    'MoveType':'101',
-                                                    'StckType':podetaildata.d.results[n].StockType,
-                                                    'SpecStock':podetaildata.d.results[n].SpecialStock,
-                                                    'Vendor':'VENDOR',
+                                                    'MoveType': '101',
+                                                    'StckType': podetaildata.d.results[n].StockType,
+                                                    'SpecStock': podetaildata.d.results[n].SpecialStock,
+                                                    'Vendor': 'VENDOR',
                                                     'ValType': podetaildata.d.results[n].ValuationType,
-                                                    'EntryQnt':tosavequant+'.000',
-                                                    'EntryUom':podetaildata.d.results[n].Uom,
-                                                    'PoNumber':podetaildata.d.results[n].PoNumber,
-                                                    'PoItem':podetaildata.d.results[n].ItemNo,
-                                                    'MvtInd':'B'
+                                                    'EntryQnt': tosavequant + '.000',
+                                                    'EntryUom': podetaildata.d.results[n].Uom,
+                                                    'PoNumber': podetaildata.d.results[n].PoNumber,
+                                                    'PoItem': podetaildata.d.results[n].ItemNo,
+                                                    'MvtInd': 'B'
                                                     // 'SerialnoAutoNumberassignment': c.d.results[0].SerialSpecified
 
 
@@ -1333,22 +1333,22 @@ restService.post("/wms", function (req, res) {
                                             else if (tosavematerial == "43") {
                                                 entity1 = {
 
-                                                    'Material':podetaildata.d.results[n].Material,
-                                                    'Plant':podetaildata.d.results[n].Plant,
+                                                    'Material': podetaildata.d.results[n].Material,
+                                                    'Plant': podetaildata.d.results[n].Plant,
                                                     'StgeLoc': podetaildata.d.results[n].StLoc,
-                                                    'Batch':'B1',
-                                                    'Vendrbatch':podetaildata.d.results[n].VendorBatch,
+                                                    'Batch': podetaildata.d.results[n].Batch,
+                                                    'Vendrbatch': podetaildata.d.results[n].VendorBatch,
                                                     //  'MovType': c.d.results[0].MovType,
-                                                    'MoveType':'101',
-                                                    'StckType':podetaildata.d.results[n].StockType,
-                                                    'SpecStock':podetaildata.d.results[n].SpecialStock,
-                                                    'Vendor':'VENDOR',
-                                                    'ValType':podetaildata.d.results[n].ValuationType,
-                                                    'EntryQnt':contextobj[q].openquantity+'.000',
-                                                    'EntryUom':podetaildata.d.results[n].Uom,
-                                                    'PoNumber':podetaildata.d.results[n].PoNumber,
-                                                    'PoItem':podetaildata.d.results[n].ItemNo,
-                                                    'MvtInd':'B'
+                                                    'MoveType': '101',
+                                                    'StckType': podetaildata.d.results[n].StockType,
+                                                    'SpecStock': podetaildata.d.results[n].SpecialStock,
+                                                    'Vendor': 'VENDOR',
+                                                    'ValType': podetaildata.d.results[n].ValuationType,
+                                                    'EntryQnt': contextobj[q].openquantity + '.000',
+                                                    'EntryUom': podetaildata.d.results[n].Uom,
+                                                    'PoNumber': podetaildata.d.results[n].PoNumber,
+                                                    'PoItem': podetaildata.d.results[n].ItemNo,
+                                                    'MvtInd': 'B'
                                                     // 'SerialnoAutoNumberassignment': c.d.results[0].SerialSpecified
 
 
@@ -1371,7 +1371,7 @@ restService.post("/wms", function (req, res) {
                                                     'SpecStock': podetaildata.d.results[n].SpecialStock,
                                                     'Vendor': 'VENDOR',
                                                     'ValType': podetaildata.d.results[n].ValuationType,
-                                                    'EntryQnt': contextobj[q].openquantity+'.000',
+                                                    'EntryQnt': contextobj[q].openquantity + '.000',
                                                     'EntryUom': podetaildata.d.results[n].Uom,
                                                     'PoNumber': podetaildata.d.results[n].PoNumber,
                                                     'PoItem': podetaildata.d.results[n].ItemNo,
@@ -1384,30 +1384,26 @@ restService.post("/wms", function (req, res) {
 
                                             }
 
-                                 
-                                 
-                                           }
+
+
+                                        }
                                     }
-                              }
-                              
-                              
-                               entity = {
-   'PstngDate': '2018-07-27T00:00:00',
-   'DocDate': '2018-07-27T00:00:00',
-    'PrUname': 'xy',
-   'HeaderTxt': '',
-   'GmCode': '01',
-   'MatItemRel': obj
-}
-               
-                              
-                            var ol=obj.length;
-                            var ol1=obj[0].EntryQnt;
-                            var ol2=obj[0].Material;
-                            var ol3=obj[1].EntryQnt;
-                            var ol4=obj[1].Material;
-                            
-                                                            // Do post
+                                }
+
+
+                                entity = {
+                                    'PstngDate': '2018-07-26T00:00:00',
+                                    'DocDate': '2018-07-26T00:00:00',
+                                    'PrUname': 'xy',
+                                    'HeaderTxt': '',
+                                    'GmCode': '01',
+                                    'MatItemRel': obj
+                                }
+
+
+
+
+                                // Do post
 
                                 request({
 
@@ -1424,74 +1420,74 @@ restService.post("/wms", function (req, res) {
                                         "x-csrf-token": "" // set CSRF Token for post or update
                                     },
 
-                                    json:entity
+                                    json: entity
                                 }, function (error, response1, body) {
 
                                     // handle response
                                     if (!error && response1.statusCode == 201) {
 
                                         response = "GR successful";
-                                      return res.json({
-                                    // speech: "GR successful",
-                                    // displayText: "GR successful",
-                                    speech: response+e,
-                                    displayText: response+e,
-                                    source: "webhook-echo-sample",
-                                    contextOut: [{
-                                        name: "c_counter" + originalTemp + "",
-                                        lifespan: "20",
-                                        parameters: {
-                                            quant: quantity,
-                                            materialname: cmaterial
+                                        return res.json({
+                                            // speech: "GR successful",
+                                            // displayText: "GR successful",
+                                            speech: response,
+                                            displayText: response,
+                                            source: "webhook-echo-sample",
+                                            contextOut: [{
+                                                name: "c_counter" + originalTemp + "",
+                                                lifespan: "20",
+                                                parameters: {
+                                                    quant: quantity,
+                                                    materialname: cmaterial
 
-                                        }
-                                    },
-                                                    {
-                                                        name: "c_counter",
-                                                        lifespan: "10",
-                                                        parameters: {
-                                                            key: c1,
-
-
-                                                        }
-                                                    }
-                                    ]
+                                                }
+                                            },
+                                                            {
+                                                                name: "c_counter",
+                                                                lifespan: "10",
+                                                                parameters: {
+                                                                    key: c1,
 
 
-                                });
+                                                                }
+                                                            }
+                                            ]
+
+
+                                        });
                                         // console.log(response1.statusCode);
                                     }
                                     else {
                                         response = "GR Failed!!!!!";
-                                      return res.json({
-                                    // speech: "GR successful",
-                                    // displayText: "GR successful",
-                                    speech: response+ol1+ol2+ol3+ol4,
-                                    displayText: response+ol1+ol2+ol3+ol4,
-                                    source: "webhook-echo-sample",
-                                    contextOut: [{
-                                        name: "c_counter" + originalTemp + "",
-                                        lifespan: "20",
-                                        parameters: {
-                                            quant: quantity,
-                                            materialname: cmaterial
+                                        return res.json({
+                                            // speech: "GR successful",
+                                            // displayText: "GR successful",
+                                            speech: response,
+                                            displayText: response,
+                                            source: "webhook-echo-sample",
+                                            contextOut: [{
+                                                name: "c_counter" + originalTemp + "",
+                                                lifespan: "20",
+                                                parameters: {
+                                                    quant: quantity,
+                                                    materialname: cmaterial
 
-                                        }
-                                    },
-                                                    {
-                                                        name: "c_counter",
-                                                        lifespan: "10",
-                                                        parameters: {
-                                                            key: c1,
-
-
-                                                        }
-                                                    }
-                                    ]
+                                                }
+                                            },
+                                                            {
+                                                                name: "c_counter",
+                                                                lifespan: "10",
+                                                                parameters: {
+                                                                    key: c1,
 
 
-                                });
-                                       // console.log(response1.statusCode);
+                                                                }
+                                                            }
+                                            ]
+
+
+                                        });
+                                        // console.log(response1.statusCode);
                                     }
 
 
@@ -1504,7 +1500,7 @@ restService.post("/wms", function (req, res) {
 
 
 
-                              
+
 
 
                                 //  });
