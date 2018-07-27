@@ -1333,20 +1333,20 @@ restService.post("/wms", function (req, res) {
                                             else if (tosavematerial == "43") {
                                                 entity1 = {
 
-                                                    'Material': podetaildata.d.results[n].Material,
-                                                    'Plant': podetaildata.d.results[n].Plant,
+                                                    'Material':podetaildata.d.results[n].Material,
+                                                    'Plant':podetaildata.d.results[n].Plant,
                                                     'StgeLoc': podetaildata.d.results[n].StLoc,
-                                                    'Batch': podetaildata.d.results[n].Batch,
-                                                    'Vendrbatch': podetaildata.d.results[n].VendorBatch,
+                                                    'Batch':'B1',
+                                                    'Vendrbatch':podetaildata.d.results[n].VendorBatch,
                                                     //  'MovType': c.d.results[0].MovType,
-                                                    'MoveType': '101',
-                                                    'StckType': podetaildata.d.results[n].StockType,
-                                                    'SpecStock': podetaildata.d.results[n].SpecialStock,
-                                                    'Vendor': 'VENDOR',
-                                                    'ValType': podetaildata.d.results[n].ValuationType,
-                                                    'EntryQnt': contextobj[q].openquantity+'.000',
-                                                    'EntryUom': podetaildata.d.results[n].Uom,
-                                                    'PoNumber': podetaildata.d.results[n].PoNumber,
+                                                    'MoveType':'101',
+                                                    'StckType':podetaildata.d.results[n].StockType,
+                                                    'SpecStock':podetaildata.d.results[n].SpecialStock,
+                                                    'Vendor':'VENDOR',
+                                                    'ValType':podetaildata.d.results[n].ValuationType,
+                                                    'EntryQnt':contextobj[q].openquantity+'.000',
+                                                    'EntryUom':podetaildata.d.results[n].Uom,
+                                                    'PoNumber':podetaildata.d.results[n].PoNumber,
                                                     'PoItem': podetaildata.d.results[n].ItemNo,
                                                     'MvtInd': 'B'
                                                     // 'SerialnoAutoNumberassignment': c.d.results[0].SerialSpecified
