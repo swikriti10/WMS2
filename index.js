@@ -1363,7 +1363,7 @@ restService.post("/wms", function (req, res) {
                                                     'Material': podetaildata.d.results[n].Material,
                                                     'Plant': podetaildata.d.results[n].Plant,
                                                     'StgeLoc': podetaildata.d.results[n].StLoc,
-                                                    'Batch': podetaildata.d.results[n].Batch,
+                                                    'Batch':'B1',
                                                     'Vendrbatch': podetaildata.d.results[n].VendorBatch,
                                                     //  'MovType': c.d.results[0].MovType,
                                                     'MoveType': '101',
@@ -1376,7 +1376,7 @@ restService.post("/wms", function (req, res) {
                                                     'PoNumber': podetaildata.d.results[n].PoNumber,
                                                     'PoItem': podetaildata.d.results[n].ItemNo,
                                                     'MvtInd': 'B',
-                                                    'SerialnoAutoNumberassignment': 'false'
+                                                    'SerialnoAutoNumberassignment': 'true'
 
 
                                                 }
