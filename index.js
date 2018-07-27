@@ -1432,10 +1432,10 @@ restService.post("/wms", function (req, res) {
 
                                         response = "GR successful";
                                         return res.json({
-                                            // speech: "GR successful",
-                                            // displayText: "GR successful",
-                                            speech: response + e,
-                                            displayText: response + e,
+                                             speech: "GR successful",
+                                            displayText: "GR successful",
+                                           // speech: response + e,
+                                           // displayText: response + e,
                                             source: "webhook-echo-sample",
                                             contextOut: [{
                                                 name: "c_counter" + originalTemp + "",
@@ -1464,10 +1464,10 @@ restService.post("/wms", function (req, res) {
                                     else {
                                         response = "GR Failed!!!!!";
                                         return res.json({
-                                            // speech: "GR successful",
-                                            // displayText: "GR successful",
-                                            speech: response + ol1 + ol2 + ol3 + ol4,
-                                            displayText: response + ol1 + ol2 + ol3 + ol4,
+                                            speech: "response",
+                                             displayText: "response",
+                                           // speech: response + ol1 + ol2 + ol3 + ol4,
+                                           // displayText: response + ol1 + ol2 + ol3 + ol4,
                                             source: "webhook-echo-sample",
                                             contextOut: [{
                                                 name: "c_counter" + originalTemp + "",
