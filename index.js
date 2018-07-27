@@ -1347,8 +1347,8 @@ restService.post("/wms", function (req, res) {
                                                     'EntryQnt':contextobj[q].openquantity+'.000',
                                                     'EntryUom':podetaildata.d.results[n].Uom,
                                                     'PoNumber':podetaildata.d.results[n].PoNumber,
-                                                    'PoItem': podetaildata.d.results[n].ItemNo,
-                                                    'MvtInd': 'B'
+                                                    'PoItem':podetaildata.d.results[n].ItemNo,
+                                                    'MvtInd':'B'
                                                     // 'SerialnoAutoNumberassignment': c.d.results[0].SerialSpecified
 
 
@@ -1392,8 +1392,8 @@ restService.post("/wms", function (req, res) {
                               
                               
                                entity = {
-   'PstngDate': '2018-07-26T00:00:00',
-   'DocDate': '2018-07-26T00:00:00',
+   'PstngDate': '2018-07-27T00:00:00',
+   'DocDate': '2018-07-27T00:00:00',
     'PrUname': 'xy',
    'HeaderTxt': '',
    'GmCode': '01',
