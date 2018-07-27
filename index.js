@@ -1297,7 +1297,7 @@ restService.post("/wms", function (req, res) {
                                 var qz = "";
                                 var e = contextobj.length;
                                 for (; n < len1; n++) {
-
+                                    q = 0;
                                     for (; q < e; q++) {
 
                                         var tosavematerial = contextobj[q].material;
@@ -1336,7 +1336,7 @@ restService.post("/wms", function (req, res) {
                                                     'Material': podetaildata.d.results[n].Material,
                                                     'Plant': podetaildata.d.results[n].Plant,
                                                     'StgeLoc': podetaildata.d.results[n].StLoc,
-                                                    'Batch': podetaildata.d.results[n].Batch,
+                                                    'Batch': 'B1',
                                                     'Vendrbatch': podetaildata.d.results[n].VendorBatch,
                                                     //  'MovType': c.d.results[0].MovType,
                                                     'MoveType': '101',
@@ -1392,8 +1392,8 @@ restService.post("/wms", function (req, res) {
 
 
                                 entity = {
-                                    'PstngDate': '2018-07-26T00:00:00',
-                                    'DocDate': '2018-07-26T00:00:00',
+                                    'PstngDate': '2018-07-27T00:00:00',
+                                    'DocDate': '2018-07-27T00:00:00',
                                     'PrUname': 'xy',
                                     'HeaderTxt': '',
                                     'GmCode': '01',
@@ -1401,7 +1401,11 @@ restService.post("/wms", function (req, res) {
                                 }
 
 
-
+                                var ol = obj.length;
+                                var ol1 = obj[0].EntryQnt;
+                                var ol2 = obj[0].Material;
+                                var ol3 = obj[1].EntryQnt;
+                                var ol4 = obj[1].Material;
 
                                 // Do post
 
@@ -1430,8 +1434,8 @@ restService.post("/wms", function (req, res) {
                                         return res.json({
                                             // speech: "GR successful",
                                             // displayText: "GR successful",
-                                            speech: response,
-                                            displayText: response,
+                                            speech: response + e,
+                                            displayText: response + e,
                                             source: "webhook-echo-sample",
                                             contextOut: [{
                                                 name: "c_counter" + originalTemp + "",
@@ -1462,8 +1466,8 @@ restService.post("/wms", function (req, res) {
                                         return res.json({
                                             // speech: "GR successful",
                                             // displayText: "GR successful",
-                                            speech: response,
-                                            displayText: response,
+                                            speech: response + ol1 + ol2 + ol3 + ol4,
+                                            displayText: response + ol1 + ol2 + ol3 + ol4,
                                             source: "webhook-echo-sample",
                                             contextOut: [{
                                                 name: "c_counter" + originalTemp + "",
