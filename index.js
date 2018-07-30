@@ -960,9 +960,13 @@ restService.post("/wms", function (req, res) {
                             // botResponse += c.d.results[0].Material;
 
                             for (; i < len1; i++) {
-                                botResponse1 += c1.d.results[i].Material + "(" + c1.d.results[i].OpenQuantity + ")";
+                              //  botResponse1 += c1.d.results[i].Material + "(" + c1.d.results[i].OpenQuantity + ")";
 
-                                botResponse1 += ",";
+                                //  botResponse1 += ",";
+
+                                  botResponse1 += c1.d.results[i].Material + "with quantity" + c1.d.results[i].OpenQuantity + ".";
+
+                                  botResponse1 += "\n";
 
                             }
                             botResponse1 += ".Scan the material";
@@ -1058,7 +1062,7 @@ restService.post("/wms", function (req, res) {
                 }
 
                 else {
-                    botResponse1 = "Material not matched.Scan againnnnnnnnnn"
+                    botResponse1 = "Material not matched.Scan again"
                 }
 
                 if (flag == "1") {
@@ -1363,7 +1367,7 @@ restService.post("/wms", function (req, res) {
                                                     'Material': podetaildata.d.results[n].Material,
                                                     'Plant': podetaildata.d.results[n].Plant,
                                                     'StgeLoc': podetaildata.d.results[n].StLoc,
-                                                    'Batch':'B1',
+                                                    'Batch': 'B1',
                                                     'Vendrbatch': podetaildata.d.results[n].VendorBatch,
                                                     //  'MovType': c.d.results[0].MovType,
                                                     'MoveType': '101',
@@ -1432,10 +1436,10 @@ restService.post("/wms", function (req, res) {
 
                                         response = "GR successful";
                                         return res.json({
-                                             speech: "GR successful",
+                                            speech: "GR successful",
                                             displayText: "GR successful",
-                                           // speech: response + e,
-                                           // displayText: response + e,
+                                            // speech: response + e,
+                                            // displayText: response + e,
                                             source: "webhook-echo-sample",
                                             contextOut: [{
                                                 name: "c_counter" + originalTemp + "",
@@ -1465,9 +1469,9 @@ restService.post("/wms", function (req, res) {
                                         response = "GR Failed!!!!!";
                                         return res.json({
                                             speech: "response",
-                                             displayText: "response",
-                                           // speech: response + ol1 + ol2 + ol3 + ol4,
-                                           // displayText: response + ol1 + ol2 + ol3 + ol4,
+                                            displayText: "response",
+                                            // speech: response + ol1 + ol2 + ol3 + ol4,
+                                            // displayText: response + ol1 + ol2 + ol3 + ol4,
                                             source: "webhook-echo-sample",
                                             contextOut: [{
                                                 name: "c_counter" + originalTemp + "",
