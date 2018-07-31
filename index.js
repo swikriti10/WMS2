@@ -964,12 +964,12 @@ restService.post("/wms", function (req, res) {
 
                                 //  botResponse1 += ",";
 
-                                botResponse1 += c1.d.results[i].Material + "with quantity " + c1.d.results[i].OpenQuantity + ".";
+                                botResponse1 += c1.d.results[i].Material + " with quantity " + c1.d.results[i].OpenQuantity + ".";
 
                                 botResponse1 += "\n";
 
                             }
-                            botResponse1 += ".Scan the material";
+                            botResponse1 += "Scan the material";
 
 
                         }
