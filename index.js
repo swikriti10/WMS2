@@ -1405,11 +1405,11 @@ restService.post("/wms", function (req, res) {
                                 }
 
 
-                                var ol = obj.length;
-                                var ol1 = obj[0].EntryQnt;
-                                var ol2 = obj[0].Material;
-                                var ol3 = obj[1].EntryQnt;
-                                var ol4 = obj[1].Material;
+                               // var ol = obj.length;
+                               // var ol1 = obj[0].EntryQnt;
+                               // var ol2 = obj[0].Material;
+                               // var ol3 = obj[1].EntryQnt;
+                              //  var ol4 = obj[1].Material;
 
                                 // Do post
 
