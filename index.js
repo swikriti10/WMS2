@@ -960,13 +960,13 @@ restService.post("/wms", function (req, res) {
                             // botResponse += c.d.results[0].Material;
 
                             for (; i < len1; i++) {
-                              //  botResponse1 += c1.d.results[i].Material + "(" + c1.d.results[i].OpenQuantity + ")";
+                                //  botResponse1 += c1.d.results[i].Material + "(" + c1.d.results[i].OpenQuantity + ")";
 
                                 //  botResponse1 += ",";
 
-                                  botResponse1 += c1.d.results[i].Material + "with quantity" + c1.d.results[i].OpenQuantity + ".";
+                                botResponse1 += c1.d.results[i].Material + "with quantity " + c1.d.results[i].OpenQuantity + ".";
 
-                                  botResponse1 += "\n";
+                                botResponse1 += "\n";
 
                             }
                             botResponse1 += ".Scan the material";
@@ -1186,7 +1186,7 @@ restService.post("/wms", function (req, res) {
 
                             var quant = c1.d.results[i].OpenQuantity;
                             if (quantity > quant || quant <= "0") {
-                                response = "Quantitiy should be less than or equalto " + quant;
+                                response = "Quantity should be less than or equalto " + quant;
                                 flag = "1";
                                 break;
                             }
@@ -1223,7 +1223,7 @@ restService.post("/wms", function (req, res) {
 
                     else if (flag == "") {
                         if (originalTemp >= 0) {
-                            response = "Material " + cmaterial + " confirmed. Sacn another material";
+                            response = "Material " + cmaterial + " confirmed. Scan another material";
                             //response = "Material " + m + " confirmed. Sacn another material";
                             var c = originalTemp;
                             var c1 = --c;
@@ -1565,7 +1565,75 @@ restService.post("/wms", function (req, res) {
 
 
 
+    else if(actionName=="action_showstock")
+    {
+        request({
 
+            url: url + "StorageOverviewSet?$filter=StLoc%20eq%20%270088%27%20and%20Plant%20eq%20%270001%27&sap-client=900&sap-language=EN&$format=json",
+            // url: url + "GetTilesSet?$filter=BotCode eq 'start'&sap-client=900&sap-language=EN&$format=json",
+            // url: url + "GetMenuSet?$filter=TileIdBot eq 'INBOUND' &sap-client=900&sap-language=EN&$format=json",
+
+
+            //url: url + "ListOpenTOSet?$filter=UserId eq 'SAPUSER' and TorderFrom eq '' and TorderTo eq '' and DelvFrom eq '' and DelvTo eq'' and SoFrom eq '' and SoTo eq '' and Material eq '' &sap-client=900&sap-language=EN&$format=json",
+            headers: {
+                //"Authorization": "Basic <<base64 encoded SAPUSER:crave123>>",
+                "Authorization": "Basic c2FwdXNlcjpjcmF2ZTEyMw==",
+                "Content-Type": "application/json",
+                "x-csrf-token": "Fetch"
+            }
+
+        }, function (error, response, body) {
+            if (!error && response.statusCode == 200) {
+                csrfToken = response.headers['x-csrf-token'];
+                // console.log(csrfToken);
+                // var gwResponse = body.asString();
+                // var JSONObj = JSON.parse(body);
+                var c = JSON.parse(body)
+                //var a = res.json(body);
+                var len = c.d.results.length;
+                //var a = JSON.stringify(a);
+
+
+                var obj = [];
+                var i = 0;
+                if (c.d.results.length > 0) {
+                    botResponse = "Avaliable Stock Material: ";
+
+                    for (; i < c.d.results.length; i++) {
+                        botResponse += " \n";
+
+                        botResponse += "Material-" + c.d.results[i].Material + " Quantity " + c.d.results[i].AvailQty;
+                        // botResponse+= c.d.results[i].MenuName;
+                        botResponse += " \n";
+
+                    }
+
+                }
+                else {
+                    botResponse = "No Stock Material";
+                }
+
+                
+
+            }
+
+
+            return res.json({
+                speech: botResponse,
+                displayText: botResponse,
+                // speech: optionIntentname,
+                // displayText: optionIntentname,
+                source: "webhook-echo-sample"
+                
+
+
+
+
+            });
+
+
+        });
+    }
 
 
 
