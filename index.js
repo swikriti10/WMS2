@@ -1396,8 +1396,8 @@ restService.post("/wms", function (req, res) {
 
 
                                 entity = {
-                                    'PstngDate': '2018-07-27T00:00:00',
-                                    'DocDate': '2018-07-27T00:00:00',
+                                    'PstngDate': '2018-09-08T00:00:00',
+                                    'DocDate': '2018-09-08T00:00:00',
                                     'PrUname': 'xy',
                                     'HeaderTxt': '',
                                     'GmCode': '01',
