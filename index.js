@@ -1309,7 +1309,7 @@ restService.post("/wms", function (req, res) {
                                         qz = podetaildata.d.results[n].Material;
                                         if (podetaildata.d.results[n].Material == tosavematerial) {
 
-                                            if (tosavematerial == "2" || tosavematerial=="135") {
+                                            if (tosavematerial == "2" || tosavematerial=="135"||tosavematerial=="11") {
                                                 entity1 = {
                                                     'Material': podetaildata.d.results[n].Material,
                                                     'Plant': podetaildata.d.results[n].Plant,
