@@ -1468,8 +1468,8 @@ restService.post("/wms", function (req, res) {
                                     else {
                                         response = "GR Failed!!!!!";
                                         return res.json({
-                                            speech: "response",
-                                            displayText: "response",
+                                            speech: response,
+                                            displayText: response,
                                             // speech: response + ol1 + ol2 + ol3 + ol4,
                                             // displayText: response + ol1 + ol2 + ol3 + ol4,
                                             source: "webhook-echo-sample",
