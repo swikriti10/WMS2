@@ -19,6 +19,7 @@ var slack_message;
 
 var url = "http://208.85.249.174:8000/sap/opu/odata/CRVWM/WMS_SRV/";
 var url1 = "http://208.85.249.174:8000/sap/opu/odata/sap/ZWMS_BOT_SRV/";
+var url2 = "http://208.85.249.174:8000/sap/opu/odata/CRVWM/SRV_WMS_PRJ/";
 
 //var d = '1140';
 var i = 0;
@@ -1326,7 +1327,8 @@ restService.post("/wms", function (req, res) {
                                                     'EntryUom': podetaildata.d.results[n].Uom,
                                                     'PoNumber': podetaildata.d.results[n].PoNumber,
                                                     'PoItem': podetaildata.d.results[n].ItemNo,
-                                                    'MvtInd': 'B'
+                                                    'MvtInd': 'B',
+                                                    'GRflag':'BO'
                                                     // 'SerialnoAutoNumberassignment': c.d.results[0].SerialSpecified
 
 
@@ -1418,7 +1420,7 @@ restService.post("/wms", function (req, res) {
 
                                     // url: url + "MaterialDocHdrSet?sap-client=900&sap-language=EN",
 
-                                    url: url1 + "MaterialDocHdrSet?sap-client=900&sap-language=EN",
+                                    url: url2 + "MaterialDocHdrSet?sap-client=900&sap-language=EN",
                                     //url: url + "MaterialDocHdrSet",
                                     method: 'POST',
                                     headers: {
