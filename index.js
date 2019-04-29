@@ -1354,7 +1354,8 @@ restService.post("/wms", function (req, res) {
                                                     'EntryUom': podetaildata.d.results[n].Uom,
                                                     'PoNumber': podetaildata.d.results[n].PoNumber,
                                                     'PoItem': podetaildata.d.results[n].ItemNo,
-                                                    'MvtInd': 'B'
+                                                    'MvtInd': 'B',
+                                                    'GRflag':'BO'
                                                     // 'SerialnoAutoNumberassignment': c.d.results[0].SerialSpecified
 
 
@@ -1382,6 +1383,7 @@ restService.post("/wms", function (req, res) {
                                                     'PoNumber': podetaildata.d.results[n].PoNumber,
                                                     'PoItem': podetaildata.d.results[n].ItemNo,
                                                     'MvtInd': 'B',
+                                                    'GRflag':'BO',
                                                     'SerialnoAutoNumberassignment': 'true'
 
 
