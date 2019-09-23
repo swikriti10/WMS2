@@ -17,9 +17,9 @@ const App = require('actions-on-google').DialogflowApp;
 var slack_message;
 
 
-var url = "http://208.85.249.174:8000/sap/opu/odata/CRVWM/WMS_SRV/";
-var url1 = "http://208.85.249.174:8000/sap/opu/odata/sap/ZWMS_BOT_SRV/";
-var url2 = "http://208.85.249.174:8000/sap/opu/odata/CRVWM/SRV_WMS_PRJ/";
+var url = "http://208.85.249.182:8000/sap/opu/odata/CRVWM/WMS_SRV/";
+var url1 = "http://208.85.249.182:8000/sap/opu/odata/sap/ZWMS_BOT_SRV/";
+var url2 = "http://208.85.249.182:8000/sap/opu/odata/CRVWM/SRV_WMS_PRJ/";
 
 //var d = '1140';
 var i = 0;
@@ -111,8 +111,8 @@ restService.post("/wms", function (req, res) {
 
 
     const app = new App({ request: req, response: res });
-    var url = "http://208.85.249.174:8000/sap/opu/odata/CRVWM/WMS_SRV/";
-    var url1 = "http://208.85.249.174:8000/sap/opu/odata/sap/ZWMS_BOT_SRV/";
+    var url = "http://208.85.249.182:8000/sap/opu/odata/CRVWM/WMS_SRV/";
+    var url1 = "http://208.85.249.182:8000/sap/opu/odata/sap/ZWMS_BOT_SRV/";
 
     //sess = req.session;
     var i = 0;
